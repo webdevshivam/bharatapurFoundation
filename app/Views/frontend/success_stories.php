@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 
 <!-- Hero Section -->
-<section class="relative min-h-[70vh] bg-gradient-to-br from-emerald-50 via-white to-teal-50 flex items-center overflow-hidden -mt-16 pt-16">
+<section class="relative min-h-[70vh] bg-gradient-to-br from-emerald-50 via-white to-teal-50 flex items-center overflow-hidden">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-5">
         <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 25%, #10b981 2px, transparent 2px), radial-gradient(circle at 75% 75%, #06b6d4 1px, transparent 1px); background-size: 50px 50px, 30px 30px;"></div>
@@ -117,8 +117,20 @@
 
                             <!-- Read More Button -->
                             <div class="mt-6 pt-4 border-t border-gray-100">
-                                <button onclick="viewStory('<?= esc($story['name'] ?? '') ?>', '<?= esc($story['story'] ?? '') ?>', '<?= esc($story['name'] ?? '') ?>', '<?= date('M j, Y', strtotime($story['created_at'] ?? 'now')) ?>', '<?= !empty($story['image']) ? base_url('uploads/success_stories/' . $story['image']) : '' ?>')"
-                                        class="w-full bg-emerald-600 text-white py-3 rounded-xl font-semibold hover:bg-emerald-700 transition-all duration-200 flex items-center justify-center group">
+                                <button onclick="viewStory(
+                                    '<?= esc($story['name'] ?? '') ?>', 
+                                    '<?= esc($story['story'] ?? '') ?>', 
+                                    '<?= esc($story['name'] ?? '') ?>', 
+                                    '<?= date('M j, Y', strtotime($story['created_at'] ?? 'now')) ?>', 
+                                    '<?= !empty($story['image']) ? base_url('uploads/success_stories/' . $story['image']) : '' ?>',
+                                    '<?= esc($story['current_position'] ?? '') ?>',
+                                    '<?= esc($story['company'] ?? '') ?>',
+                                    '<?= esc($story['linkedin_url'] ?? '') ?>',
+                                    '<?= esc($story['company_link'] ?? '') ?>',
+                                    '<?= esc($story['education'] ?? '') ?>',
+                                    '<?= esc($story['city'] ?? '') ?>',
+                                    '<?= esc($story['state'] ?? '') ?>'
+                                )" class="w-full bg-emerald-600 text-white py-3 rounded-xl font-semibold hover:bg-emerald-700 transition-all duration-200 flex items-center justify-center group">
                                     Read Full Story
                                     <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-200"></i>
                                 </button>
@@ -174,8 +186,44 @@
             <!-- Modal Content -->
             <div class="p-8 overflow-y-auto max-h-[60vh]">
                 <div class="space-y-6">
-                    <div id="storyModalContent" class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
-                        <!-- Story content will be inserted here -->
+                    <!-- Professional Info -->
+                    <div id="storyModalProfessional" class="bg-emerald-50 rounded-2xl p-6 border border-emerald-100 hidden">
+                        <h3 class="text-lg font-bold text-emerald-800 mb-4">Professional Details</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div id="storyModalPosition" class="hidden">
+                                <p class="text-emerald-700 font-semibold"><i class="fas fa-briefcase mr-2"></i>Position</p>
+                                <p id="storyModalPositionText" class="text-gray-700"></p>
+                            </div>
+                            <div id="storyModalCompany" class="hidden">
+                                <p class="text-emerald-700 font-semibold"><i class="fas fa-building mr-2"></i>Company</p>
+                                <p id="storyModalCompanyText" class="text-gray-700"></p>
+                            </div>
+                            <div id="storyModalEducation" class="hidden">
+                                <p class="text-emerald-700 font-semibold"><i class="fas fa-graduation-cap mr-2"></i>Education</p>
+                                <p id="storyModalEducationText" class="text-gray-700"></p>
+                            </div>
+                            <div id="storyModalLocation" class="hidden">
+                                <p class="text-emerald-700 font-semibold"><i class="fas fa-map-marker-alt mr-2"></i>Location</p>
+                                <p id="storyModalLocationText" class="text-gray-700"></p>
+                            </div>
+                        </div>
+                        <!-- Links -->
+                        <div id="storyModalLinks" class="mt-4 flex space-x-4 hidden">
+                            <a id="storyModalLinkedIn" href="#" target="_blank" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors hidden">
+                                <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                            </a>
+                            <a id="storyModalCompanyLink" href="#" target="_blank" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors hidden">
+                                <i class="fas fa-external-link-alt mr-2"></i>Company Website
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Full Story Content -->
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Success Story</h3>
+                        <div id="storyModalContent" class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                            <!-- Story content will be inserted here -->
+                        </div>
                     </div>
 
                     <div class="bg-emerald-50 rounded-2xl p-6 border border-emerald-100">
@@ -243,10 +291,14 @@
 
 <script>
 // Story modal functions
-function viewStory(title, content, studentName, date, image) {
+function viewStory(title, content, studentName, date, image, position, company, linkedinUrl, companyLink, education, city, state) {
     document.getElementById('storyModalTitle').textContent = title || 'Success Story';
     document.getElementById('storyModalStudent').textContent = studentName ? `by ${studentName}` : '';
-    document.getElementById('storyModalContent').innerHTML = content ? content.replace(/\n/g, '<br>') : 'An inspiring story of transformation and success.';
+    
+    // Display full story content
+    const fullContent = content || 'An inspiring story of transformation and success.';
+    document.getElementById('storyModalContent').innerHTML = fullContent.replace(/\n/g, '<br><br>');
+    
     document.getElementById('storyModalDate').textContent = `Published on ${date}`;
 
     // Handle image
@@ -255,6 +307,79 @@ function viewStory(title, content, studentName, date, image) {
         storyModalImage.innerHTML = `<img src="${image}" alt="${title}" class="w-full h-full object-cover">`;
     } else {
         storyModalImage.innerHTML = '<div class="w-full h-full bg-white/30 flex items-center justify-center"><i class="fas fa-star text-white text-2xl"></i></div>';
+    }
+
+    // Handle professional details
+    const professionalSection = document.getElementById('storyModalProfessional');
+    let hasInfo = false;
+
+    // Position
+    if (position) {
+        document.getElementById('storyModalPosition').classList.remove('hidden');
+        document.getElementById('storyModalPositionText').textContent = position;
+        hasInfo = true;
+    } else {
+        document.getElementById('storyModalPosition').classList.add('hidden');
+    }
+
+    // Company
+    if (company) {
+        document.getElementById('storyModalCompany').classList.remove('hidden');
+        document.getElementById('storyModalCompanyText').textContent = company;
+        hasInfo = true;
+    } else {
+        document.getElementById('storyModalCompany').classList.add('hidden');
+    }
+
+    // Education
+    if (education) {
+        document.getElementById('storyModalEducation').classList.remove('hidden');
+        document.getElementById('storyModalEducationText').textContent = education;
+        hasInfo = true;
+    } else {
+        document.getElementById('storyModalEducation').classList.add('hidden');
+    }
+
+    // Location
+    if (city || state) {
+        document.getElementById('storyModalLocation').classList.remove('hidden');
+        const location = [city, state].filter(Boolean).join(', ');
+        document.getElementById('storyModalLocationText').textContent = location;
+        hasInfo = true;
+    } else {
+        document.getElementById('storyModalLocation').classList.add('hidden');
+    }
+
+    // Links
+    const linksSection = document.getElementById('storyModalLinks');
+    let hasLinks = false;
+
+    if (linkedinUrl) {
+        document.getElementById('storyModalLinkedIn').classList.remove('hidden');
+        document.getElementById('storyModalLinkedIn').href = linkedinUrl;
+        hasLinks = true;
+    } else {
+        document.getElementById('storyModalLinkedIn').classList.add('hidden');
+    }
+
+    if (companyLink) {
+        document.getElementById('storyModalCompanyLink').classList.remove('hidden');
+        document.getElementById('storyModalCompanyLink').href = companyLink;
+        hasLinks = true;
+    } else {
+        document.getElementById('storyModalCompanyLink').classList.add('hidden');
+    }
+
+    if (hasLinks) {
+        linksSection.classList.remove('hidden');
+    } else {
+        linksSection.classList.add('hidden');
+    }
+
+    if (hasInfo) {
+        professionalSection.classList.remove('hidden');
+    } else {
+        professionalSection.classList.add('hidden');
     }
 
     document.getElementById('storyModal').classList.remove('hidden');
