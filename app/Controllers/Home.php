@@ -187,6 +187,7 @@ class Home extends BaseController
         $total_beneficiaries = $beneficiaryModel->countAll();
         $active_students = $beneficiaryModel->where('is_passout', 0)->where('status', 'active')->countAllResults();
         $graduates = $beneficiaryModel->where('is_passout', 1)->where('status', 'active')->countAllResults();
+        $total_results = count($beneficiaries);
         
         $pageTranslations = [
             'en' => [
