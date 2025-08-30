@@ -137,11 +137,11 @@
 
                     <!-- Language Switcher -->
                     <div class="flex items-center space-x-2">
-                        <a href="<?= base_url('en' . '/' . ($this->router->getMatchedRoute()[0] ?? '')) ?>" 
+                        <a href="<?= base_url('en') ?>" 
                            class="<?= ($language ?? 'en') === 'en' ? 'bg-indigo-600 text-white shadow-lg' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' ?> px-4 py-2 rounded-xl font-accent font-semibold transition-all duration-200">
                             EN
                         </a>
-                        <a href="<?= base_url('hi' . '/' . ($this->router->getMatchedRoute()[0] ?? '')) ?>" 
+                        <a href="<?= base_url('hi') ?>" 
                            class="<?= ($language ?? 'en') === 'hi' ? 'bg-indigo-600 text-white shadow-lg' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' ?> px-4 py-2 rounded-xl font-accent font-semibold transition-all duration-200">
                             हिं
                         </a>
@@ -178,11 +178,11 @@
 
                     <!-- Mobile Language Switcher -->
                     <div class="flex space-x-2 px-4 py-3">
-                        <a href="<?= base_url('en' . '/' . ($this->router->getMatchedRoute()[0] ?? '')) ?>" 
+                        <a href="<?= base_url('en') ?>" 
                            class="<?= ($language ?? 'en') === 'en' ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-700' ?> px-4 py-2 rounded-xl font-accent font-semibold">
                             EN
                         </a>
-                        <a href="<?= base_url('hi' . '/' . ($this->router->getMatchedRoute()[0] ?? '')) ?>" 
+                        <a href="<?= base_url('hi') ?>" 
                            class="<?= ($language ?? 'en') === 'hi' ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-700' ?> px-4 py-2 rounded-xl font-accent font-semibold">
                             हिं
                         </a>
