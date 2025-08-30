@@ -5,621 +5,265 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= isset($title) ? $title . ' - ' : '' ?>Bharatpur Foundation</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts - Modern Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700;800&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Merriweather:wght@300;400;700;900&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans+Devanagari:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="<?= base_url('assets/css/bharatpur-theme.css') ?>" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #0F3A66;
-            --primary-light: #1A4F7A;
-            --primary-dark: #0A2644;
-            --secondary-color: #D69A2A;
-            --secondary-light: #E0A95F;
-            --accent-color: #D69A2A;
-            --accent-light: #E0A95F;
-            --success-color: #16A085;
-            --success-light: #48C9B0;
-            --warning-color: #F39C12;
-            --warning-light: #F4D03F;
-            --text-primary: #1A2B3D;
-            --text-secondary: #4A5568;
-            --text-light: #6B7280;
-            --bg-primary: #ffffff;
-            --bg-secondary: #FFF8F0;
-            --bg-tertiary: #F8F9FA;
-            --bg-soft: #fbf5ed;
-            --border-light: #e8dcc9;
-            --border-lighter: #f0e7d6;
-            --shadow-sm: 0 1px 2px 0 rgb(165 102 28 / 0.08);
-            --shadow-md: 0 4px 6px -1px rgb(165 102 28 / 0.15), 0 2px 4px -2px rgb(165 102 28 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(165 102 28 / 0.2), 0 4px 6px -4px rgb(165 102 28 / 0.1);
-            --shadow-xl: 0 20px 25px -5px rgb(165 102 28 / 0.25), 0 8px 10px -6px rgb(165 102 28 / 0.15);
-            --gradient-primary: linear-gradient(135deg, #A5661C 0%, #6B3F1C 100%);
-            --gradient-secondary: linear-gradient(135deg, #D4842B 0%, #A5661C 100%);
-            --gradient-accent: linear-gradient(135deg, #E6A047 0%, #C78B2A 100%);
-            --gradient-soft: linear-gradient(135deg, #fdf9f5 0%, #f8f1e8 100%);
-        }
 
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Lora', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.7;
-            color: var(--text-primary);
-            background-color: var(--bg-primary);
-            scroll-behavior: smooth;
-            font-weight: 400;
-        }
-
-        .font-display {
-            font-family: 'Playfair Display', 'Crimson Text', serif;
-            font-weight: 600;
-        }
-
-        /* Enhanced Typography Classes */
-        .font-heading {
-            font-family: 'Playfair Display', serif;
-        }
-
-        .font-subheading {
-            font-family: 'Merriweather', serif;
-        }
-
-        .font-accent {
-            font-family: 'Crimson Text', serif;
-            font-style: italic;
-        }
-
-        /* Navigation Styles */
-        .navbar {
-            background: rgba(255, 255, 255, 0.98);
-            border-bottom: 2px solid var(--border-light);
-            box-shadow: var(--shadow-sm);
-            padding: 1rem 0;
-        }
-
-        .navbar-brand {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--primary-color) !important;
-            text-decoration: none;
-        }
-
-        .navbar-brand:hover {
-            color: var(--primary-dark) !important;
-        }
-
-        .navbar-nav .nav-link {
-            color: var(--text-primary) !important;
-            font-weight: 500;
-            margin: 0 0.5rem;
-            padding: 0.8rem 1.2rem !important;
-            border-radius: 6px;
-            font-size: 0.95rem;
-        }
-
-        .navbar-nav .nav-link:hover {
-            color: var(--primary-color) !important;
-            background: var(--bg-secondary);
-        }
-
-        /* Hero Section */
-        .hero-section {
-            background: var(--gradient-soft);
-            color: var(--text-primary);
-            padding: 120px 0 100px;
-            text-align: center;
-            border-bottom: 2px solid var(--border-light);
-            position: relative;
-        }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(165, 102, 28, 0.05) 50%, transparent 70%);
-            z-index: 1;
-        }
-
-        .hero-section>* {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-section h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1.8rem;
-            color: var(--primary-color);
-        }
-
-        .hero-section .lead {
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-            color: var(--text-secondary);
-            font-weight: 400;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Enhanced Shadow Classes */
-        .shadow-2xl {
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
-        }
-
-        /* Button Styles */
-        .btn {
-            font-weight: 600;
-            border-radius: 6px;
-            padding: 12px 24px;
-            border: none;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .btn-primary {
-            background: var(--primary-color);
-            color: white;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            color: white;
-        }
-
-        .btn-outline-primary {
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-            background: transparent;
-        }
-
-        .btn-outline-primary:hover {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .btn-lg {
-            padding: 14px 28px;
-            font-size: 1.1rem;
-        }
-
-        /* Card Styles */
-        .card {
-            border: 1px solid var(--border-light);
-            border-radius: 8px;
-            box-shadow: var(--shadow-sm);
-            background: var(--bg-primary);
-        }
-
-        .card-header {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            border-bottom: 1px solid var(--border-light);
-            padding: 2rem;
-        }
-
-        /* Stats Cards */
-        .stats-card {
-            background: var(--gradient-soft);
-            border: 2px solid var(--border-light);
-            color: var(--text-primary);
-            text-align: center;
-            padding: 2.5rem 2rem;
-            border-radius: 12px;
-            position: relative;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-md);
-        }
-
-        .stats-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-primary);
-            border-radius: 12px 12px 0 0;
-        }
-
-        .stats-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-color);
-        }
-
-        .stats-number {
-            font-size: 3rem;
-            font-weight: 800;
-            display: block;
-            line-height: 1;
-            margin-bottom: 0.8rem;
-            color: var(--primary-color);
-        }
-
-        .stats-card h5 {
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            color: var(--text-primary);
-        }
-
-        /* Section Styling */
-        .section-padding {
-            padding: 7rem 0;
-        }
-
-        .section-title {
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-            color: var(--text-primary);
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background: var(--gradient-secondary);
-            border-radius: 2px;
-        }
-
-        .text-gradient {
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Feature Icons */
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-primary);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            color: white;
-            font-size: 2rem;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-md);
-        }
-
-        .feature-icon:hover {
-            transform: rotateY(180deg) scale(1.05);
-            background: var(--gradient-secondary);
-        }
-
-        .bg-soft {
-            background: var(--bg-secondary) !important;
-        }
-
-        /* Footer */
-        .footer {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--text-primary) 100%);
-            color: white;
-            padding: 5rem 0 2rem;
-            margin-top: 0;
-            position: relative;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-secondary);
-        }
-
-        .footer h5 {
-            color: white;
-            font-weight: 600;
-            margin-bottom: 2rem;
-        }
-
-        .footer a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .footer a:hover {
-            color: var(--secondary-light);
-            transform: translateX(5px);
-        }
-
-        /* Remove animations - content always visible */
-        .fade-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Additional Sections Styling */
-        .testimonial-card {
-            background: var(--bg-primary);
-            border: 1px solid var(--border-light);
-            border-radius: 8px;
-            padding: 2.5rem;
-            text-align: center;
-        }
-
-        .process-step {
-            text-align: center;
-            position: relative;
-        }
-
-        .process-number {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.3rem;
-            margin: 0 auto 1.5rem;
-        }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .hero-section h1 {
-                font-size: 2.8rem;
-            }
-
-            .hero-section .lead {
-                font-size: 1.1rem;
-            }
-
-            .section-title {
-                font-size: 2.2rem;
-            }
-
-            .stats-number {
-                font-size: 2.8rem;
-            }
-
-            .feature-icon {
-                width: 70px;
-                height: 70px;
-                font-size: 1.8rem;
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'heading': ['Space Grotesk', 'sans-serif'],
+                        'body': ['Inter', 'sans-serif'],
+                        'accent': ['Manrope', 'sans-serif'],
+                        'mono': ['DM Sans', 'monospace']
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                            950: '#082f49'
+                        },
+                        accent: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f',
+                            950: '#451a03'
+                        },
+                        navy: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617'
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s ease-out',
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-in-right': 'slideInRight 0.7s ease-out',
+                        'bounce-subtle': 'bounceSubtle 2s infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        bounceSubtle: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-5px)' }
+                        }
+                    }
+                }
             }
         }
-
-        /* Additional Design Elements */
-        .hero-image-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .hero-image-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .program-card {
-            transition: transform 0.3s ease;
-        }
-
-        .program-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .process-card {
-            transition: transform 0.3s ease;
-        }
-
-        .process-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .success-story-card {
-            transition: transform 0.3s ease;
-        }
-
-        .success-story-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .news-card {
-            transition: transform 0.3s ease;
-        }
-
-        .news-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .testimonial-card {
-            transition: transform 0.3s ease;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-3px);
-        }
-
-        .icon-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .avatar-circle {
-            flex-shrink: 0;
-        }
-
-        .bg-primary-light {
-            background-color: rgba(37, 99, 235, 0.1) !important;
-        }
-
-        .bg-success-light {
-            background-color: rgba(5, 150, 105, 0.1) !important;
-        }
-
-        .bg-warning-light {
-            background-color: rgba(245, 158, 11, 0.1) !important;
-        }
-
-        .text-success {
-            color: var(--secondary-color) !important;
-        }
-
-        .text-warning {
-            color: var(--warning-color) !important;
-        }
-
-        .min-vh-100 {
-            min-height: 100vh;
-        }
-
-        /* Enhanced spacing */
-        .section-padding {
-            padding: 100px 0;
-        }
-
-        /* Enhanced hero section */
-        .hero-section {
-            padding: 140px 0 120px;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-tertiary);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--gradient-primary);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--gradient-secondary);
-        }
-    </style>
+    </script>
 </head>
 
-<body>
+<body class="font-body text-gray-900 bg-white">
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
-        <div class="container">
-            <a class="navbar-brand font-display d-flex align-items-center" href="<?= base_url() ?>">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="<?= base_url() ?>" class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-primary-600 to-primary-800 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white text-lg"></i>
+                        </div>
+                        <span class="font-display text-xl font-bold text-gray-900">Bharatpur Foundation</span>
+                    </a>
+                </div>
 
-                <span>Bharatpur Foundation</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url($language ?? 'en') ?>">
-                            <i class="fas fa-home me-1"></i> <?= $translations['nav_home'] ?? 'Home' ?>
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="<?= base_url($language ?? 'en') ?>" 
+                           class="font-heading font-medium text-gray-700 hover:text-primary-600 transition-colors duration-200">
+                            <?= $translations['nav_home'] ?? 'Home' ?>
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url(($language ?? 'en') . '/beneficiaries') ?>">
-                            <i class="fas fa-users me-1"></i> <?= $translations['nav_beneficiaries'] ?? 'Beneficiaries' ?>
+                        <a href="<?= base_url(($language ?? 'en') . '/beneficiaries') ?>" 
+                           class="font-heading font-medium text-gray-700 hover:text-primary-600 transition-colors duration-200">
+                            <?= $translations['nav_beneficiaries'] ?? 'Beneficiaries' ?>
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url(($language ?? 'en') . '/success-stories') ?>">
-                            <i class="fas fa-trophy me-1"></i> <?= $translations['nav_success_stories'] ?? 'Success Stories' ?>
+                        <a href="<?= base_url(($language ?? 'en') . '/success-stories') ?>" 
+                           class="font-heading font-medium text-gray-700 hover:text-primary-600 transition-colors duration-200">
+                            <?= $translations['nav_success_stories'] ?? 'Success Stories' ?>
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url(($language ?? 'en') . '/ngo-works') ?>">
+                        <a href="<?= base_url(($language ?? 'en') . '/ngo-works') ?>" 
+                           class="font-heading font-medium text-gray-700 hover:text-primary-600 transition-colors duration-200">
                             <?= $translations['nav_our_works'] ?? 'Our Works' ?>
                         </a>
-                    </li>
-                    
-                </ul>
+                        <a href="#donate" 
+                           class="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-6 py-2 rounded-lg font-heading font-semibold hover:from-primary-700 hover:to-primary-800 transition-all duration-200 shadow-md hover:shadow-lg">
+                            Donate Now
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button type="button" id="mobile-menu-button" class="text-gray-700 hover:text-primary-600 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-100">
+            <div class="px-4 pt-2 pb-6 space-y-3">
+                <a href="<?= base_url($language ?? 'en') ?>" 
+                   class="block font-heading font-medium text-gray-700 hover:text-primary-600 py-2">
+                    <?= $translations['nav_home'] ?? 'Home' ?>
+                </a>
+                <a href="<?= base_url(($language ?? 'en') . '/beneficiaries') ?>" 
+                   class="block font-heading font-medium text-gray-700 hover:text-primary-600 py-2">
+                    <?= $translations['nav_beneficiaries'] ?? 'Beneficiaries' ?>
+                </a>
+                <a href="<?= base_url(($language ?? 'en') . '/success-stories') ?>" 
+                   class="block font-heading font-medium text-gray-700 hover:text-primary-600 py-2">
+                    <?= $translations['nav_success_stories'] ?? 'Success Stories' ?>
+                </a>
+                <a href="<?= base_url(($language ?? 'en') . '/ngo-works') ?>" 
+                   class="block font-heading font-medium text-gray-700 hover:text-primary-600 py-2">
+                    <?= $translations['nav_our_works'] ?? 'Our Works' ?>
+                </a>
+                <a href="#donate" 
+                   class="block bg-gradient-to-r from-primary-600 to-primary-700 text-white px-4 py-3 rounded-lg font-heading font-semibold text-center mt-4">
+                    Donate Now
+                </a>
             </div>
         </div>
     </nav>
 
     <!-- Main Content -->
-    <main>
+    <main class="pt-16">
         <?= isset($yield) ? $yield : $this->renderSection('content') ?>
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 mb-4">
-                    <h5 class="font-display d-flex align-items-center">
-                        <img src="<?= base_url('assets/images/bharatpur-logo.png') ?>" alt="Bharatpur Foundation" style="height: 35px; margin-right: 12px; object-fit: contain; filter: brightness(0) invert(1);">
-                        Bharatpur Foundation
-                    </h5>
-                    <p class="lead">Empowering students through education and creating brighter futures for our community. Every contribution makes a difference in someone's life.</p>
-                    <div class="d-flex gap-3 mt-3">
-                        <a href="#" class="text-white fs-4"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-white fs-4"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-white fs-4"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-white fs-4"><i class="fab fa-linkedin"></i></a>
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Foundation Info -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white text-xl"></i>
+                        </div>
+                        <span class="font-display text-2xl font-bold">Bharatpur Foundation</span>
+                    </div>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6 font-accent">
+                        Transforming lives through education and creating sustainable impact in underprivileged communities. 
+                        Every contribution creates lasting change.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary-600 transition-colors duration-200">
+                            <i class="fab fa-facebook text-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary-600 transition-colors duration-200">
+                            <i class="fab fa-twitter text-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary-600 transition-colors duration-200">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary-600 transition-colors duration-200">
+                            <i class="fab fa-linkedin text-lg"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h6 class="text-uppercase fw-bold">Quick Links</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="<?= base_url() ?>" class="text-light">Home</a></li>
-                        <li><a href="<?= base_url('beneficiaries') ?>" class="text-light">Our Beneficiaries</a></li>
-                        <li><a href="<?= base_url('success-stories') ?>" class="text-light">Success Stories</a></li>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-heading text-lg font-semibold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="<?= base_url() ?>" class="text-gray-300 hover:text-white transition-colors duration-200 font-accent">Home</a></li>
+                        <li><a href="<?= base_url('beneficiaries') ?>" class="text-gray-300 hover:text-white transition-colors duration-200 font-accent">Beneficiaries</a></li>
+                        <li><a href="<?= base_url('success-stories') ?>" class="text-gray-300 hover:text-white transition-colors duration-200 font-accent">Success Stories</a></li>
+                        <li><a href="<?= base_url('ngo-works') ?>" class="text-gray-300 hover:text-white transition-colors duration-200 font-accent">Our Works</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h6 class="text-uppercase fw-bold">Contact Info</h6>
-                    <div class="contact-info">
-                        <p class="mb-2">
-                            <i class="fas fa-envelope me-2"></i>
-                            <a href="mailto:info@nayantar.org" class="text-light">info@nayantar.org</a>
-                        </p>
-                        <p class="mb-2">
-                            <i class="fas fa-phone me-2"></i>
-                            <a href="tel:+919876543210" class="text-light">+91 98765 43210</a>
-                        </p>
-                        <p class="mb-0">
-                            <i class="fas fa-map-marker-alt me-2"></i>
-                            Mumbai, Maharashtra, India
-                        </p>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="font-heading text-lg font-semibold mb-6">Contact Info</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-primary-400"></i>
+                            <a href="mailto:info@nayantar.org" class="text-gray-300 hover:text-white transition-colors duration-200 font-accent">info@nayantar.org</a>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-primary-400"></i>
+                            <a href="tel:+919876543210" class="text-gray-300 hover:text-white transition-colors duration-200 font-accent">+91 98765 43210</a>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-map-marker-alt text-primary-400"></i>
+                            <span class="text-gray-300 font-accent">Mumbai, Maharashtra, India</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <hr class="my-4 border-light">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <p class="mb-0">&copy; <?= date('Y') ?> Bharatpur Foundation. All rights reserved.</p>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> for education</p>
-                </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between">
+                <p class="text-gray-400 font-accent">&copy; <?= date('Y') ?> Bharatpur Foundation. All rights reserved.</p>
+                <p class="text-gray-400 font-accent mt-4 md:mt-0">
+                    Made with <i class="fas fa-heart text-red-500"></i> for education
+                </p>
             </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Mobile Menu Script -->
     <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
