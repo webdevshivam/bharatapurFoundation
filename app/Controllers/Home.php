@@ -176,31 +176,18 @@ class Home extends BaseController
         // Get search parameter
         $search = $this->request->getGet('search') ?? '';
         
-        // First check if table exists and has data
-        $total_count = $beneficiaryModel->countAll();
-        log_message('debug', 'Total beneficiaries in database: ' . $total_count);
+        // Get all beneficiaries and combine them
+        $pursuing_beneficiaries = $beneficiaryModel->getBeneficiariesByStatus(false, null, null, $search);
+        $passout_beneficiaries = $beneficiaryModel->getBeneficiariesByStatus(true, null, null, $search);
         
-        // If no data, get all records for debugging
-        if ($total_count == 0) {
-            // Try to get sample data
-            $pursuing_beneficiaries = [];
-            $passout_beneficiaries = [];
-        } else {
-            // Get beneficiaries based on search and status
-            $pursuing_beneficiaries = $beneficiaryModel->getBeneficiariesByStatus(false, null, null, $search);
-            $passout_beneficiaries = $beneficiaryModel->getBeneficiariesByStatus(true, null, null, $search);
-        }
+        // Combine all beneficiaries for the main display
+        $beneficiaries = array_merge($pursuing_beneficiaries ?? [], $passout_beneficiaries ?? []);
         
-        // Debug: log the count of beneficiaries found
-        log_message('debug', 'Pursuing beneficiaries found: ' . count($pursuing_beneficiaries));
-        log_message('debug', 'Passout beneficiaries found: ' . count($passout_beneficiaries));
+        // Calculate stats
+        $total_beneficiaries = $beneficiaryModel->countAll();
+        $active_students = $beneficiaryModel->where('is_passout', 0)->where('status', 'active')->countAllResults();
+        $graduates = $beneficiaryModel->where('is_passout', 1)->where('status', 'active')->countAllResults();
         
-        // Count total results for search
-        $total_results = null;
-        if ($search) {
-            $total_results = $beneficiaryModel->countActiveBeneficiaries($search);
-        }
-
         $pageTranslations = [
             'en' => [
                 'page_title' => 'Beneficiaries',
@@ -300,8 +287,13 @@ class Home extends BaseController
 
         $data = [
             'title' => $pageTranslations[$language]['page_title'],
+            'beneficiaries' => $beneficiaries,
             'pursuing_beneficiaries' => $pursuing_beneficiaries,
             'passout_beneficiaries' => $passout_beneficiaries,
+            'total_beneficiaries' => $total_beneficiaries,
+            'active_students' => $active_students,
+            'graduates' => $graduates,
+            'institutions' => '10+',
             'search' => $search ?? '',
             'total_results' => $total_results,
             'language' => $language,

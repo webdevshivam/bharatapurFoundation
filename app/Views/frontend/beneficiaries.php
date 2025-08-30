@@ -4,129 +4,130 @@
 <?= $this->section('content') ?>
 
 <!-- Hero Section -->
-<section class="relative min-h-[60vh] bg-gradient-to-br from-primary-50 via-white to-accent-50 flex items-center overflow-hidden">
+<section class="relative min-h-[70vh] bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center overflow-hidden">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-5">
-        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 25%, #0ea5e9 2px, transparent 2px), radial-gradient(circle at 75% 75%, #f59e0b 1px, transparent 1px); background-size: 50px 50px, 30px 30px;"></div>
+        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 25%, #6366f1 2px, transparent 2px), radial-gradient(circle at 75% 75%, #8b5cf6 1px, transparent 1px); background-size: 50px 50px, 30px 30px;"></div>
     </div>
 
     <!-- Floating Elements -->
-    <div class="absolute top-20 left-10 w-20 h-20 bg-primary-100 rounded-full animate-bounce-subtle opacity-60"></div>
-    <div class="absolute top-40 right-20 w-16 h-16 bg-accent-100 rounded-full animate-bounce-subtle opacity-60" style="animation-delay: 1s;"></div>
-    <div class="absolute bottom-40 left-20 w-12 h-12 bg-primary-200 rounded-full animate-bounce-subtle opacity-60" style="animation-delay: 2s;"></div>
+    <div class="absolute top-20 left-10 w-24 h-24 bg-indigo-100 rounded-full animate-pulse opacity-60"></div>
+    <div class="absolute top-40 right-20 w-20 h-20 bg-purple-100 rounded-full animate-pulse opacity-60" style="animation-delay: 1s;"></div>
+    <div class="absolute bottom-40 left-20 w-16 h-16 bg-indigo-200 rounded-full animate-pulse opacity-60" style="animation-delay: 2s;"></div>
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="text-center max-w-4xl mx-auto animate-fade-in-up">
+        <div class="text-center max-w-5xl mx-auto">
             <!-- Trust Badge -->
-            <div class="inline-flex items-center bg-primary-100 text-primary-800 px-4 py-2 rounded-full font-accent font-medium text-sm mb-6">
+            <div class="inline-flex items-center bg-indigo-100 text-indigo-800 px-6 py-3 rounded-full font-medium text-sm mb-8 shadow-lg">
                 <i class="fas fa-graduation-cap mr-2"></i>
-                Active Students • Bright Futures
+                Our Amazing Students • Building Tomorrow's Leaders
             </div>
 
             <!-- Main Headline -->
-            <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                Meet Our Amazing 
-                <span class="bg-gradient-to-r from-primary-600 to-accent-500 bg-clip-text text-transparent">
-                    Students
+            <h1 class="font-bold text-5xl md:text-6xl lg:text-7xl text-gray-900 leading-tight mb-8">
+                Meet Our 
+                <span class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                    Future Leaders
                 </span>
             </h1>
 
             <!-- Supporting Text -->
-            <p class="font-accent text-lg md:text-xl text-gray-600 leading-relaxed mb-8 max-w-3xl mx-auto">
+            <p class="text-xl md:text-2xl text-gray-600 leading-relaxed mb-12 max-w-4xl mx-auto">
                 Dedicated individuals pursuing their dreams through education. Each student represents hope, determination, and the transformative power of opportunity.
             </p>
 
             <!-- Quick Stats -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-                <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-primary-100">
-                    <div class="font-display text-xl md:text-2xl font-bold text-primary-600"><?= $total_beneficiaries ?? count($beneficiaries) ?></div>
-                    <div class="font-accent text-xs text-gray-600">Total Students</div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-12">
+                <div class="bg-white/90 backdrop-blur-sm rounded-3xl p-6 shadow-xl border border-indigo-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="text-3xl md:text-4xl font-bold text-indigo-600 mb-2"><?= isset($total_beneficiaries) ? $total_beneficiaries : (is_array($beneficiaries) ? count($beneficiaries) : 0) ?></div>
+                    <div class="text-sm text-gray-600 font-medium">Total Students</div>
                 </div>
-                <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-accent-100">
-                    <div class="font-display text-xl md:text-2xl font-bold text-accent-600"><?= $active_students ?? '0' ?></div>
-                    <div class="font-accent text-xs text-gray-600">Active Students</div>
+                <div class="bg-white/90 backdrop-blur-sm rounded-3xl p-6 shadow-xl border border-purple-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="text-3xl md:text-4xl font-bold text-purple-600 mb-2"><?= $active_students ?? '0' ?></div>
+                    <div class="text-sm text-gray-600 font-medium">Active Students</div>
                 </div>
-                <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-emerald-100">
-                    <div class="font-display text-xl md:text-2xl font-bold text-emerald-600"><?= $graduates ?? '0' ?></div>
-                    <div class="font-accent text-xs text-gray-600">Graduates</div>
+                <div class="bg-white/90 backdrop-blur-sm rounded-3xl p-6 shadow-xl border border-emerald-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="text-3xl md:text-4xl font-bold text-emerald-600 mb-2"><?= $graduates ?? '0' ?></div>
+                    <div class="text-sm text-gray-600 font-medium">Graduates</div>
                 </div>
-                <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-purple-100">
-                    <div class="font-display text-xl md:text-2xl font-bold text-purple-600"><?= $institutions ?? '10+' ?></div>
-                    <div class="font-accent text-xs text-gray-600">Institutions</div>
+                <div class="bg-white/90 backdrop-blur-sm rounded-3xl p-6 shadow-xl border border-pink-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="text-3xl md:text-4xl font-bold text-pink-600 mb-2"><?= $institutions ?? '10+' ?></div>
+                    <div class="text-sm text-gray-600 font-medium">Partner Institutions</div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Filter Section -->
-<section class="py-12 bg-white border-b border-gray-100">
+<!-- Filter & Search Section -->
+<section class="py-8 bg-white border-b border-gray-100 shadow-sm">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col md:flex-row gap-6 items-center justify-between">
-            <div class="flex flex-wrap gap-3">
+        <div class="flex flex-col lg:flex-row gap-8 items-center justify-between">
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
                 <button onclick="filterBeneficiaries('all')" 
-                        class="filter-btn active bg-primary-600 text-white px-6 py-3 rounded-xl font-heading font-semibold hover:bg-primary-700 transition-all duration-200 shadow-md">
+                        class="filter-btn active bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-indigo-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                     <i class="fas fa-users mr-2"></i>
                     All Students
                 </button>
                 <button onclick="filterBeneficiaries('active')" 
-                        class="filter-btn bg-gray-100 text-gray-700 px-6 py-3 rounded-xl font-heading font-semibold hover:bg-gray-200 transition-all duration-200">
+                        class="filter-btn bg-gray-100 text-gray-700 px-8 py-4 rounded-2xl font-bold hover:bg-gray-200 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1">
                     <i class="fas fa-user-graduate mr-2"></i>
                     Active
                 </button>
                 <button onclick="filterBeneficiaries('graduate')" 
-                        class="filter-btn bg-gray-100 text-gray-700 px-6 py-3 rounded-xl font-heading font-semibold hover:bg-gray-200 transition-all duration-200">
+                        class="filter-btn bg-gray-100 text-gray-700 px-8 py-4 rounded-2xl font-bold hover:bg-gray-200 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1">
                     <i class="fas fa-medal mr-2"></i>
                     Graduates
                 </button>
             </div>
             
-            <div class="flex items-center space-x-4">
-                <div class="relative">
-                    <input type="text" id="searchInput" placeholder="Search students..." 
-                           class="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 pl-10 font-accent focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent w-64">
-                    <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-                </div>
+            <!-- Search Box -->
+            <div class="relative w-full lg:w-auto">
+                <input type="text" id="searchInput" placeholder="Search students by name, course, or institution..." 
+                       class="bg-gray-50 border-2 border-gray-200 rounded-2xl px-6 py-4 pl-14 font-medium focus:outline-none focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 w-full lg:w-80 transition-all duration-200">
+                <i class="fas fa-search absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Students Grid -->
-<section class="py-20 bg-gray-50">
+<section class="py-20 bg-gradient-to-br from-gray-50 to-indigo-50/30">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <?php if (!empty($beneficiaries)): ?>
-            <div id="beneficiariesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <?php if (!empty($beneficiaries) && is_array($beneficiaries)): ?>
+            <div id="beneficiariesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                 <?php foreach ($beneficiaries as $index => $beneficiary): ?>
-                    <article class="beneficiary-card group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden animate-fade-in-up" 
-                             style="animation-delay: <?= $index * 0.1 ?>s;"
+                    <article class="beneficiary-card group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 border border-gray-100 overflow-hidden" 
+                             style="animation: fadeInUp 0.6s ease-out <?= $index * 0.1 ?>s both;"
                              data-status="<?= $beneficiary['is_passout'] ? 'graduate' : 'active' ?>"
-                             data-name="<?= strtolower(esc($beneficiary['name'])) ?>"
-                             data-course="<?= strtolower(esc($beneficiary['course'])) ?>"
-                             data-institution="<?= strtolower(esc($beneficiary['institution'])) ?>">
+                             data-name="<?= strtolower(esc($beneficiary['name'] ?? '')) ?>"
+                             data-course="<?= strtolower(esc($beneficiary['course'] ?? '')) ?>"
+                             data-institution="<?= strtolower(esc($beneficiary['institution'] ?? '')) ?>">
                         
                         <!-- Card Header -->
-                        <div class="relative p-6 bg-gradient-to-br from-<?= $beneficiary['is_passout'] ? 'emerald' : 'primary' ?>-50 to-<?= $beneficiary['is_passout'] ? 'green' : 'accent' ?>-50 border-b border-<?= $beneficiary['is_passout'] ? 'emerald' : 'primary' ?>-100">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-20 h-20 rounded-2xl overflow-hidden bg-<?= $beneficiary['is_passout'] ? 'emerald' : 'primary' ?>-100 flex-shrink-0 ring-4 ring-white shadow-lg">
+                        <div class="relative p-6 bg-gradient-to-br from-<?= $beneficiary['is_passout'] ? 'emerald' : 'indigo' ?>-50 to-<?= $beneficiary['is_passout'] ? 'green' : 'purple' ?>-50 border-b border-<?= $beneficiary['is_passout'] ? 'emerald' : 'indigo' ?>-100">
+                            <div class="flex flex-col items-center text-center">
+                                <!-- Profile Image -->
+                                <div class="w-24 h-24 rounded-3xl overflow-hidden bg-<?= $beneficiary['is_passout'] ? 'emerald' : 'indigo' ?>-100 flex-shrink-0 ring-4 ring-white shadow-lg mb-4">
                                     <?php if (!empty($beneficiary['image']) && file_exists(WRITEPATH . 'uploads/beneficiaries/' . $beneficiary['image'])): ?>
                                         <img src="<?= base_url('uploads/beneficiaries/' . $beneficiary['image']) ?>"
-                                             alt="<?= esc($beneficiary['name']) ?>" 
+                                             alt="<?= esc($beneficiary['name'] ?? 'Student') ?>" 
                                              class="w-full h-full object-cover">
                                     <?php else: ?>
-                                        <div class="w-full h-full bg-gradient-to-br from-<?= $beneficiary['is_passout'] ? 'emerald' : 'primary' ?>-200 to-<?= $beneficiary['is_passout'] ? 'green' : 'accent' ?>-200 flex items-center justify-center">
-                                            <i class="fas fa-user-graduate text-<?= $beneficiary['is_passout'] ? 'emerald' : 'primary' ?>-700 text-2xl"></i>
+                                        <div class="w-full h-full bg-gradient-to-br from-<?= $beneficiary['is_passout'] ? 'emerald' : 'indigo' ?>-200 to-<?= $beneficiary['is_passout'] ? 'green' : 'purple' ?>-200 flex items-center justify-center">
+                                            <i class="fas fa-user-graduate text-<?= $beneficiary['is_passout'] ? 'emerald' : 'indigo' ?>-700 text-3xl"></i>
                                         </div>
                                     <?php endif; ?>
                                 </div>
-                                <div class="flex-1">
-                                    <h3 class="font-heading text-xl font-bold text-gray-900 mb-1"><?= esc($beneficiary['name']) ?></h3>
-                                    <p class="font-accent text-<?= $beneficiary['is_passout'] ? 'emerald' : 'primary' ?>-700 font-semibold mb-2"><?= esc($beneficiary['course']) ?></p>
-                                    <span class="inline-flex items-center bg-<?= $beneficiary['is_passout'] ? 'emerald' : 'primary' ?>-100 text-<?= $beneficiary['is_passout'] ? 'emerald' : 'primary' ?>-800 px-3 py-1 rounded-full text-xs font-accent font-medium">
-                                        <i class="fas fa-<?= $beneficiary['is_passout'] ? 'medal' : 'graduation-cap' ?> mr-1"></i>
-                                        <?= $beneficiary['is_passout'] ? 'Graduate' : 'Active Student' ?>
-                                    </span>
-                                </div>
+                                
+                                <!-- Student Info -->
+                                <h3 class="text-xl font-bold text-gray-900 mb-2"><?= esc($beneficiary['name'] ?? 'Student Name') ?></h3>
+                                <p class="text-<?= $beneficiary['is_passout'] ? 'emerald' : 'indigo' ?>-700 font-semibold mb-3"><?= esc($beneficiary['course'] ?? 'Course') ?></p>
+                                <span class="inline-flex items-center bg-<?= $beneficiary['is_passout'] ? 'emerald' : 'indigo' ?>-100 text-<?= $beneficiary['is_passout'] ? 'emerald' : 'indigo' ?>-800 px-4 py-2 rounded-full text-sm font-medium">
+                                    <i class="fas fa-<?= $beneficiary['is_passout'] ? 'medal' : 'graduation-cap' ?> mr-2"></i>
+                                    <?= $beneficiary['is_passout'] ? 'Graduate' : 'Active Student' ?>
+                                </span>
                             </div>
                         </div>
 
@@ -134,32 +135,32 @@
                         <div class="p-6">
                             <div class="space-y-4">
                                 <!-- Institution -->
-                                <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-<?= $beneficiary['is_passout'] ? 'emerald' : 'primary' ?>-400">
-                                    <h4 class="font-heading text-sm font-semibold text-gray-700 mb-2 flex items-center">
-                                        <i class="fas fa-university text-<?= $beneficiary['is_passout'] ? 'emerald' : 'primary' ?>-500 mr-2"></i>
+                                <div class="bg-gray-50 rounded-2xl p-4 border-l-4 border-<?= $beneficiary['is_passout'] ? 'emerald' : 'indigo' ?>-400">
+                                    <h4 class="text-sm font-semibold text-gray-700 mb-2 flex items-center">
+                                        <i class="fas fa-university text-<?= $beneficiary['is_passout'] ? 'emerald' : 'indigo' ?>-500 mr-2"></i>
                                         Institution
                                     </h4>
-                                    <p class="font-accent text-gray-600 text-sm leading-relaxed">
-                                        <?= esc($beneficiary['institution']) ?>
+                                    <p class="text-gray-600 text-sm leading-relaxed">
+                                        <?= esc($beneficiary['institution'] ?? 'Not specified') ?>
                                     </p>
                                 </div>
 
-                                <!-- Location & Details -->
+                                <!-- Location & Year -->
                                 <div class="grid grid-cols-2 gap-3">
                                     <?php if (!empty($beneficiary['city'])): ?>
-                                        <div class="bg-blue-50 rounded-lg p-3">
+                                        <div class="bg-blue-50 rounded-xl p-3 border border-blue-100">
                                             <div class="flex items-center text-blue-700">
                                                 <i class="fas fa-map-marker-alt mr-2 text-blue-500"></i>
-                                                <span class="font-accent text-sm font-medium"><?= esc($beneficiary['city']) ?></span>
+                                                <span class="text-sm font-medium"><?= esc($beneficiary['city']) ?></span>
                                             </div>
                                         </div>
                                     <?php endif; ?>
                                     
                                     <?php if (!empty($beneficiary['year'])): ?>
-                                        <div class="bg-purple-50 rounded-lg p-3">
+                                        <div class="bg-purple-50 rounded-xl p-3 border border-purple-100">
                                             <div class="flex items-center text-purple-700">
                                                 <i class="fas fa-calendar mr-2 text-purple-500"></i>
-                                                <span class="font-accent text-sm font-medium"><?= esc($beneficiary['year']) ?></span>
+                                                <span class="text-sm font-medium"><?= esc($beneficiary['year']) ?></span>
                                             </div>
                                         </div>
                                     <?php endif; ?>
@@ -167,28 +168,28 @@
 
                                 <!-- Company (if graduate) -->
                                 <?php if ($beneficiary['is_passout'] && !empty($beneficiary['company_name'])): ?>
-                                    <div class="bg-emerald-50 rounded-xl p-4 border-l-4 border-emerald-400">
-                                        <h4 class="font-heading text-sm font-semibold text-emerald-800 mb-2 flex items-center">
+                                    <div class="bg-emerald-50 rounded-2xl p-4 border-l-4 border-emerald-400 border border-emerald-100">
+                                        <h4 class="text-sm font-semibold text-emerald-800 mb-2 flex items-center">
                                             <i class="fas fa-building text-emerald-600 mr-2"></i>
                                             Current Company
                                         </h4>
-                                        <p class="font-accent text-emerald-700 text-sm font-medium">
+                                        <p class="text-emerald-700 text-sm font-medium">
                                             <?= esc($beneficiary['company_name']) ?>
                                         </p>
                                     </div>
                                 <?php endif; ?>
                             </div>
 
-                            <!-- Footer -->
-                            <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
-                                <span class="text-xs text-gray-500 font-accent">
+                            <!-- Card Footer -->
+                            <div class="flex items-center justify-between mt-6 pt-6 border-t border-gray-100">
+                                <span class="text-xs text-gray-500">
                                     <i class="fas fa-user-plus mr-1"></i>
                                     Joined <?= date('M Y', strtotime($beneficiary['created_at'] ?? 'now')) ?>
                                 </span>
-                                <button onclick="viewBeneficiary('<?= esc($beneficiary['name']) ?>', '<?= esc($beneficiary['course']) ?>', '<?= esc($beneficiary['institution']) ?>', '<?= esc($beneficiary['city'] ?? '') ?>', '<?= esc($beneficiary['year'] ?? '') ?>', '<?= esc($beneficiary['company_name'] ?? '') ?>', <?= $beneficiary['is_passout'] ? 'true' : 'false' ?>, '<?= !empty($beneficiary['image']) ? base_url('uploads/beneficiaries/' . $beneficiary['image']) : '' ?>')"
-                                        class="text-<?= $beneficiary['is_passout'] ? 'emerald' : 'primary' ?>-600 hover:text-<?= $beneficiary['is_passout'] ? 'emerald' : 'primary' ?>-700 font-accent font-medium text-sm flex items-center group">
+                                <button onclick="viewBeneficiary('<?= esc($beneficiary['name'] ?? '') ?>', '<?= esc($beneficiary['course'] ?? '') ?>', '<?= esc($beneficiary['institution'] ?? '') ?>', '<?= esc($beneficiary['city'] ?? '') ?>', '<?= esc($beneficiary['year'] ?? '') ?>', '<?= esc($beneficiary['company_name'] ?? '') ?>', <?= $beneficiary['is_passout'] ? 'true' : 'false' ?>, '<?= !empty($beneficiary['image']) ? base_url('uploads/beneficiaries/' . $beneficiary['image']) : '' ?>')"
+                                        class="text-<?= $beneficiary['is_passout'] ? 'emerald' : 'indigo' ?>-600 hover:text-<?= $beneficiary['is_passout'] ? 'emerald' : 'indigo' ?>-700 font-medium text-sm flex items-center group transition-all duration-200">
                                     View Profile
-                                    <i class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform duration-200"></i>
+                                    <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-200"></i>
                                 </button>
                             </div>
                         </div>
@@ -198,24 +199,29 @@
 
             <!-- No Results Message -->
             <div id="noResults" class="hidden text-center py-20">
-                <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <i class="fas fa-search text-gray-400 text-3xl"></i>
+                <div class="w-32 h-32 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg">
+                    <i class="fas fa-search text-gray-400 text-4xl"></i>
                 </div>
-                <h3 class="font-heading text-2xl font-bold text-gray-900 mb-4">No Students Found</h3>
-                <p class="font-accent text-gray-600 max-w-md mx-auto">
-                    Try adjusting your search criteria or filter options.
+                <h3 class="text-3xl font-bold text-gray-900 mb-6">No Students Found</h3>
+                <p class="text-gray-600 max-w-md mx-auto text-lg">
+                    Try adjusting your search criteria or filter options to find the students you're looking for.
                 </p>
             </div>
         <?php else: ?>
             <!-- Empty State -->
             <div class="text-center py-20">
-                <div class="w-24 h-24 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <i class="fas fa-graduation-cap text-primary-500 text-3xl"></i>
+                <div class="w-32 h-32 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg">
+                    <i class="fas fa-graduation-cap text-indigo-500 text-4xl"></i>
                 </div>
-                <h3 class="font-heading text-2xl font-bold text-gray-900 mb-4">Students Coming Soon</h3>
-                <p class="font-accent text-gray-600 max-w-md mx-auto">
-                    We're currently onboarding amazing students. Check back soon to meet them!
+                <h3 class="text-3xl font-bold text-gray-900 mb-6">Students Coming Soon</h3>
+                <p class="text-gray-600 max-w-md mx-auto text-lg">
+                    We're currently onboarding amazing students. Check back soon to meet our future leaders!
                 </p>
+                <a href="<?= base_url(($language ?? 'en')) ?>" 
+                   class="inline-flex items-center bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-indigo-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 mt-8">
+                    <i class="fas fa-home mr-2"></i>
+                    Back to Home
+                </a>
             </div>
         <?php endif; ?>
     </div>
@@ -224,68 +230,69 @@
 <!-- Student Detail Modal -->
 <div id="studentModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden">
     <div class="flex items-center justify-center min-h-screen p-4">
-        <div class="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden">
             <!-- Modal Header -->
-            <div id="modalHeader" class="bg-gradient-to-r from-primary-500 to-accent-500 text-white p-6">
+            <div id="modalHeader" class="bg-gradient-to-r from-indigo-500 to-purple-500 text-white p-8">
                 <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-4">
-                        <div id="modalImage" class="w-16 h-16 rounded-2xl overflow-hidden bg-white/20 flex-shrink-0">
+                    <div class="flex items-center space-x-6">
+                        <div id="modalImage" class="w-20 h-20 rounded-3xl overflow-hidden bg-white/20 flex-shrink-0 shadow-lg">
                             <div class="w-full h-full bg-white/30 flex items-center justify-center">
-                                <i class="fas fa-user-graduate text-white text-xl"></i>
+                                <i class="fas fa-user-graduate text-white text-2xl"></i>
                             </div>
                         </div>
                         <div>
-                            <h2 id="modalName" class="font-heading text-2xl font-bold"></h2>
-                            <p id="modalCourse" class="font-accent text-white/90"></p>
+                            <h2 id="modalName" class="text-3xl font-bold mb-2"></h2>
+                            <p id="modalCourse" class="text-white/90 text-lg"></p>
                         </div>
                     </div>
-                    <button onclick="closeStudentModal()" class="text-white hover:text-gray-200 transition-colors duration-200">
-                        <i class="fas fa-times text-2xl"></i>
+                    <button onclick="closeStudentModal()" class="text-white hover:text-gray-200 transition-colors duration-200 p-2">
+                        <i class="fas fa-times text-3xl"></i>
                     </button>
                 </div>
             </div>
 
             <!-- Modal Content -->
-            <div class="p-6 overflow-y-auto max-h-[60vh]">
-                <div class="space-y-6">
+            <div class="p-8 overflow-y-auto max-h-[60vh]">
+                <div class="space-y-8">
+                    <!-- Academic Information -->
                     <div>
-                        <h3 class="font-heading text-lg font-semibold text-gray-800 mb-3 flex items-center">
-                            <i class="fas fa-university text-primary-500 mr-2"></i>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-university text-indigo-500 mr-3"></i>
                             Academic Information
                         </h3>
-                        <div class="bg-gray-50 rounded-xl p-4 space-y-3">
-                            <div class="flex items-center justify-between">
-                                <span class="font-accent text-gray-600">Institution:</span>
-                                <span id="modalInstitution" class="font-accent font-medium text-gray-900"></span>
+                        <div class="bg-gray-50 rounded-2xl p-6 space-y-4 border border-gray-100">
+                            <div class="flex items-center justify-between py-2">
+                                <span class="text-gray-600 font-medium">Institution:</span>
+                                <span id="modalInstitution" class="font-semibold text-gray-900"></span>
                             </div>
-                            <div id="modalYearDiv" class="flex items-center justify-between">
-                                <span class="font-accent text-gray-600">Year:</span>
-                                <span id="modalYear" class="font-accent font-medium text-gray-900"></span>
+                            <div id="modalYearDiv" class="flex items-center justify-between py-2">
+                                <span class="text-gray-600 font-medium">Year:</span>
+                                <span id="modalYear" class="font-semibold text-gray-900"></span>
                             </div>
-                            <div id="modalLocationDiv" class="flex items-center justify-between">
-                                <span class="font-accent text-gray-600">Location:</span>
-                                <span id="modalLocation" class="font-accent font-medium text-gray-900"></span>
+                            <div id="modalLocationDiv" class="flex items-center justify-between py-2">
+                                <span class="text-gray-600 font-medium">Location:</span>
+                                <span id="modalLocation" class="font-semibold text-gray-900"></span>
                             </div>
                         </div>
                     </div>
 
+                    <!-- Professional Information (if graduate) -->
                     <div id="modalCompanyDiv" class="hidden">
-                        <h3 class="font-heading text-lg font-semibold text-emerald-800 mb-3 flex items-center">
-                            <i class="fas fa-building text-emerald-600 mr-2"></i>
+                        <h3 class="text-2xl font-bold text-emerald-800 mb-4 flex items-center">
+                            <i class="fas fa-building text-emerald-600 mr-3"></i>
                             Professional Information
                         </h3>
-                        <div class="bg-emerald-50 rounded-xl p-4">
-                            <div class="flex items-center justify-between">
-                                <span class="font-accent text-emerald-700">Current Company:</span>
-                                <span id="modalCompany" class="font-accent font-medium text-emerald-900"></span>
+                        <div class="bg-emerald-50 rounded-2xl p-6 border border-emerald-100">
+                            <div class="flex items-center justify-between py-2">
+                                <span class="text-emerald-700 font-medium">Current Company:</span>
+                                <span id="modalCompany" class="font-semibold text-emerald-900"></span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-blue-50 rounded-xl p-4">
-                        <div class="flex items-center justify-center">
-                            <span id="modalStatus" class="inline-flex items-center px-4 py-2 rounded-full font-accent font-medium"></span>
-                        </div>
+                    <!-- Status Badge -->
+                    <div class="bg-blue-50 rounded-2xl p-6 text-center border border-blue-100">
+                        <span id="modalStatus" class="inline-flex items-center px-6 py-3 rounded-full font-semibold text-lg"></span>
                     </div>
                 </div>
             </div>
@@ -294,36 +301,49 @@
 </div>
 
 <!-- Call to Action -->
-<section class="py-20 bg-gradient-to-br from-primary-600 via-primary-700 to-accent-600 text-white relative overflow-hidden">
+<section class="py-20 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 text-white relative overflow-hidden">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-10">
         <div class="absolute inset-0" style="background-image: radial-gradient(circle at 30% 40%, #ffffff 2px, transparent 2px), radial-gradient(circle at 70% 60%, #ffffff 1px, transparent 1px); background-size: 80px 80px, 60px 60px;"></div>
     </div>
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="text-center max-w-4xl mx-auto animate-fade-in-up">
-            <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-                Support Our Students' Dreams
+        <div class="text-center max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-8">
+                Transform Lives Through Education
             </h2>
-            <p class="font-accent text-lg md:text-xl text-white/90 leading-relaxed mb-10">
+            <p class="text-xl md:text-2xl text-white/90 leading-relaxed mb-12 max-w-3xl mx-auto">
                 Every contribution helps a student achieve their potential and build a brighter future for themselves and their families.
             </p>
 
-            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+            <div class="flex flex-col sm:flex-row gap-8 justify-center">
                 <a href="#donate" 
-                   class="bg-white text-primary-700 px-10 py-4 rounded-xl font-heading font-bold hover:bg-gray-50 transition-all duration-200 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 flex items-center justify-center">
-                    <i class="fas fa-heart mr-2"></i>
+                   class="bg-white text-indigo-700 px-12 py-5 rounded-2xl font-bold text-lg hover:bg-gray-50 transition-all duration-200 shadow-xl hover:shadow-2xl transform hover:-translate-y-2 flex items-center justify-center">
+                    <i class="fas fa-heart mr-3"></i>
                     Sponsor a Student
                 </a>
                 <a href="<?= base_url(($language ?? 'en') . '/success-stories') ?>" 
-                   class="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-10 py-4 rounded-xl font-heading font-bold hover:bg-white/20 hover:border-white/50 transition-all duration-200 flex items-center justify-center">
-                    <i class="fas fa-star mr-2"></i>
+                   class="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-12 py-5 rounded-2xl font-bold text-lg hover:bg-white/20 hover:border-white/50 transition-all duration-200 flex items-center justify-center transform hover:-translate-y-2">
+                    <i class="fas fa-star mr-3"></i>
                     View Success Stories
                 </a>
             </div>
         </div>
     </div>
 </section>
+
+<style>
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
 
 <script>
 // Filter functionality
@@ -333,10 +353,10 @@ function filterBeneficiaries(filter) {
     
     // Update active button
     filterBtns.forEach(btn => {
-        btn.classList.remove('active', 'bg-primary-600', 'text-white');
+        btn.classList.remove('active', 'bg-indigo-600', 'text-white');
         btn.classList.add('bg-gray-100', 'text-gray-700');
     });
-    event.target.classList.add('active', 'bg-primary-600', 'text-white');
+    event.target.classList.add('active', 'bg-indigo-600', 'text-white');
     event.target.classList.remove('bg-gray-100', 'text-gray-700');
     
     let visibleCount = 0;
@@ -377,9 +397,9 @@ document.getElementById('searchInput').addEventListener('input', function(e) {
     let visibleCount = 0;
     
     cards.forEach(card => {
-        const name = card.dataset.name;
-        const course = card.dataset.course;
-        const institution = card.dataset.institution;
+        const name = card.dataset.name || '';
+        const course = card.dataset.course || '';
+        const institution = card.dataset.institution || '';
         
         if (name.includes(searchTerm) || course.includes(searchTerm) || institution.includes(searchTerm)) {
             card.style.display = 'block';
@@ -400,16 +420,16 @@ document.getElementById('searchInput').addEventListener('input', function(e) {
 
 // Modal functions
 function viewBeneficiary(name, course, institution, city, year, company, isGraduate, image) {
-    document.getElementById('modalName').textContent = name;
-    document.getElementById('modalCourse').textContent = course;
-    document.getElementById('modalInstitution').textContent = institution;
+    document.getElementById('modalName').textContent = name || 'Student Name';
+    document.getElementById('modalCourse').textContent = course || 'Course';
+    document.getElementById('modalInstitution').textContent = institution || 'Not specified';
     
     // Handle image
     const modalImage = document.getElementById('modalImage');
     if (image) {
         modalImage.innerHTML = `<img src="${image}" alt="${name}" class="w-full h-full object-cover">`;
     } else {
-        modalImage.innerHTML = '<div class="w-full h-full bg-white/30 flex items-center justify-center"><i class="fas fa-user-graduate text-white text-xl"></i></div>';
+        modalImage.innerHTML = '<div class="w-full h-full bg-white/30 flex items-center justify-center"><i class="fas fa-user-graduate text-white text-2xl"></i></div>';
     }
     
     // Handle optional fields
@@ -443,13 +463,13 @@ function viewBeneficiary(name, course, institution, city, year, company, isGradu
     const modalHeader = document.getElementById('modalHeader');
     
     if (isGraduate) {
-        modalStatus.className = 'inline-flex items-center bg-emerald-100 text-emerald-800 px-4 py-2 rounded-full font-accent font-medium';
+        modalStatus.className = 'inline-flex items-center bg-emerald-100 text-emerald-800 px-6 py-3 rounded-full font-semibold text-lg';
         modalStatus.innerHTML = '<i class="fas fa-medal mr-2"></i>Graduate';
-        modalHeader.className = 'bg-gradient-to-r from-emerald-500 to-green-500 text-white p-6';
+        modalHeader.className = 'bg-gradient-to-r from-emerald-500 to-green-500 text-white p-8';
     } else {
-        modalStatus.className = 'inline-flex items-center bg-primary-100 text-primary-800 px-4 py-2 rounded-full font-accent font-medium';
+        modalStatus.className = 'inline-flex items-center bg-indigo-100 text-indigo-800 px-6 py-3 rounded-full font-semibold text-lg';
         modalStatus.innerHTML = '<i class="fas fa-graduation-cap mr-2"></i>Active Student';
-        modalHeader.className = 'bg-gradient-to-r from-primary-500 to-accent-500 text-white p-6';
+        modalHeader.className = 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white p-8';
     }
     
     document.getElementById('studentModal').classList.remove('hidden');
