@@ -3,16 +3,16 @@
 <?= $this->section('content') ?>
 
 <!-- Hero Section -->
-<section class="relative min-h-screen bg-gradient-to-br from-primary-50 via-white to-accent-50 flex items-center overflow-hidden">
+<section class="relative min-h-screen bg-gradient-to-br from-primary-50 via-white to-accent-50 flex items-center overflow-hidden border-b-4 border-primary-200">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-5">
         <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 25%, #0ea5e9 2px, transparent 2px), radial-gradient(circle at 75% 75%, #f59e0b 1px, transparent 1px); background-size: 50px 50px, 30px 30px;"></div>
     </div>
 
-    <!-- Floating Elements -->
-    <div class="absolute top-20 left-10 w-20 h-20 bg-primary-100 rounded-full animate-bounce-subtle opacity-60"></div>
-    <div class="absolute top-40 right-20 w-16 h-16 bg-accent-100 rounded-full animate-bounce-subtle opacity-60" style="animation-delay: 1s;"></div>
-    <div class="absolute bottom-40 left-20 w-12 h-12 bg-primary-200 rounded-full animate-bounce-subtle opacity-60" style="animation-delay: 2s;"></div>
+    <!-- Floating Elements with Enhanced Shadows -->
+    <div class="absolute top-20 left-10 w-20 h-20 bg-primary-100 rounded-full animate-bounce-subtle opacity-60 shadow-xl"></div>
+    <div class="absolute top-40 right-20 w-16 h-16 bg-accent-100 rounded-full animate-bounce-subtle opacity-60 shadow-lg" style="animation-delay: 1s;"></div>
+    <div class="absolute bottom-40 left-20 w-12 h-12 bg-primary-200 rounded-full animate-bounce-subtle opacity-60 shadow-md" style="animation-delay: 2s;"></div>
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -50,16 +50,16 @@
                 </div>
 
                 <!-- Trust Indicators -->
-                <div class="grid grid-cols-3 gap-6 pt-8 border-t border-gray-100">
-                    <div class="text-center">
+                <div class="grid grid-cols-3 gap-6 pt-8 border-t-2 border-gray-200">
+                    <div class="text-center bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-primary-100 hover:shadow-xl transition-all duration-300">
                         <div class="font-display text-2xl md:text-3xl font-bold text-primary-600">500+</div>
                         <div class="font-accent text-sm text-gray-600">Students Supported</div>
                     </div>
-                    <div class="text-center">
+                    <div class="text-center bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-accent-100 hover:shadow-xl transition-all duration-300">
                         <div class="font-display text-2xl md:text-3xl font-bold text-accent-500">95%</div>
                         <div class="font-accent text-sm text-gray-600">Employment Rate</div>
                     </div>
-                    <div class="text-center">
+                    <div class="text-center bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-emerald-100 hover:shadow-xl transition-all duration-300">
                         <div class="font-display text-2xl md:text-3xl font-bold text-emerald-500">Audited</div>
                         <div class="font-accent text-sm text-gray-600">
                             <a href="#impact-report" class="text-primary-600 hover:text-primary-700">Annual Report</a>
@@ -100,21 +100,23 @@
 </section>
 
 <!-- Three Pillars Section -->
-<section class="py-20 bg-white">
+<section class="py-20 bg-white border-t-4 border-gray-100">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 animate-fade-in-up">
-            <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                Complete Student Development
-            </h2>
-            <p class="font-accent text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Three comprehensive pillars that ensure every student receives world-class support for their academic and professional journey
-            </p>
+            <div class="inline-block bg-gradient-to-r from-primary-50 to-accent-50 rounded-2xl p-8 shadow-lg border border-primary-100 mb-8">
+                <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                    Complete Student Development
+                </h2>
+                <p class="font-accent text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Three comprehensive pillars that ensure every student receives world-class support for their academic and professional journey
+                </p>
+            </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Education Pillar -->
-            <div class="group bg-gradient-to-br from-primary-50 to-primary-100 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up">
-                <div class="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <div class="group bg-gradient-to-br from-primary-50 to-primary-100 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up border-2 border-primary-200 hover:border-primary-300">
+                <div class="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <i class="fas fa-graduation-cap text-white text-2xl"></i>
                 </div>
                 <h3 class="font-heading text-xl font-bold text-gray-900 mb-4">Quality Education</h3>
@@ -138,8 +140,8 @@
             </div>
 
             <!-- Mentoring Pillar -->
-            <div class="group bg-gradient-to-br from-accent-50 to-accent-100 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.2s;">
-                <div class="w-16 h-16 bg-gradient-to-br from-accent-500 to-accent-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <div class="group bg-gradient-to-br from-accent-50 to-accent-100 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up border-2 border-accent-200 hover:border-accent-300" style="animation-delay: 0.2s;">
+                <div class="w-16 h-16 bg-gradient-to-br from-accent-500 to-accent-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <i class="fas fa-users text-white text-2xl"></i>
                 </div>
                 <h3 class="font-heading text-xl font-bold text-gray-900 mb-4">Personal Mentoring</h3>
@@ -163,8 +165,8 @@
             </div>
 
             <!-- Career Development Pillar -->
-            <div class="group bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.4s;">
-                <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <div class="group bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up border-2 border-emerald-200 hover:border-emerald-300" style="animation-delay: 0.4s;">
+                <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <i class="fas fa-briefcase text-white text-2xl"></i>
                 </div>
                 <h3 class="font-heading text-xl font-bold text-gray-900 mb-4">Career Placement</h3>
