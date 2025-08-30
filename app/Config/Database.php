@@ -172,9 +172,9 @@ class Database extends Config
         $this->default = [
             'DSN'        => '',
             'hostname'   => $_ENV['DB_HOST'] ?? 'localhost',
-            'username'   => $_ENV['DB_USERNAME'] ?? 'u746369868_nmct',
-            'password'   => $_ENV['DB_PASSWORD'] ?? '9012442784@Jms#',
-            'database'   => $_ENV['DB_DATABASE'] ?? 'u746369868_nmct',
+            'username'   => $_ENV['DB_USERNAME'] ?? 'root',
+            'password'   => $_ENV['DB_PASSWORD'] ?? '',
+            'database'   => $_ENV['DB_DATABASE'] ?? 'mydatabase',
             'DBDriver'   => 'MySQLi',
             'DBPrefix'   => '',
             'pConnect'   => false,
