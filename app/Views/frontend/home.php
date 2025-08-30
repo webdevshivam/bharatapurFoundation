@@ -32,18 +32,36 @@
 
             <!-- Supporting Text -->
             <p class="font-accent text-xl md:text-2xl text-gray-600 leading-relaxed mb-12 max-w-4xl mx-auto">
-                Every underprivileged student deserves opportunity. Through comprehensive education, mentoring, and career placement, we create sustainable change that breaks cycles of poverty.
+                Our objective is clear: We transform underprivileged students into job-ready professionals through comprehensive education, mentoring, and career placement support.
             </p>
+
+            <!-- Official Website Notice -->
+            <div class="bg-amber-50 border-2 border-amber-200 rounded-2xl p-6 mb-12 shadow-lg">
+                <div class="flex items-center justify-center space-x-3 mb-3">
+                    <i class="fas fa-info-circle text-amber-600 text-xl"></i>
+                    <h3 class="font-heading text-lg font-bold text-amber-800">Official Website</h3>
+                </div>
+                <p class="font-accent text-amber-700 text-center mb-4">
+                    This is an unofficial version. Visit our official website for complete information and donations.
+                </p>
+                <div class="text-center">
+                    <a href="https://nayantaratrust.com/" target="_blank" 
+                       class="inline-flex items-center bg-amber-600 text-white px-8 py-3 rounded-xl font-heading font-semibold hover:bg-amber-700 transition-all duration-200 shadow-lg hover:shadow-xl">
+                        <i class="fas fa-external-link-alt mr-2"></i>
+                        Visit Official Website
+                    </a>
+                </div>
+            </div>
 
             <!-- CTA Buttons -->
             <div class="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-                <a href="#support" class="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-10 py-5 rounded-xl font-heading font-semibold hover:from-primary-700 hover:to-primary-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center text-lg">
-                    <i class="fas fa-heart mr-3"></i>
-                    Support Students
-                </a>
-                <a href="<?= base_url($language . '/beneficiaries') ?>" class="bg-white border-2 border-gray-200 text-gray-700 px-10 py-5 rounded-xl font-heading font-semibold hover:border-primary-300 hover:text-primary-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-1 flex items-center justify-center text-lg">
+                <a href="<?= base_url($language . '/beneficiaries') ?>" class="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-10 py-5 rounded-xl font-heading font-semibold hover:from-primary-700 hover:to-primary-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center text-lg">
                     <i class="fas fa-users mr-3"></i>
                     Meet Students
+                </a>
+                <a href="<?= base_url($language . '/success-stories') ?>" class="bg-white border-2 border-gray-200 text-gray-700 px-10 py-5 rounded-xl font-heading font-semibold hover:border-primary-300 hover:text-primary-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-1 flex items-center justify-center text-lg">
+                    <i class="fas fa-star mr-3"></i>
+                    Success Stories
                 </a>
             </div>
 
@@ -367,55 +385,6 @@
     </section>
 <?php endif; ?>
 
-<!-- Call to Action -->
-<section id="support" class="py-20 bg-gradient-to-br from-primary-600 via-primary-700 to-accent-600 text-white relative overflow-hidden">
-    <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-10">
-        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 30% 40%, #ffffff 2px, transparent 2px), radial-gradient(circle at 70% 60%, #ffffff 1px, transparent 1px); background-size: 80px 80px, 60px 60px;"></div>
-    </div>
 
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="text-center max-w-4xl mx-auto animate-fade-in-up">
-            <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-                Create Lasting Impact Today
-            </h2>
-            <p class="font-accent text-lg md:text-xl text-white/90 leading-relaxed mb-10">
-                Your contribution can transform a student's life forever. Join us in building dreams, creating opportunities, 
-                and strengthening communities through the power of education.
-            </p>
-
-            <div class="flex flex-col sm:flex-row gap-6 justify-center mb-10">
-                <a href="#donate" 
-                   class="bg-white text-primary-700 px-10 py-4 rounded-xl font-heading font-bold hover:bg-gray-50 transition-all duration-200 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 flex items-center justify-center">
-                    <i class="fas fa-heart mr-2"></i>
-                    Sponsor a Student
-                </a>
-                <a href="<?= base_url($language . '/ngo-works') ?>" 
-                   class="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-10 py-4 rounded-xl font-heading font-bold hover:bg-white/20 hover:border-white/50 transition-all duration-200 flex items-center justify-center">
-                    <i class="fas fa-info-circle mr-2"></i>
-                    Learn More
-                </a>
-            </div>
-
-            <!-- Payment Security -->
-            <div class="flex items-center justify-center space-x-6 text-sm font-accent text-white/80">
-                <div class="flex items-center">
-                    <i class="fas fa-shield-alt mr-2"></i>
-                    Secure payments
-                </div>
-                <div class="hidden sm:block w-1 h-1 bg-white/50 rounded-full"></div>
-                <div class="flex items-center">
-                    <i class="fas fa-file-invoice mr-2"></i>
-                    80G Tax benefits
-                </div>
-                <div class="hidden sm:block w-1 h-1 bg-white/50 rounded-full"></div>
-                <div class="flex items-center">
-                    <i class="fas fa-eye mr-2"></i>
-                    Transparent usage
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <?= $this->endSection() ?>

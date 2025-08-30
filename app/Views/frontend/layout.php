@@ -130,10 +130,6 @@
                        class="font-heading font-semibold text-gray-700 hover:text-indigo-600 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-indigo-50">
                         Success Stories
                     </a>
-                    <a href="<?= base_url(($language ?? 'en') . '/ngo-works') ?>" 
-                       class="font-heading font-semibold text-gray-700 hover:text-indigo-600 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-indigo-50">
-                        Our Works
-                    </a>
 
                     <!-- Language Switcher -->
                     <div class="flex items-center space-x-2">
@@ -170,10 +166,6 @@
                     <a href="<?= base_url(($language ?? 'en') . '/success-stories') ?>" 
                        class="block font-heading font-semibold text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-xl hover:bg-indigo-50">
                         Success Stories
-                    </a>
-                    <a href="<?= base_url(($language ?? 'en') . '/ngo-works') ?>" 
-                       class="block font-heading font-semibold text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-xl hover:bg-indigo-50">
-                        Our Works
                     </a>
 
                     <!-- Mobile Language Switcher -->
@@ -236,7 +228,6 @@
                         <li><a href="<?= base_url() ?>" class="text-gray-300 hover:text-white transition-colors duration-200 font-accent">Home</a></li>
                         <li><a href="<?= base_url('beneficiaries') ?>" class="text-gray-300 hover:text-white transition-colors duration-200 font-accent">Beneficiaries</a></li>
                         <li><a href="<?= base_url('success-stories') ?>" class="text-gray-300 hover:text-white transition-colors duration-200 font-accent">Success Stories</a></li>
-                        <li><a href="<?= base_url('ngo-works') ?>" class="text-gray-300 hover:text-white transition-colors duration-200 font-accent">Our Works</a></li>
                     </ul>
                 </div>
 

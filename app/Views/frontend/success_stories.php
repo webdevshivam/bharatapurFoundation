@@ -118,18 +118,18 @@
                             <!-- Read More Button -->
                             <div class="mt-6 pt-4 border-t border-gray-100">
                                 <button onclick="viewStory(
-                                    '<?= esc($story['name'] ?? '') ?>', 
-                                    '<?= esc($story['story'] ?? '') ?>', 
-                                    '<?= esc($story['name'] ?? '') ?>', 
-                                    '<?= date('M j, Y', strtotime($story['created_at'] ?? 'now')) ?>', 
-                                    '<?= !empty($story['image']) ? base_url('uploads/success_stories/' . $story['image']) : '' ?>',
-                                    '<?= esc($story['current_position'] ?? '') ?>',
-                                    '<?= esc($story['company'] ?? '') ?>',
-                                    '<?= esc($story['linkedin_url'] ?? '') ?>',
-                                    '<?= esc($story['company_link'] ?? '') ?>',
-                                    '<?= esc($story['education'] ?? '') ?>',
-                                    '<?= esc($story['city'] ?? '') ?>',
-                                    '<?= esc($story['state'] ?? '') ?>'
+                                    <?= json_encode($story['name'] ?? '') ?>, 
+                                    <?= json_encode($story['story'] ?? '') ?>, 
+                                    <?= json_encode($story['name'] ?? '') ?>, 
+                                    <?= json_encode(date('M j, Y', strtotime($story['created_at'] ?? 'now'))) ?>, 
+                                    <?= json_encode(!empty($story['image']) ? base_url('uploads/success_stories/' . $story['image']) : '') ?>,
+                                    <?= json_encode($story['current_position'] ?? '') ?>,
+                                    <?= json_encode($story['company'] ?? '') ?>,
+                                    <?= json_encode($story['linkedin_url'] ?? '') ?>,
+                                    <?= json_encode($story['company_link'] ?? '') ?>,
+                                    <?= json_encode($story['education'] ?? '') ?>,
+                                    <?= json_encode($story['city'] ?? '') ?>,
+                                    <?= json_encode($story['state'] ?? '') ?>
                                 )" class="w-full bg-emerald-600 text-white py-3 rounded-xl font-semibold hover:bg-emerald-700 transition-all duration-200 flex items-center justify-center group">
                                     Read Full Story
                                     <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-200"></i>
@@ -237,37 +237,7 @@
     </div>
 </div>
 
-<!-- Call to Action -->
-<section class="py-20 bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-600 text-white relative overflow-hidden">
-    <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-10">
-        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 30% 40%, #ffffff 2px, transparent 2px), radial-gradient(circle at 70% 60%, #ffffff 1px, transparent 1px); background-size: 80px 80px, 60px 60px;"></div>
-    </div>
 
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="text-center max-w-4xl mx-auto">
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-8">
-                Be Part of Their Success Story
-            </h2>
-            <p class="text-xl md:text-2xl text-white/90 leading-relaxed mb-12 max-w-3xl mx-auto">
-                Your support can help create the next success story. Join us in transforming lives through education.
-            </p>
-
-            <div class="flex flex-col sm:flex-row gap-8 justify-center">
-                <a href="<?= base_url(($language ?? 'en') . '/beneficiaries') ?>" 
-                   class="bg-white text-emerald-700 px-12 py-5 rounded-2xl font-bold text-lg hover:bg-gray-50 transition-all duration-200 shadow-xl hover:shadow-2xl transform hover:-translate-y-2 flex items-center justify-center">
-                    <i class="fas fa-users mr-3"></i>
-                    Meet Our Students
-                </a>
-                <a href="#donate" 
-                   class="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-12 py-5 rounded-2xl font-bold text-lg hover:bg-white/20 hover:border-white/50 transition-all duration-200 flex items-center justify-center transform hover:-translate-y-2">
-                    <i class="fas fa-heart mr-3"></i>
-                    Support Education
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
 
 <style>
 @keyframes fadeInUp {

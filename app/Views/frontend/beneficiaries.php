@@ -1,4 +1,3 @@
-
 <?= $this->extend('frontend/layout') ?>
 
 <?= $this->section('content') ?>
@@ -55,6 +54,12 @@
                     <div class="text-sm text-gray-600 font-medium">Partner Institutions</div>
                 </div>
             </div>
+            <!-- Added information -->
+            <p class="text-lg text-gray-700 mt-8">This website is an unofficial version. For the official site, please visit <a href="https://nayantaratrust.com/" target="_blank" class="text-indigo-600 font-semibold hover:underline">nayantaratrust.com</a>.</p>
+            <div class="mt-12">
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">Our Objective</h3>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">We make underprivileged students or job-ready professionals.</p>
+            </div>
         </div>
     </div>
 </section>
@@ -81,7 +86,7 @@
                     Graduates
                 </button>
             </div>
-            
+
             <!-- Search Box -->
             <div class="relative w-full lg:w-auto">
                 <input type="text" id="searchInput" placeholder="Search students by name, course, or institution..." 
@@ -104,7 +109,7 @@
                              data-name="<?= strtolower(esc($beneficiary['name'] ?? '')) ?>"
                              data-course="<?= strtolower(esc($beneficiary['course'] ?? '')) ?>"
                              data-institution="<?= strtolower(esc($beneficiary['institution'] ?? '')) ?>">
-                        
+
                         <!-- Card Header -->
                         <div class="relative p-6 bg-gradient-to-br from-<?= $beneficiary['is_passout'] ? 'emerald' : 'indigo' ?>-50 to-<?= $beneficiary['is_passout'] ? 'green' : 'purple' ?>-50 border-b border-<?= $beneficiary['is_passout'] ? 'emerald' : 'indigo' ?>-100">
                             <div class="flex flex-col items-center text-center">
@@ -120,7 +125,7 @@
                                         </div>
                                     <?php endif; ?>
                                 </div>
-                                
+
                                 <!-- Student Info -->
                                 <h3 class="text-xl font-bold text-gray-900 mb-2"><?= esc($beneficiary['name'] ?? 'Student Name') ?></h3>
                                 <p class="text-<?= $beneficiary['is_passout'] ? 'emerald' : 'indigo' ?>-700 font-semibold mb-3"><?= esc($beneficiary['course'] ?? 'Course') ?></p>
@@ -155,7 +160,7 @@
                                             </div>
                                         </div>
                                     <?php endif; ?>
-                                    
+
                                     <?php if (!empty($beneficiary['year'])): ?>
                                         <div class="bg-purple-50 rounded-xl p-3 border border-purple-100">
                                             <div class="flex items-center text-purple-700">
@@ -407,38 +412,6 @@
     </div>
 </div>
 
-<!-- Call to Action -->
-<section class="py-20 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 text-white relative overflow-hidden">
-    <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-10">
-        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 30% 40%, #ffffff 2px, transparent 2px), radial-gradient(circle at 70% 60%, #ffffff 1px, transparent 1px); background-size: 80px 80px, 60px 60px;"></div>
-    </div>
-
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="text-center max-w-4xl mx-auto">
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-8">
-                Transform Lives Through Education
-            </h2>
-            <p class="text-xl md:text-2xl text-white/90 leading-relaxed mb-12 max-w-3xl mx-auto">
-                Every contribution helps a student achieve their potential and build a brighter future for themselves and their families.
-            </p>
-
-            <div class="flex flex-col sm:flex-row gap-8 justify-center">
-                <a href="#donate" 
-                   class="bg-white text-indigo-700 px-12 py-5 rounded-2xl font-bold text-lg hover:bg-gray-50 transition-all duration-200 shadow-xl hover:shadow-2xl transform hover:-translate-y-2 flex items-center justify-center">
-                    <i class="fas fa-heart mr-3"></i>
-                    Sponsor a Student
-                </a>
-                <a href="<?= base_url(($language ?? 'en') . '/success-stories') ?>" 
-                   class="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-12 py-5 rounded-2xl font-bold text-lg hover:bg-white/20 hover:border-white/50 transition-all duration-200 flex items-center justify-center transform hover:-translate-y-2">
-                    <i class="fas fa-star mr-3"></i>
-                    View Success Stories
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
 <style>
 @keyframes fadeInUp {
     from {
@@ -457,7 +430,7 @@
 function filterBeneficiaries(filter) {
     const cards = document.querySelectorAll('.beneficiary-card');
     const filterBtns = document.querySelectorAll('.filter-btn');
-    
+
     // Update active button
     filterBtns.forEach(btn => {
         btn.classList.remove('active', 'bg-indigo-600', 'text-white');
@@ -465,13 +438,13 @@ function filterBeneficiaries(filter) {
     });
     event.target.classList.add('active', 'bg-indigo-600', 'text-white');
     event.target.classList.remove('bg-gray-100', 'text-gray-700');
-    
+
     let visibleCount = 0;
-    
+
     cards.forEach(card => {
         const status = card.dataset.status;
         let shouldShow = false;
-        
+
         if (filter === 'all') {
             shouldShow = true;
         } else if (filter === 'active' && status === 'active') {
@@ -479,7 +452,7 @@ function filterBeneficiaries(filter) {
         } else if (filter === 'graduate' && status === 'graduate') {
             shouldShow = true;
         }
-        
+
         if (shouldShow) {
             card.style.display = 'block';
             visibleCount++;
@@ -487,7 +460,7 @@ function filterBeneficiaries(filter) {
             card.style.display = 'none';
         }
     });
-    
+
     // Show/hide no results message
     const noResults = document.getElementById('noResults');
     if (visibleCount === 0) {
@@ -502,12 +475,12 @@ document.getElementById('searchInput').addEventListener('input', function(e) {
     const searchTerm = e.target.value.toLowerCase();
     const cards = document.querySelectorAll('.beneficiary-card');
     let visibleCount = 0;
-    
+
     cards.forEach(card => {
         const name = card.dataset.name || '';
         const course = card.dataset.course || '';
         const institution = card.dataset.institution || '';
-        
+
         if (name.includes(searchTerm) || course.includes(searchTerm) || institution.includes(searchTerm)) {
             card.style.display = 'block';
             visibleCount++;
@@ -515,7 +488,7 @@ document.getElementById('searchInput').addEventListener('input', function(e) {
             card.style.display = 'none';
         }
     });
-    
+
     // Show/hide no results message
     const noResults = document.getElementById('noResults');
     if (visibleCount === 0 && searchTerm !== '') {
@@ -528,13 +501,13 @@ document.getElementById('searchInput').addEventListener('input', function(e) {
 // Modal functions
 function viewBeneficiary(beneficiaryData) {
     const data = beneficiaryData;
-    
+
     // Basic Information
     document.getElementById('modalName').textContent = data.name || 'Student Name';
     document.getElementById('modalCourse').textContent = data.course || 'Course';
     document.getElementById('modalCourseDetail').textContent = data.course || 'Not specified';
     document.getElementById('modalInstitution').textContent = data.institution || 'Not specified';
-    
+
     // Handle image
     const modalImage = document.getElementById('modalImage');
     if (data.image) {
@@ -542,25 +515,25 @@ function viewBeneficiary(beneficiaryData) {
     } else {
         modalImage.innerHTML = '<div class="w-full h-full bg-white/30 flex items-center justify-center"><i class="fas fa-user-graduate text-white text-2xl"></i></div>';
     }
-    
+
     // Personal Information
     const ageDiv = document.getElementById('modalAgeDiv');
     const educationLevelDiv = document.getElementById('modalEducationLevelDiv');
-    
+
     if (data.age) {
         document.getElementById('modalAge').textContent = data.age + ' years old';
         ageDiv.style.display = 'flex';
     } else {
         ageDiv.style.display = 'none';
     }
-    
+
     if (data.education_level) {
         document.getElementById('modalEducationLevel').textContent = data.education_level;
         educationLevelDiv.style.display = 'flex';
     } else {
         educationLevelDiv.style.display = 'none';
     }
-    
+
     // Location
     const locationDiv = document.getElementById('modalLocationDiv');
     const location = [data.city, data.state].filter(Boolean).join(', ');
@@ -570,7 +543,7 @@ function viewBeneficiary(beneficiaryData) {
     } else {
         locationDiv.style.display = 'none';
     }
-    
+
     // Academic year
     const yearDiv = document.getElementById('modalYearDiv');
     if (data.year) {
@@ -579,15 +552,15 @@ function viewBeneficiary(beneficiaryData) {
     } else {
         yearDiv.style.display = 'none';
     }
-    
+
     // Contact Information
     const contactDiv = document.getElementById('modalContactDiv');
     const phoneDiv = document.getElementById('modalPhoneDiv');
     const emailDiv = document.getElementById('modalEmailDiv');
     const linkedInDiv = document.getElementById('modalLinkedInDiv');
-    
+
     let hasContact = false;
-    
+
     if (data.phone) {
         const phoneLink = document.getElementById('modalPhone');
         phoneLink.textContent = data.phone;
@@ -597,7 +570,7 @@ function viewBeneficiary(beneficiaryData) {
     } else {
         phoneDiv.style.display = 'none';
     }
-    
+
     if (data.email) {
         const emailLink = document.getElementById('modalEmail');
         emailLink.textContent = data.email;
@@ -607,7 +580,7 @@ function viewBeneficiary(beneficiaryData) {
     } else {
         emailDiv.style.display = 'none';
     }
-    
+
     if (data.linkedin_url) {
         const linkedInLink = document.getElementById('modalLinkedIn');
         linkedInLink.href = data.linkedin_url;
@@ -616,20 +589,20 @@ function viewBeneficiary(beneficiaryData) {
     } else {
         linkedInDiv.style.display = 'none';
     }
-    
+
     if (hasContact) {
         contactDiv.classList.remove('hidden');
     } else {
         contactDiv.classList.add('hidden');
     }
-    
+
     // Professional Information
     const companyDiv = document.getElementById('modalCompanyDiv');
     const companyLinkDiv = document.getElementById('modalCompanyLinkDiv');
-    
+
     if (data.company_name && data.is_passout) {
         document.getElementById('modalCompany').textContent = data.company_name;
-        
+
         if (data.company_link) {
             const companyLink = document.getElementById('modalCompanyLink');
             companyLink.href = data.company_link;
@@ -637,12 +610,12 @@ function viewBeneficiary(beneficiaryData) {
         } else {
             companyLinkDiv.style.display = 'none';
         }
-        
+
         companyDiv.classList.remove('hidden');
     } else {
         companyDiv.classList.add('hidden');
     }
-    
+
     // Family Background
     const familyDiv = document.getElementById('modalFamilyDiv');
     if (data.family_background && data.family_background.trim()) {
@@ -651,7 +624,7 @@ function viewBeneficiary(beneficiaryData) {
     } else {
         familyDiv.classList.add('hidden');
     }
-    
+
     // Academic Achievements
     const achievementsDiv = document.getElementById('modalAchievementsDiv');
     if (data.academic_achievements && data.academic_achievements.trim()) {
@@ -660,7 +633,7 @@ function viewBeneficiary(beneficiaryData) {
     } else {
         achievementsDiv.classList.add('hidden');
     }
-    
+
     // Career Goals
     const goalsDiv = document.getElementById('modalGoalsDiv');
     if (data.career_goals && data.career_goals.trim()) {
@@ -669,11 +642,11 @@ function viewBeneficiary(beneficiaryData) {
     } else {
         goalsDiv.classList.add('hidden');
     }
-    
+
     // Update status and header colors
     const modalStatus = document.getElementById('modalStatus');
     const modalHeader = document.getElementById('modalHeader');
-    
+
     if (data.is_passout) {
         modalStatus.className = 'inline-flex items-center bg-emerald-100 text-emerald-800 px-6 py-3 rounded-full font-semibold text-lg';
         modalStatus.innerHTML = '<i class="fas fa-medal mr-2"></i>Graduate';
@@ -683,7 +656,7 @@ function viewBeneficiary(beneficiaryData) {
         modalStatus.innerHTML = '<i class="fas fa-graduation-cap mr-2"></i>Active Student';
         modalHeader.className = 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white p-8';
     }
-    
+
     document.getElementById('studentModal').classList.remove('hidden');
     document.body.style.overflow = 'hidden';
 }
