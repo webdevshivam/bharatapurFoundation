@@ -15,84 +15,55 @@
     <div class="absolute bottom-40 left-20 w-12 h-12 bg-primary-200 rounded-full animate-bounce-subtle opacity-60 shadow-md" style="animation-delay: 2s;"></div>
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <!-- Left Content -->
-            <div class="animate-fade-in-up">
-                <!-- Trust Badge -->
-                <div class="inline-flex items-center bg-primary-100 text-primary-800 px-4 py-2 rounded-full font-accent font-medium text-sm mb-6">
-                    <i class="fas fa-certificate mr-2"></i>
-                    Registered NGO • Audited Impact
-                </div>
-
-                <!-- Main Headline -->
-                <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                    Transform Lives Through 
-                    <span class="bg-gradient-to-r from-primary-600 to-accent-500 bg-clip-text text-transparent">
-                        Education
-                    </span>
-                </h1>
-
-                <!-- Supporting Text -->
-                <p class="font-accent text-lg md:text-xl text-gray-600 leading-relaxed mb-8">
-                    Every underprivileged student deserves opportunity. Through comprehensive education, mentoring, and career placement, we create sustainable change that breaks cycles of poverty.
-                </p>
-
-                <!-- CTA Buttons -->
-                <div class="flex flex-col sm:flex-row gap-4 mb-8">
-                    <a href="#support" class="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-8 py-4 rounded-xl font-heading font-semibold hover:from-primary-700 hover:to-primary-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center">
-                        <i class="fas fa-heart mr-2"></i>
-                        Support Students
-                    </a>
-                    <a href="<?= base_url($language . '/beneficiaries') ?>" class="bg-white border-2 border-gray-200 text-gray-700 px-8 py-4 rounded-xl font-heading font-semibold hover:border-primary-300 hover:text-primary-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-1 flex items-center justify-center">
-                        <i class="fas fa-users mr-2"></i>
-                        Meet Students
-                    </a>
-                </div>
-
-                <!-- Trust Indicators -->
-                <div class="grid grid-cols-3 gap-6 pt-8 border-t-2 border-gray-200">
-                    <div class="text-center bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-primary-100 hover:shadow-xl transition-all duration-300">
-                        <div class="font-display text-2xl md:text-3xl font-bold text-primary-600">500+</div>
-                        <div class="font-accent text-sm text-gray-600">Students Supported</div>
-                    </div>
-                    <div class="text-center bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-accent-100 hover:shadow-xl transition-all duration-300">
-                        <div class="font-display text-2xl md:text-3xl font-bold text-accent-500">95%</div>
-                        <div class="font-accent text-sm text-gray-600">Employment Rate</div>
-                    </div>
-                    <div class="text-center bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-emerald-100 hover:shadow-xl transition-all duration-300">
-                        <div class="font-display text-2xl md:text-3xl font-bold text-emerald-500">Audited</div>
-                        <div class="font-accent text-sm text-gray-600">
-                            <a href="#impact-report" class="text-primary-600 hover:text-primary-700">Annual Report</a>
-                        </div>
-                    </div>
-                </div>
+        <div class="max-w-6xl mx-auto text-center">
+            <!-- Trust Badge -->
+            <div class="inline-flex items-center bg-primary-100 text-primary-800 px-6 py-3 rounded-full font-accent font-medium text-sm mb-8 shadow-lg">
+                <i class="fas fa-certificate mr-2"></i>
+                Registered NGO • Audited Impact
             </div>
 
-            <!-- Right Visual -->
-            <div class="animate-slide-in-right">
-                <div class="relative">
-                    <!-- Main Image -->
-                    <div class="relative rounded-3xl overflow-hidden shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500">
-                        <img src="<?= base_url('assets/images/bharatpur-hero-image.png') ?>"
-                             alt="Students in our program"
-                             class="w-full h-96 md:h-[500px] object-cover"
-                             onerror="this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop&crop=faces,entropy&auto=format&q=80'">
-                    </div>
+            <!-- Main Headline -->
+            <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-8">
+                Transform Lives Through 
+                <span class="bg-gradient-to-r from-primary-600 to-accent-500 bg-clip-text text-transparent">
+                    Education
+                </span>
+            </h1>
 
-                    <!-- Floating Stats -->
-                    <div class="absolute -top-6 -left-6 bg-white rounded-2xl p-4 shadow-xl border border-gray-100 animate-bounce-subtle">
-                        <div class="text-center">
-                            <div class="font-display text-2xl font-bold text-primary-600">100+</div>
-                            <div class="font-accent text-xs text-gray-600">Mentors</div>
-                        </div>
-                    </div>
+            <!-- Supporting Text -->
+            <p class="font-accent text-xl md:text-2xl text-gray-600 leading-relaxed mb-12 max-w-4xl mx-auto">
+                Every underprivileged student deserves opportunity. Through comprehensive education, mentoring, and career placement, we create sustainable change that breaks cycles of poverty.
+            </p>
 
-                    <div class="absolute -bottom-6 -right-6 bg-white rounded-2xl p-4 shadow-xl border border-gray-100 animate-bounce-subtle" style="animation-delay: 1s;">
-                        <div class="text-center">
-                            <div class="font-display text-2xl font-bold text-accent-500">₹50L+</div>
-                            <div class="font-accent text-xs text-gray-600">Scholarships</div>
-                        </div>
-                    </div>
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+                <a href="#support" class="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-10 py-5 rounded-xl font-heading font-semibold hover:from-primary-700 hover:to-primary-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center text-lg">
+                    <i class="fas fa-heart mr-3"></i>
+                    Support Students
+                </a>
+                <a href="<?= base_url($language . '/beneficiaries') ?>" class="bg-white border-2 border-gray-200 text-gray-700 px-10 py-5 rounded-xl font-heading font-semibold hover:border-primary-300 hover:text-primary-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-1 flex items-center justify-center text-lg">
+                    <i class="fas fa-users mr-3"></i>
+                    Meet Students
+                </a>
+            </div>
+
+            <!-- Trust Indicators -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                <div class="text-center bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-primary-100 hover:shadow-xl transition-all duration-300">
+                    <div class="font-display text-3xl md:text-4xl font-bold text-primary-600 mb-2">500+</div>
+                    <div class="font-accent text-gray-600">Students Supported</div>
+                </div>
+                <div class="text-center bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-accent-100 hover:shadow-xl transition-all duration-300">
+                    <div class="font-display text-3xl md:text-4xl font-bold text-accent-500 mb-2">95%</div>
+                    <div class="font-accent text-gray-600">Employment Rate</div>
+                </div>
+                <div class="text-center bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-emerald-100 hover:shadow-xl transition-all duration-300">
+                    <div class="font-display text-3xl md:text-4xl font-bold text-emerald-500 mb-2">100+</div>
+                    <div class="font-accent text-gray-600">Industry Mentors</div>
+                </div>
+                <div class="text-center bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-purple-100 hover:shadow-xl transition-all duration-300">
+                    <div class="font-display text-3xl md:text-4xl font-bold text-purple-500 mb-2">₹50L+</div>
+                    <div class="font-accent text-gray-600">Scholarships Given</div>
                 </div>
             </div>
         </div>
