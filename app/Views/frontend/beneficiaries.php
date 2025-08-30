@@ -186,7 +186,27 @@
                                     <i class="fas fa-user-plus mr-1"></i>
                                     Joined <?= date('M Y', strtotime($beneficiary['created_at'] ?? 'now')) ?>
                                 </span>
-                                <button onclick="viewBeneficiary('<?= esc($beneficiary['name'] ?? '') ?>', '<?= esc($beneficiary['course'] ?? '') ?>', '<?= esc($beneficiary['institution'] ?? '') ?>', '<?= esc($beneficiary['city'] ?? '') ?>', '<?= esc($beneficiary['year'] ?? '') ?>', '<?= esc($beneficiary['company_name'] ?? '') ?>', <?= $beneficiary['is_passout'] ? 'true' : 'false' ?>, '<?= !empty($beneficiary['image']) ? base_url('uploads/beneficiaries/' . $beneficiary['image']) : '' ?>')"
+                                <button onclick="viewBeneficiary(<?= htmlspecialchars(json_encode([
+                                    'name' => $beneficiary['name'] ?? '',
+                                    'course' => $beneficiary['course'] ?? '',
+                                    'institution' => $beneficiary['institution'] ?? '',
+                                    'city' => $beneficiary['city'] ?? '',
+                                    'state' => $beneficiary['state'] ?? '',
+                                    'year' => $beneficiary['year'] ?? '',
+                                    'age' => $beneficiary['age'] ?? '',
+                                    'education_level' => $beneficiary['education_level'] ?? '',
+                                    'phone' => $beneficiary['phone'] ?? '',
+                                    'email' => $beneficiary['email'] ?? '',
+                                    'company_name' => $beneficiary['company_name'] ?? '',
+                                    'linkedin_url' => $beneficiary['linkedin_url'] ?? '',
+                                    'company_link' => $beneficiary['company_link'] ?? '',
+                                    'family_background' => $beneficiary['family_background'] ?? '',
+                                    'academic_achievements' => $beneficiary['academic_achievements'] ?? '',
+                                    'career_goals' => $beneficiary['career_goals'] ?? '',
+                                    'is_passout' => $beneficiary['is_passout'] ? true : false,
+                                    'status' => $beneficiary['status'] ?? '',
+                                    'image' => !empty($beneficiary['image']) ? base_url('uploads/beneficiaries/' . $beneficiary['image']) : ''
+                                ]), ENT_QUOTES) ?>)"
                                         class="text-<?= $beneficiary['is_passout'] ? 'emerald' : 'indigo' ?>-600 hover:text-<?= $beneficiary['is_passout'] ? 'emerald' : 'indigo' ?>-700 font-medium text-sm flex items-center group transition-all duration-200">
                                     View Profile
                                     <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-200"></i>
@@ -252,8 +272,30 @@
             </div>
 
             <!-- Modal Content -->
-            <div class="p-8 overflow-y-auto max-h-[60vh]">
+            <div class="p-8 overflow-y-auto max-h-[70vh]">
                 <div class="space-y-8">
+                    <!-- Personal Information -->
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-user text-indigo-500 mr-3"></i>
+                            Personal Information
+                        </h3>
+                        <div class="bg-gray-50 rounded-2xl p-6 space-y-4 border border-gray-100">
+                            <div id="modalAgeDiv" class="flex items-center justify-between py-2">
+                                <span class="text-gray-600 font-medium">Age:</span>
+                                <span id="modalAge" class="font-semibold text-gray-900"></span>
+                            </div>
+                            <div id="modalEducationLevelDiv" class="flex items-center justify-between py-2">
+                                <span class="text-gray-600 font-medium">Education Level:</span>
+                                <span id="modalEducationLevel" class="font-semibold text-gray-900"></span>
+                            </div>
+                            <div id="modalLocationDiv" class="flex items-center justify-between py-2">
+                                <span class="text-gray-600 font-medium">Location:</span>
+                                <span id="modalLocation" class="font-semibold text-gray-900"></span>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Academic Information -->
                     <div>
                         <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
@@ -262,6 +304,10 @@
                         </h3>
                         <div class="bg-gray-50 rounded-2xl p-6 space-y-4 border border-gray-100">
                             <div class="flex items-center justify-between py-2">
+                                <span class="text-gray-600 font-medium">Course:</span>
+                                <span id="modalCourseDetail" class="font-semibold text-gray-900"></span>
+                            </div>
+                            <div class="flex items-center justify-between py-2">
                                 <span class="text-gray-600 font-medium">Institution:</span>
                                 <span id="modalInstitution" class="font-semibold text-gray-900"></span>
                             </div>
@@ -269,9 +315,30 @@
                                 <span class="text-gray-600 font-medium">Year:</span>
                                 <span id="modalYear" class="font-semibold text-gray-900"></span>
                             </div>
-                            <div id="modalLocationDiv" class="flex items-center justify-between py-2">
-                                <span class="text-gray-600 font-medium">Location:</span>
-                                <span id="modalLocation" class="font-semibold text-gray-900"></span>
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div id="modalContactDiv">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-address-book text-indigo-500 mr-3"></i>
+                            Contact Information
+                        </h3>
+                        <div class="bg-gray-50 rounded-2xl p-6 space-y-4 border border-gray-100">
+                            <div id="modalPhoneDiv" class="flex items-center justify-between py-2">
+                                <span class="text-gray-600 font-medium">Phone:</span>
+                                <a id="modalPhone" href="#" class="font-semibold text-indigo-600 hover:text-indigo-800"></a>
+                            </div>
+                            <div id="modalEmailDiv" class="flex items-center justify-between py-2">
+                                <span class="text-gray-600 font-medium">Email:</span>
+                                <a id="modalEmail" href="#" class="font-semibold text-indigo-600 hover:text-indigo-800"></a>
+                            </div>
+                            <div id="modalLinkedInDiv" class="flex items-center justify-between py-2">
+                                <span class="text-gray-600 font-medium">LinkedIn:</span>
+                                <a id="modalLinkedIn" href="#" target="_blank" class="font-semibold text-blue-600 hover:text-blue-800 flex items-center">
+                                    <span class="mr-2">View Profile</span>
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -282,11 +349,51 @@
                             <i class="fas fa-building text-emerald-600 mr-3"></i>
                             Professional Information
                         </h3>
-                        <div class="bg-emerald-50 rounded-2xl p-6 border border-emerald-100">
+                        <div class="bg-emerald-50 rounded-2xl p-6 space-y-4 border border-emerald-100">
                             <div class="flex items-center justify-between py-2">
                                 <span class="text-emerald-700 font-medium">Current Company:</span>
                                 <span id="modalCompany" class="font-semibold text-emerald-900"></span>
                             </div>
+                            <div id="modalCompanyLinkDiv" class="flex items-center justify-between py-2">
+                                <span class="text-emerald-700 font-medium">Company Website:</span>
+                                <a id="modalCompanyLink" href="#" target="_blank" class="font-semibold text-emerald-600 hover:text-emerald-800 flex items-center">
+                                    <span class="mr-2">Visit Website</span>
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Family Background -->
+                    <div id="modalFamilyDiv" class="hidden">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-home text-purple-500 mr-3"></i>
+                            Family Background
+                        </h3>
+                        <div class="bg-purple-50 rounded-2xl p-6 border border-purple-100">
+                            <p id="modalFamily" class="text-gray-700 leading-relaxed"></p>
+                        </div>
+                    </div>
+
+                    <!-- Academic Achievements -->
+                    <div id="modalAchievementsDiv" class="hidden">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-trophy text-yellow-500 mr-3"></i>
+                            Academic Achievements
+                        </h3>
+                        <div class="bg-yellow-50 rounded-2xl p-6 border border-yellow-100">
+                            <p id="modalAchievements" class="text-gray-700 leading-relaxed"></p>
+                        </div>
+                    </div>
+
+                    <!-- Career Goals -->
+                    <div id="modalGoalsDiv" class="hidden">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-bullseye text-green-500 mr-3"></i>
+                            Career Goals
+                        </h3>
+                        <div class="bg-green-50 rounded-2xl p-6 border border-green-100">
+                            <p id="modalGoals" class="text-gray-700 leading-relaxed"></p>
                         </div>
                     </div>
 
@@ -419,50 +526,155 @@ document.getElementById('searchInput').addEventListener('input', function(e) {
 });
 
 // Modal functions
-function viewBeneficiary(name, course, institution, city, year, company, isGraduate, image) {
-    document.getElementById('modalName').textContent = name || 'Student Name';
-    document.getElementById('modalCourse').textContent = course || 'Course';
-    document.getElementById('modalInstitution').textContent = institution || 'Not specified';
+function viewBeneficiary(beneficiaryData) {
+    const data = beneficiaryData;
+    
+    // Basic Information
+    document.getElementById('modalName').textContent = data.name || 'Student Name';
+    document.getElementById('modalCourse').textContent = data.course || 'Course';
+    document.getElementById('modalCourseDetail').textContent = data.course || 'Not specified';
+    document.getElementById('modalInstitution').textContent = data.institution || 'Not specified';
     
     // Handle image
     const modalImage = document.getElementById('modalImage');
-    if (image) {
-        modalImage.innerHTML = `<img src="${image}" alt="${name}" class="w-full h-full object-cover">`;
+    if (data.image) {
+        modalImage.innerHTML = `<img src="${data.image}" alt="${data.name}" class="w-full h-full object-cover">`;
     } else {
         modalImage.innerHTML = '<div class="w-full h-full bg-white/30 flex items-center justify-center"><i class="fas fa-user-graduate text-white text-2xl"></i></div>';
     }
     
-    // Handle optional fields
-    const yearDiv = document.getElementById('modalYearDiv');
-    const locationDiv = document.getElementById('modalLocationDiv');
-    const companyDiv = document.getElementById('modalCompanyDiv');
+    // Personal Information
+    const ageDiv = document.getElementById('modalAgeDiv');
+    const educationLevelDiv = document.getElementById('modalEducationLevelDiv');
     
-    if (year) {
-        document.getElementById('modalYear').textContent = year;
-        yearDiv.style.display = 'flex';
+    if (data.age) {
+        document.getElementById('modalAge').textContent = data.age + ' years old';
+        ageDiv.style.display = 'flex';
     } else {
-        yearDiv.style.display = 'none';
+        ageDiv.style.display = 'none';
     }
     
-    if (city) {
-        document.getElementById('modalLocation').textContent = city;
+    if (data.education_level) {
+        document.getElementById('modalEducationLevel').textContent = data.education_level;
+        educationLevelDiv.style.display = 'flex';
+    } else {
+        educationLevelDiv.style.display = 'none';
+    }
+    
+    // Location
+    const locationDiv = document.getElementById('modalLocationDiv');
+    const location = [data.city, data.state].filter(Boolean).join(', ');
+    if (location) {
+        document.getElementById('modalLocation').textContent = location;
         locationDiv.style.display = 'flex';
     } else {
         locationDiv.style.display = 'none';
     }
     
-    if (company && isGraduate) {
-        document.getElementById('modalCompany').textContent = company;
+    // Academic year
+    const yearDiv = document.getElementById('modalYearDiv');
+    if (data.year) {
+        document.getElementById('modalYear').textContent = data.year;
+        yearDiv.style.display = 'flex';
+    } else {
+        yearDiv.style.display = 'none';
+    }
+    
+    // Contact Information
+    const contactDiv = document.getElementById('modalContactDiv');
+    const phoneDiv = document.getElementById('modalPhoneDiv');
+    const emailDiv = document.getElementById('modalEmailDiv');
+    const linkedInDiv = document.getElementById('modalLinkedInDiv');
+    
+    let hasContact = false;
+    
+    if (data.phone) {
+        const phoneLink = document.getElementById('modalPhone');
+        phoneLink.textContent = data.phone;
+        phoneLink.href = `tel:${data.phone}`;
+        phoneDiv.style.display = 'flex';
+        hasContact = true;
+    } else {
+        phoneDiv.style.display = 'none';
+    }
+    
+    if (data.email) {
+        const emailLink = document.getElementById('modalEmail');
+        emailLink.textContent = data.email;
+        emailLink.href = `mailto:${data.email}`;
+        emailDiv.style.display = 'flex';
+        hasContact = true;
+    } else {
+        emailDiv.style.display = 'none';
+    }
+    
+    if (data.linkedin_url) {
+        const linkedInLink = document.getElementById('modalLinkedIn');
+        linkedInLink.href = data.linkedin_url;
+        linkedInDiv.style.display = 'flex';
+        hasContact = true;
+    } else {
+        linkedInDiv.style.display = 'none';
+    }
+    
+    if (hasContact) {
+        contactDiv.classList.remove('hidden');
+    } else {
+        contactDiv.classList.add('hidden');
+    }
+    
+    // Professional Information
+    const companyDiv = document.getElementById('modalCompanyDiv');
+    const companyLinkDiv = document.getElementById('modalCompanyLinkDiv');
+    
+    if (data.company_name && data.is_passout) {
+        document.getElementById('modalCompany').textContent = data.company_name;
+        
+        if (data.company_link) {
+            const companyLink = document.getElementById('modalCompanyLink');
+            companyLink.href = data.company_link;
+            companyLinkDiv.style.display = 'flex';
+        } else {
+            companyLinkDiv.style.display = 'none';
+        }
+        
         companyDiv.classList.remove('hidden');
     } else {
         companyDiv.classList.add('hidden');
+    }
+    
+    // Family Background
+    const familyDiv = document.getElementById('modalFamilyDiv');
+    if (data.family_background && data.family_background.trim()) {
+        document.getElementById('modalFamily').innerHTML = data.family_background.replace(/\n/g, '<br>');
+        familyDiv.classList.remove('hidden');
+    } else {
+        familyDiv.classList.add('hidden');
+    }
+    
+    // Academic Achievements
+    const achievementsDiv = document.getElementById('modalAchievementsDiv');
+    if (data.academic_achievements && data.academic_achievements.trim()) {
+        document.getElementById('modalAchievements').innerHTML = data.academic_achievements.replace(/\n/g, '<br>');
+        achievementsDiv.classList.remove('hidden');
+    } else {
+        achievementsDiv.classList.add('hidden');
+    }
+    
+    // Career Goals
+    const goalsDiv = document.getElementById('modalGoalsDiv');
+    if (data.career_goals && data.career_goals.trim()) {
+        document.getElementById('modalGoals').innerHTML = data.career_goals.replace(/\n/g, '<br>');
+        goalsDiv.classList.remove('hidden');
+    } else {
+        goalsDiv.classList.add('hidden');
     }
     
     // Update status and header colors
     const modalStatus = document.getElementById('modalStatus');
     const modalHeader = document.getElementById('modalHeader');
     
-    if (isGraduate) {
+    if (data.is_passout) {
         modalStatus.className = 'inline-flex items-center bg-emerald-100 text-emerald-800 px-6 py-3 rounded-full font-semibold text-lg';
         modalStatus.innerHTML = '<i class="fas fa-medal mr-2"></i>Graduate';
         modalHeader.className = 'bg-gradient-to-r from-emerald-500 to-green-500 text-white p-8';
