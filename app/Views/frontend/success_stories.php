@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 
 <!-- Hero Section -->
-<section class="relative min-h-[70vh] bg-gradient-to-br from-emerald-50 via-white to-teal-50 flex items-center overflow-hidden">
+<section class="relative min-h-[70vh] bg-gradient-to-br from-emerald-50 via-white to-teal-50 flex items-center overflow-hidden -mt-16 pt-16">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-5">
         <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 25%, #10b981 2px, transparent 2px), radial-gradient(circle at 75% 75%, #06b6d4 1px, transparent 1px); background-size: 50px 50px, 30px 30px;"></div>
@@ -74,13 +74,31 @@
                             <div class="space-y-4">
                                 <!-- Title -->
                                 <h3 class="text-xl font-bold text-gray-900 leading-tight group-hover:text-emerald-600 transition-colors duration-200">
-                                    <?= esc($story['title'] ?? 'Inspiring Journey') ?>
+                                    <?= esc($story['name'] ?? 'Inspiring Journey') ?>
                                 </h3>
 
                                 <!-- Excerpt -->
                                 <p class="text-gray-600 leading-relaxed line-clamp-3">
-                                    <?= esc(substr($story['content'] ?? 'An inspiring story of transformation and success through education and determination.', 0, 150)) ?>...
+                                    <?= esc(substr($story['story'] ?? 'An inspiring story of transformation and success through education and determination.', 0, 150)) ?>...
                                 </p>
+
+                                <!-- Position & Company -->
+                                <?php if (!empty($story['current_position']) || !empty($story['company'])): ?>
+                                    <div class="bg-emerald-50 rounded-xl p-3 border border-emerald-100">
+                                        <?php if (!empty($story['current_position'])): ?>
+                                            <p class="text-emerald-800 font-semibold text-sm">
+                                                <i class="fas fa-briefcase mr-1"></i>
+                                                <?= esc($story['current_position']) ?>
+                                            </p>
+                                        <?php endif; ?>
+                                        <?php if (!empty($story['company'])): ?>
+                                            <p class="text-emerald-700 text-sm">
+                                                <i class="fas fa-building mr-1"></i>
+                                                <?= esc($story['company']) ?>
+                                            </p>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
 
                                 <!-- Meta Info -->
                                 <div class="flex items-center space-x-4 text-sm text-gray-500">
@@ -88,10 +106,10 @@
                                         <i class="fas fa-calendar mr-1"></i>
                                         <?= date('M j, Y', strtotime($story['created_at'] ?? 'now')) ?>
                                     </span>
-                                    <?php if (!empty($story['student_name'])): ?>
+                                    <?php if (!empty($story['education'])): ?>
                                         <span class="flex items-center">
-                                            <i class="fas fa-user mr-1"></i>
-                                            <?= esc($story['student_name']) ?>
+                                            <i class="fas fa-graduation-cap mr-1"></i>
+                                            <?= esc($story['education']) ?>
                                         </span>
                                     <?php endif; ?>
                                 </div>
@@ -99,7 +117,7 @@
 
                             <!-- Read More Button -->
                             <div class="mt-6 pt-4 border-t border-gray-100">
-                                <button onclick="viewStory('<?= esc($story['title'] ?? '') ?>', '<?= esc($story['content'] ?? '') ?>', '<?= esc($story['student_name'] ?? '') ?>', '<?= date('M j, Y', strtotime($story['created_at'] ?? 'now')) ?>', '<?= !empty($story['image']) ? base_url('uploads/success_stories/' . $story['image']) : '' ?>')"
+                                <button onclick="viewStory('<?= esc($story['name'] ?? '') ?>', '<?= esc($story['story'] ?? '') ?>', '<?= esc($story['name'] ?? '') ?>', '<?= date('M j, Y', strtotime($story['created_at'] ?? 'now')) ?>', '<?= !empty($story['image']) ? base_url('uploads/success_stories/' . $story['image']) : '' ?>')"
                                         class="w-full bg-emerald-600 text-white py-3 rounded-xl font-semibold hover:bg-emerald-700 transition-all duration-200 flex items-center justify-center group">
                                     Read Full Story
                                     <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-200"></i>

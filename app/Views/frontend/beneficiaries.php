@@ -4,7 +4,7 @@
 <?= $this->section('content') ?>
 
 <!-- Hero Section -->
-<section class="relative min-h-[70vh] bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center overflow-hidden">
+<section class="relative min-h-[70vh] bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center overflow-hidden -mt-16 pt-16">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-5">
         <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 25%, #6366f1 2px, transparent 2px), radial-gradient(circle at 75% 75%, #8b5cf6 1px, transparent 1px); background-size: 50px 50px, 30px 30px;"></div>
