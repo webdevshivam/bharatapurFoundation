@@ -9,7 +9,7 @@ packages = ["sqlite", "php82", "php82Packages.composer"]
 expertMode = true
 
 [workflows]
-runButton = "Server Port 8080"
+runButton = "Production Server"
 
 [[workflows.workflow]]
 name = "Project"
@@ -38,6 +38,15 @@ mode = "sequential"
 task = "shell.exec"
 args = "php -S 0.0.0.0:8080 -t public"
 
+[[workflows.workflow]]
+name = "Production Server"
+author = 47091842
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "php -S 0.0.0.0:5000 -t public"
+
 [[ports]]
 localPort = 5000
 externalPort = 80
@@ -47,4 +56,4 @@ localPort = 8080
 externalPort = 8080
 
 [deployment]
-run = ["sh", "-c", "php spark serve"]
+run = ["sh", "-c", "php -S 0.0.0.0:5000 -t public"]

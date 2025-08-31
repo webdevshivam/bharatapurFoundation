@@ -2,26 +2,21 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: <?= base_url('sitemap.xml') ?>
-
-# Allow search engines to crawl all pages
-Crawl-delay: 1
+# XML Sitemap
+Sitemap: https://nayantaratrust.in/sitemap.xml
 
 # Disallow admin areas
 Disallow: /admin/
 Disallow: /writable/
 Disallow: /app/
-Disallow: /tests/
+Disallow: /system/
 
-# Allow access to CSS, JS, and images
-Allow: /assets/
-Allow: /public/assets/
-Allow: /*.css
-Allow: /*.js
-Allow: /*.png
-Allow: /*.jpg
-Allow: /*.jpeg
-Allow: /*.gif
-Allow: /*.svg
-Allow: /*.ico
+# Allow important pages
+Allow: /
+Allow: /beneficiaries
+Allow: /success-stories
+Allow: /join-us
+Allow: /founders-members
+Allow: /media
+Allow: /ngo-works
+Allow: /hi/
