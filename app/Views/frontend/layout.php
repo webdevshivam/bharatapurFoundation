@@ -101,51 +101,51 @@
     </script>
 </head>
 
-<body class="font-body text-gray-900 bg-white">
+<body class="font-body text-stone-100 bg-stone-800">
     <!-- Navigation -->
-    <nav class="bg-white/95 backdrop-blur-md shadow-xl sticky top-0 z-40 border-b border-indigo-100">
+    <nav class="bg-stone-800/95 backdrop-blur-md shadow-xl sticky top-0 z-40 border-b border-amber-500/20 navbar-dark">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <div class="flex items-center">
                     <a href="<?= base_url($language ?? 'en') ?>" class="flex items-center space-x-3">
-                        <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-xl flex items-center justify-center shadow-lg">
-                            <i class="fas fa-graduation-cap text-white text-xl"></i>
+                        <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-yellow-400 rounded-xl flex items-center justify-center shadow-lg">
+                            <i class="fas fa-graduation-cap text-stone-800 text-xl"></i>
                         </div>
-                        <span class="font-display text-2xl font-bold text-gray-900">Bharatpur Foundation</span>
+                        <span class="font-display text-2xl font-bold text-stone-100">Bharatpur Foundation</span>
                     </a>
                 </div>
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="<?= base_url($language ?? 'en') ?>" 
-                       class="font-heading font-semibold text-gray-700 hover:text-indigo-600 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-indigo-50">
+                       class="font-heading font-semibold text-stone-300 hover:text-amber-400 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-stone-700/50">
                         Home
                     </a>
                     <a href="<?= base_url(($language ?? 'en') . '/beneficiaries') ?>" 
-                       class="font-heading font-semibold text-gray-700 hover:text-indigo-600 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-indigo-50">
+                       class="font-heading font-semibold text-stone-300 hover:text-amber-400 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-stone-700/50">
                         Beneficiaries
                     </a>
                     <a href="<?= base_url(($language ?? 'en') . '/success-stories') ?>" 
-                       class="font-heading font-semibold text-gray-700 hover:text-indigo-600 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-indigo-50">
+                       class="font-heading font-semibold text-stone-300 hover:text-amber-400 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-stone-700/50">
                         Success Stories
                     </a>
                     
                     <!-- About Dropdown -->
                     <div class="relative group">
-                        <button class="font-heading font-semibold text-gray-700 hover:text-indigo-600 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-indigo-50 flex items-center">
+                        <button class="font-heading font-semibold text-stone-300 hover:text-amber-400 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-stone-700/50 flex items-center">
                             About
                             <i class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                         </button>
-                        <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <div class="absolute top-full left-0 mt-2 w-56 bg-stone-800/95 backdrop-blur-lg rounded-xl shadow-xl border border-amber-500/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                             <div class="py-2">
                                 <a href="<?= base_url(($language ?? 'en') . '/founders-members') ?>" 
-                                   class="block px-4 py-3 text-sm font-heading font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 transition-colors duration-200">
+                                   class="block px-4 py-3 text-sm font-heading font-medium text-stone-300 hover:text-amber-400 hover:bg-stone-700/50 transition-colors duration-200">
                                     <i class="fas fa-users mr-2"></i>
                                     Our Founders & Members
                                 </a>
                                 <a href="<?= base_url(($language ?? 'en') . '/media') ?>" 
-                                   class="block px-4 py-3 text-sm font-heading font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 transition-colors duration-200">
+                                   class="block px-4 py-3 text-sm font-heading font-medium text-stone-300 hover:text-amber-400 hover:bg-stone-700/50 transition-colors duration-200">
                                     <i class="fas fa-newspaper mr-2"></i>
                                     Media
                                 </a>
@@ -154,18 +154,18 @@
                     </div>
                     
                     <a href="<?= base_url(($language ?? 'en') . '/join-us') ?>" 
-                       class="font-heading font-semibold text-gray-700 hover:text-indigo-600 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-indigo-50">
+                       class="font-heading font-semibold text-stone-300 hover:text-amber-400 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-stone-700/50">
                         Join Us
                     </a>
 
                     <!-- Language Switcher -->
                     <div class="flex items-center space-x-2">
                         <a href="<?= base_url('en') ?>" 
-                           class="<?= ($language ?? 'en') === 'en' ? 'bg-indigo-600 text-white shadow-lg' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' ?> px-4 py-2 rounded-xl font-accent font-semibold transition-all duration-200">
+                           class="<?= ($language ?? 'en') === 'en' ? 'bg-amber-500 text-stone-800 shadow-lg' : 'bg-stone-700 text-stone-300 hover:bg-stone-600' ?> px-4 py-2 rounded-xl font-accent font-semibold transition-all duration-200">
                             EN
                         </a>
                         <a href="<?= base_url('hi') ?>" 
-                           class="<?= ($language ?? 'en') === 'hi' ? 'bg-indigo-600 text-white shadow-lg' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' ?> px-4 py-2 rounded-xl font-accent font-semibold transition-all duration-200">
+                           class="<?= ($language ?? 'en') === 'hi' ? 'bg-amber-500 text-stone-800 shadow-lg' : 'bg-stone-700 text-stone-300 hover:bg-stone-600' ?> px-4 py-2 rounded-xl font-accent font-semibold transition-all duration-200">
                             हिं
                         </a>
                     </div>
@@ -173,7 +173,7 @@
 
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-700 hover:text-indigo-600 focus:outline-none p-2">
+                    <button id="mobile-menu-button" class="text-stone-300 hover:text-amber-400 focus:outline-none p-2">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
@@ -181,45 +181,45 @@
 
             <!-- Mobile Navigation -->
             <div id="mobile-menu" class="md:hidden hidden">
-                <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200 rounded-b-2xl shadow-lg">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-stone-800/95 backdrop-blur-lg border-t border-amber-500/20 rounded-b-2xl shadow-lg">
                     <a href="<?= base_url($language ?? 'en') ?>" 
-                       class="block font-heading font-semibold text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-xl hover:bg-indigo-50">
+                       class="block font-heading font-semibold text-stone-300 hover:text-amber-400 px-4 py-3 rounded-xl hover:bg-stone-700/50">
                         Home
                     </a>
                     <a href="<?= base_url(($language ?? 'en') . '/beneficiaries') ?>" 
-                       class="block font-heading font-semibold text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-xl hover:bg-indigo-50">
+                       class="block font-heading font-semibold text-stone-300 hover:text-amber-400 px-4 py-3 rounded-xl hover:bg-stone-700/50">
                         Beneficiaries
                     </a>
                     <a href="<?= base_url(($language ?? 'en') . '/success-stories') ?>" 
-                       class="block font-heading font-semibold text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-xl hover:bg-indigo-50">
+                       class="block font-heading font-semibold text-stone-300 hover:text-amber-400 px-4 py-3 rounded-xl hover:bg-stone-700/50">
                         Success Stories
                     </a>
                     <div class="px-4 py-2">
-                        <p class="text-xs text-gray-500 font-medium mb-2">About</p>
+                        <p class="text-xs text-amber-400 font-medium mb-2">About</p>
                         <a href="<?= base_url(($language ?? 'en') . '/founders-members') ?>" 
-                           class="block font-heading font-medium text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-lg hover:bg-indigo-50 text-sm">
+                           class="block font-heading font-medium text-stone-400 hover:text-amber-400 px-3 py-2 rounded-lg hover:bg-stone-700/50 text-sm">
                             <i class="fas fa-users mr-2"></i>
                             Our Founders & Members
                         </a>
                         <a href="<?= base_url(($language ?? 'en') . '/media') ?>" 
-                           class="block font-heading font-medium text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-lg hover:bg-indigo-50 text-sm">
+                           class="block font-heading font-medium text-stone-400 hover:text-amber-400 px-3 py-2 rounded-lg hover:bg-stone-700/50 text-sm">
                             <i class="fas fa-newspaper mr-2"></i>
                             Media
                         </a>
                     </div>
                     <a href="<?= base_url(($language ?? 'en') . '/join-us') ?>" 
-                       class="block font-heading font-semibold text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-xl hover:bg-indigo-50">
+                       class="block font-heading font-semibold text-stone-300 hover:text-amber-400 px-4 py-3 rounded-xl hover:bg-stone-700/50">
                         Join Us
                     </a>
 
                     <!-- Mobile Language Switcher -->
                     <div class="flex space-x-2 px-4 py-3">
                         <a href="<?= base_url('en') ?>" 
-                           class="<?= ($language ?? 'en') === 'en' ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-700' ?> px-4 py-2 rounded-xl font-accent font-semibold">
+                           class="<?= ($language ?? 'en') === 'en' ? 'bg-amber-500 text-stone-800' : 'bg-stone-700 text-stone-300' ?> px-4 py-2 rounded-xl font-accent font-semibold">
                             EN
                         </a>
                         <a href="<?= base_url('hi') ?>" 
-                           class="<?= ($language ?? 'en') === 'hi' ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-700' ?> px-4 py-2 rounded-xl font-accent font-semibold">
+                           class="<?= ($language ?? 'en') === 'hi' ? 'bg-amber-500 text-stone-800' : 'bg-stone-700 text-stone-300' ?> px-4 py-2 rounded-xl font-accent font-semibold">
                             हिं
                         </a>
                     </div>
@@ -234,32 +234,32 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white">
+    <footer class="footer-dark">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Foundation Info -->
                 <div class="lg:col-span-2">
                     <div class="flex items-center space-x-3 mb-6">
-                        <div class="w-12 h-12 bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl flex items-center justify-center">
-                            <i class="fas fa-graduation-cap text-white text-xl"></i>
+                        <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-yellow-400 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-stone-800 text-xl"></i>
                         </div>
-                        <span class="font-display text-2xl font-bold">Bharatpur Foundation</span>
+                        <span class="font-display text-2xl font-bold text-stone-100">Bharatpur Foundation</span>
                     </div>
                     <p class="text-gray-300 text-lg leading-relaxed mb-6 font-accent">
                         Transforming lives through education and creating sustainable impact in underprivileged communities. 
                         Every contribution creates lasting change.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary-600 transition-colors duration-200">
+                        <a href="#" class="w-10 h-10 bg-stone-700 rounded-lg flex items-center justify-center hover:bg-amber-500 hover:text-stone-800 transition-all duration-200">
                             <i class="fab fa-facebook text-lg"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary-600 transition-colors duration-200">
+                        <a href="#" class="w-10 h-10 bg-stone-700 rounded-lg flex items-center justify-center hover:bg-amber-500 hover:text-stone-800 transition-all duration-200">
                             <i class="fab fa-twitter text-lg"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary-600 transition-colors duration-200">
+                        <a href="#" class="w-10 h-10 bg-stone-700 rounded-lg flex items-center justify-center hover:bg-amber-500 hover:text-stone-800 transition-all duration-200">
                             <i class="fab fa-instagram text-lg"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary-600 transition-colors duration-200">
+                        <a href="#" class="w-10 h-10 bg-stone-700 rounded-lg flex items-center justify-center hover:bg-amber-500 hover:text-stone-800 transition-all duration-200">
                             <i class="fab fa-linkedin text-lg"></i>
                         </a>
                     </div>
