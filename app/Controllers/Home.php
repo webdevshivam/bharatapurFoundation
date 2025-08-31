@@ -37,9 +37,25 @@ class Home extends BaseController
         $stories = $successStoryModel->getPublishedStories(3);
         if ($language === 'hi' && !empty($stories)) {
             foreach ($stories as &$story) {
-                $story['title'] = translate_dynamic_content($story['title'], 'hi');
-                $story['content'] = translate_dynamic_content($story['content'], 'hi');
-                $story['description'] = translate_dynamic_content($story['description'], 'hi');
+                // Use correct field names from database schema
+                if (isset($story['name'])) {
+                    $story['name'] = translate_dynamic_content($story['name'], 'hi');
+                }
+                if (isset($story['story'])) {
+                    $story['story'] = translate_dynamic_content($story['story'], 'hi');
+                }
+                if (isset($story['achievements'])) {
+                    $story['achievements'] = translate_dynamic_content($story['achievements'], 'hi');
+                }
+                if (isset($story['current_position'])) {
+                    $story['current_position'] = translate_dynamic_content($story['current_position'], 'hi');
+                }
+                if (isset($story['company'])) {
+                    $story['company'] = translate_dynamic_content($story['company'], 'hi');
+                }
+                if (isset($story['education'])) {
+                    $story['education'] = translate_dynamic_content($story['education'], 'hi');
+                }
             }
         }
 
