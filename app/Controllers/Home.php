@@ -380,6 +380,66 @@ class Home extends BaseController
         return view('frontend/ngo_works', $data);
     }
 
+    public function founders_members($lang = 'en')
+    {
+        $language = $this->setLanguage($lang);
+
+        $pageTranslations = [
+            'en' => [
+                'page_title' => 'Founders & Members',
+                'founders_title' => 'Our Founders',
+                'founders_subtitle' => 'Meet the visionary leaders',
+                'founders_description' => 'The passionate individuals who founded Bharatpur Foundation to transform lives through education.'
+            ],
+            'hi' => [
+                'page_title' => 'संस्थापक और सदस्य',
+                'founders_title' => 'हमारे संस्थापक',
+                'founders_subtitle' => 'दूरदर्शी नेताओं से मिलें',
+                'founders_description' => 'वे भावुक व्यक्ति जिन्होंने शिक्षा के माध्यम से जीवन को बदलने के लिए भरतपुर फाउंडेशन की स्थापना की।'
+            ]
+        ];
+
+        $allTranslations = array_merge($this->translations[$language], $pageTranslations[$language]);
+
+        $data = [
+            'title' => $pageTranslations[$language]['page_title'],
+            'language' => $language,
+            'translations' => $allTranslations
+        ];
+
+        return view('frontend/founders_members', $data);
+    }
+
+    public function join_us($lang = 'en')
+    {
+        $language = $this->setLanguage($lang);
+
+        $pageTranslations = [
+            'en' => [
+                'page_title' => 'Join Us',
+                'join_title' => 'Join Our Mission',
+                'join_subtitle' => 'Be part of the change',
+                'join_description' => 'Help us transform students into industry professionals through our unique approach.'
+            ],
+            'hi' => [
+                'page_title' => 'हमारे साथ जुड़ें',
+                'join_title' => 'हमारे मिशन में शामिल हों',
+                'join_subtitle' => 'बदलाव का हिस्सा बनें',
+                'join_description' => 'हमारे अनूठे दृष्टिकोण के माध्यम से छात्रों को उद्योग पेशेवरों में बदलने में हमारी सहायता करें।'
+            ]
+        ];
+
+        $allTranslations = array_merge($this->translations[$language], $pageTranslations[$language]);
+
+        $data = [
+            'title' => $pageTranslations[$language]['page_title'],
+            'language' => $language,
+            'translations' => $allTranslations
+        ];
+
+        return view('frontend/join_us', $data);
+    }
+
     public function loadMoreBeneficiaries()
     {
         $beneficiaryModel = new BeneficiaryModel();

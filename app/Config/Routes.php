@@ -14,6 +14,10 @@ $routes->get('/en/success-stories', 'Home::success_stories/en');
 $routes->get('/hi/success-stories', 'Home::success_stories/hi');
 $routes->get('/en/ngo-works', 'Home::ngo_works/en');
 $routes->get('/hi/ngo-works', 'Home::ngo_works/hi');
+$routes->get('/en/founders-members', 'Home::founders_members/en');
+$routes->get('/hi/founders-members', 'Home::founders_members/hi');
+$routes->get('/en/join-us', 'Home::join_us/en');
+$routes->get('/hi/join-us', 'Home::join_us/hi');
 
 // Frontend routes
 $routes->get('beneficiaries', 'Home::beneficiaries');
@@ -21,6 +25,8 @@ $routes->get('beneficiaries/load-more', 'Home::loadMoreBeneficiaries');
 $routes->get('uploads/beneficiaries/(:any)', 'Home::serveBeneficiaryImage/$1');
 $routes->get('success-stories', 'Home::success_stories');
 $routes->get('ngo-works', 'Home::ngo_works');
+$routes->get('founders-members', 'Home::founders_members');
+$routes->get('join-us', 'Home::join_us');
 
 // Admin routes
 $routes->group('admin', function($routes) {
