@@ -24,9 +24,9 @@
 
             <!-- Main Headline -->
             <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-8">
-                Transform Lives Through 
+                We Transform Underprivileged Students Into 
                 <span class="bg-gradient-to-r from-primary-600 to-accent-500 bg-clip-text text-transparent">
-                    Education
+                    Job-Ready Professionals
                 </span>
             </h1>
 
@@ -36,21 +36,10 @@
             </p>
 
             <!-- Official Website Notice -->
-            <div class="bg-amber-50 border-2 border-amber-200 rounded-2xl p-6 mb-12 shadow-lg">
-                <div class="flex items-center justify-center space-x-3 mb-3">
-                    <i class="fas fa-info-circle text-amber-600 text-xl"></i>
-                    <h3 class="font-heading text-lg font-bold text-amber-800">Official Website</h3>
-                </div>
-                <p class="font-accent text-amber-700 text-center mb-4">
-                    This is an unofficial version. Visit our official website for complete information and donations.
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-8 shadow-sm">
+                <p class="font-accent text-amber-700 text-center text-sm">
+                    This is an unofficial version. Visit our <a href="https://nayantaratrust.com/" target="_blank" class="text-amber-800 font-semibold hover:underline">official website</a> for complete information.
                 </p>
-                <div class="text-center">
-                    <a href="https://nayantaratrust.com/" target="_blank" 
-                       class="inline-flex items-center bg-amber-600 text-white px-8 py-3 rounded-xl font-heading font-semibold hover:bg-amber-700 transition-all duration-200 shadow-lg hover:shadow-xl">
-                        <i class="fas fa-external-link-alt mr-2"></i>
-                        Visit Official Website
-                    </a>
-                </div>
             </div>
 
             <!-- CTA Buttons -->
@@ -198,7 +187,7 @@
             </p>
         </div>
 
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div class="text-center group animate-fade-in-up">
                 <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-all duration-300 group-hover:scale-105">
                     <div class="w-12 h-12 bg-gradient-to-br from-primary-400 to-primary-600 rounded-xl flex items-center justify-center mx-auto mb-4">
@@ -232,16 +221,7 @@
                 </div>
             </div>
 
-            <div class="text-center group animate-fade-in-up" style="animation-delay: 0.3s;">
-                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-all duration-300 group-hover:scale-105">
-                    <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-building text-white text-xl"></i>
-                    </div>
-                    <div class="font-display text-3xl md:text-4xl font-bold mb-2">25+</div>
-                    <div class="font-accent text-gray-300 font-medium">Partner Companies</div>
-                    <div class="font-accent text-xs text-gray-400 mt-1">Hiring opportunities</div>
-                </div>
-            </div>
+            
         </div>
 
         <!-- Transparency Link -->

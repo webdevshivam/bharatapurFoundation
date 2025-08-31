@@ -130,6 +130,33 @@
                        class="font-heading font-semibold text-gray-700 hover:text-indigo-600 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-indigo-50">
                         Success Stories
                     </a>
+                    
+                    <!-- About Dropdown -->
+                    <div class="relative group">
+                        <button class="font-heading font-semibold text-gray-700 hover:text-indigo-600 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-indigo-50 flex items-center">
+                            About
+                            <i class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
+                        </button>
+                        <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <div class="py-2">
+                                <a href="<?= base_url(($language ?? 'en') . '/founders-members') ?>" 
+                                   class="block px-4 py-3 text-sm font-heading font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 transition-colors duration-200">
+                                    <i class="fas fa-users mr-2"></i>
+                                    Our Founders & Members
+                                </a>
+                                <a href="<?= base_url(($language ?? 'en') . '/media') ?>" 
+                                   class="block px-4 py-3 text-sm font-heading font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 transition-colors duration-200">
+                                    <i class="fas fa-newspaper mr-2"></i>
+                                    Media
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="<?= base_url(($language ?? 'en') . '/join-us') ?>" 
+                       class="font-heading font-semibold text-gray-700 hover:text-indigo-600 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-indigo-50">
+                        Join Us
+                    </a>
 
                     <!-- Language Switcher -->
                     <div class="flex items-center space-x-2">
@@ -166,6 +193,23 @@
                     <a href="<?= base_url(($language ?? 'en') . '/success-stories') ?>" 
                        class="block font-heading font-semibold text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-xl hover:bg-indigo-50">
                         Success Stories
+                    </a>
+                    <div class="px-4 py-2">
+                        <p class="text-xs text-gray-500 font-medium mb-2">About</p>
+                        <a href="<?= base_url(($language ?? 'en') . '/founders-members') ?>" 
+                           class="block font-heading font-medium text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-lg hover:bg-indigo-50 text-sm">
+                            <i class="fas fa-users mr-2"></i>
+                            Our Founders & Members
+                        </a>
+                        <a href="<?= base_url(($language ?? 'en') . '/media') ?>" 
+                           class="block font-heading font-medium text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-lg hover:bg-indigo-50 text-sm">
+                            <i class="fas fa-newspaper mr-2"></i>
+                            Media
+                        </a>
+                    </div>
+                    <a href="<?= base_url(($language ?? 'en') . '/join-us') ?>" 
+                       class="block font-heading font-semibold text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-xl hover:bg-indigo-50">
+                        Join Us
                     </a>
 
                     <!-- Mobile Language Switcher -->

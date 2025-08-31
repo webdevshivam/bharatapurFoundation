@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 
 <!-- Hero Section -->
-<section class="relative min-h-[70vh] bg-gradient-to-br from-emerald-50 via-white to-teal-50 flex items-center overflow-hidden">
+<section class="relative min-h-[70vh] bg-gradient-to-br from-emerald-50 via-white to-teal-50 flex items-center overflow-hidden -mt-16 pt-16">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-5">
         <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 25%, #10b981 2px, transparent 2px), radial-gradient(circle at 75% 75%, #06b6d4 1px, transparent 1px); background-size: 50px 50px, 30px 30px;"></div>
@@ -117,20 +117,7 @@
 
                             <!-- Read More Button -->
                             <div class="mt-6 pt-4 border-t border-gray-100">
-                                <button onclick="viewStory(
-                                    <?= json_encode($story['name'] ?? '') ?>, 
-                                    <?= json_encode($story['story'] ?? '') ?>, 
-                                    <?= json_encode($story['name'] ?? '') ?>, 
-                                    <?= json_encode(date('M j, Y', strtotime($story['created_at'] ?? 'now'))) ?>, 
-                                    <?= json_encode(!empty($story['image']) ? base_url('uploads/success_stories/' . $story['image']) : '') ?>,
-                                    <?= json_encode($story['current_position'] ?? '') ?>,
-                                    <?= json_encode($story['company'] ?? '') ?>,
-                                    <?= json_encode($story['linkedin_url'] ?? '') ?>,
-                                    <?= json_encode($story['company_link'] ?? '') ?>,
-                                    <?= json_encode($story['education'] ?? '') ?>,
-                                    <?= json_encode($story['city'] ?? '') ?>,
-                                    <?= json_encode($story['state'] ?? '') ?>
-                                )" class="w-full bg-emerald-600 text-white py-3 rounded-xl font-semibold hover:bg-emerald-700 transition-all duration-200 flex items-center justify-center group">
+                                <button onclick="viewStory(<?= htmlspecialchars(json_encode($story['name'] ?? ''), ENT_QUOTES) ?>, <?= htmlspecialchars(json_encode($story['story'] ?? ''), ENT_QUOTES) ?>, <?= htmlspecialchars(json_encode($story['name'] ?? ''), ENT_QUOTES) ?>, <?= htmlspecialchars(json_encode(date('M j, Y', strtotime($story['created_at'] ?? 'now'))), ENT_QUOTES) ?>, <?= htmlspecialchars(json_encode(!empty($story['image']) ? base_url('uploads/success_stories/' . $story['image']) : ''), ENT_QUOTES) ?>, <?= htmlspecialchars(json_encode($story['current_position'] ?? ''), ENT_QUOTES) ?>, <?= htmlspecialchars(json_encode($story['company'] ?? ''), ENT_QUOTES) ?>, <?= htmlspecialchars(json_encode($story['linkedin_url'] ?? ''), ENT_QUOTES) ?>, <?= htmlspecialchars(json_encode($story['company_link'] ?? ''), ENT_QUOTES) ?>, <?= htmlspecialchars(json_encode($story['education'] ?? ''), ENT_QUOTES) ?>, <?= htmlspecialchars(json_encode($story['city'] ?? ''), ENT_QUOTES) ?>, <?= htmlspecialchars(json_encode($story['state'] ?? ''), ENT_QUOTES) ?>)" class="w-full bg-emerald-600 text-white py-3 rounded-xl font-semibold hover:bg-emerald-700 transition-all duration-200 flex items-center justify-center group">
                                     Read Full Story
                                     <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-200"></i>
                                 </button>

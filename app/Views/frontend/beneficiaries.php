@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 
 <!-- Hero Section -->
-<section class="relative min-h-[70vh] bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center overflow-hidden">
+<section class="relative min-h-[70vh] bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center overflow-hidden -mt-16 pt-16">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-5">
         <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 25%, #6366f1 2px, transparent 2px), radial-gradient(circle at 75% 75%, #8b5cf6 1px, transparent 1px); background-size: 50px 50px, 30px 30px;"></div>
@@ -36,7 +36,7 @@
             </p>
 
             <!-- Quick Stats -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-12">
                 <div class="bg-white/90 backdrop-blur-sm rounded-3xl p-6 shadow-xl border border-indigo-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                     <div class="text-3xl md:text-4xl font-bold text-indigo-600 mb-2"><?= isset($total_beneficiaries) ? $total_beneficiaries : (is_array($beneficiaries) ? count($beneficiaries) : 0) ?></div>
                     <div class="text-sm text-gray-600 font-medium">Total Students</div>
@@ -49,10 +49,7 @@
                     <div class="text-3xl md:text-4xl font-bold text-emerald-600 mb-2"><?= $graduates ?? '0' ?></div>
                     <div class="text-sm text-gray-600 font-medium">Graduates</div>
                 </div>
-                <div class="bg-white/90 backdrop-blur-sm rounded-3xl p-6 shadow-xl border border-pink-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="text-3xl md:text-4xl font-bold text-pink-600 mb-2"><?= $institutions ?? '10+' ?></div>
-                    <div class="text-sm text-gray-600 font-medium">Partner Institutions</div>
-                </div>
+                
             </div>
             <!-- Added information -->
             <p class="text-lg text-gray-700 mt-8">This website is an unofficial version. For the official site, please visit <a href="https://nayantaratrust.com/" target="_blank" class="text-indigo-600 font-semibold hover:underline">nayantaratrust.com</a>.</p>
@@ -186,11 +183,7 @@
                             </div>
 
                             <!-- Card Footer -->
-                            <div class="flex items-center justify-between mt-6 pt-6 border-t border-gray-100">
-                                <span class="text-xs text-gray-500">
-                                    <i class="fas fa-user-plus mr-1"></i>
-                                    Joined <?= date('M Y', strtotime($beneficiary['created_at'] ?? 'now')) ?>
-                                </span>
+                            <div class="flex items-center justify-end mt-6 pt-6 border-t border-gray-100">
                                 <button onclick="viewBeneficiary(<?= htmlspecialchars(json_encode([
                                     'name' => $beneficiary['name'] ?? '',
                                     'course' => $beneficiary['course'] ?? '',
