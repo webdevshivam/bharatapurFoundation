@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Models;
@@ -14,9 +13,16 @@ class DonorApplicationModel extends Model
     protected $useSoftDeletes = false;
     protected $protectFields = true;
     protected $allowedFields = [
-        'name', 'email', 'phone', 'organization', 'donation_type',
-        'donation_amount', 'donation_frequency', 'preferred_causes',
-        'message', 'status'
+        'name',
+        'email',
+        'phone',
+        'organization',
+        'donation_type',
+        'donation_amount',
+        'donation_frequency',
+        'preferred_causes',
+        'message',
+        'status'
     ];
 
     protected $useTimestamps = true;
@@ -33,7 +39,7 @@ class DonorApplicationModel extends Model
     public function getApplicationsByStatus($status = 'pending')
     {
         return $this->where('status', $status)
-                    ->orderBy('created_at', 'DESC')
-                    ->findAll();
+            ->orderBy('created_at', 'DESC')
+            ->findAll();
     }
 }

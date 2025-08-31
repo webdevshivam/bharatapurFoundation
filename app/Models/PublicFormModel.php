@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Models;
@@ -44,21 +43,21 @@ class PublicFormModel extends Model
     public function getActiveForms($type = null)
     {
         $builder = $this->where('status', 'active')
-                       ->where('valid_until >', date('Y-m-d H:i:s'));
-        
+            ->where('valid_until >', date('Y-m-d H:i:s'));
+
         if ($type) {
             $builder->where('form_type', $type);
         }
-        
+
         return $builder->findAll();
     }
 
     public function getFormByToken($token)
     {
         return $this->where('public_url_token', $token)
-                   ->where('status', 'active')
-                   ->where('valid_until >', date('Y-m-d H:i:s'))
-                   ->first();
+            ->where('status', 'active')
+            ->where('valid_until >', date('Y-m-d H:i:s'))
+            ->first();
     }
 
     public function incrementSubmissionCount($id)

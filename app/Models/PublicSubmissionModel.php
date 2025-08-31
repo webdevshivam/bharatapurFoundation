@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Models;
@@ -39,19 +38,19 @@ class PublicSubmissionModel extends Model
     public function getSubmissionsByForm($formId, $status = null)
     {
         $builder = $this->where('public_form_id', $formId);
-        
+
         if ($status) {
             $builder->where('status', $status);
         }
-        
+
         return $builder->orderBy('submitted_at', 'DESC')->findAll();
     }
 
     public function getPendingSubmissions()
     {
         return $this->where('status', 'pending')
-                   ->orderBy('submitted_at', 'DESC')
-                   ->findAll();
+            ->orderBy('submitted_at', 'DESC')
+            ->findAll();
     }
 
     protected function beforeInsert(array $data)

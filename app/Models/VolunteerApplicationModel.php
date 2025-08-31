@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Models;
@@ -14,9 +13,18 @@ class VolunteerApplicationModel extends Model
     protected $useSoftDeletes = false;
     protected $protectFields = true;
     protected $allowedFields = [
-        'name', 'email', 'phone', 'age', 'profession', 'experience',
-        'skills', 'availability', 'motivation', 'previous_volunteer_work',
-        'preferred_activities', 'status'
+        'name',
+        'email',
+        'phone',
+        'age',
+        'profession',
+        'experience',
+        'skills',
+        'availability',
+        'motivation',
+        'previous_volunteer_work',
+        'preferred_activities',
+        'status'
     ];
 
     protected $useTimestamps = true;
@@ -33,7 +41,7 @@ class VolunteerApplicationModel extends Model
     public function getApplicationsByStatus($status = 'pending')
     {
         return $this->where('status', $status)
-                    ->orderBy('created_at', 'DESC')
-                    ->findAll();
+            ->orderBy('created_at', 'DESC')
+            ->findAll();
     }
 }

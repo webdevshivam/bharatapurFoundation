@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Models;
@@ -14,9 +13,19 @@ class StudentApplicationModel extends Model
     protected $useSoftDeletes = false;
     protected $protectFields = true;
     protected $allowedFields = [
-        'name', 'email', 'phone', 'age', 'course', 'institution', 
-        'year_of_study', 'academic_percentage', 'family_income', 
-        'financial_need', 'career_goals', 'why_apply', 'status'
+        'name',
+        'email',
+        'phone',
+        'age',
+        'course',
+        'institution',
+        'year_of_study',
+        'academic_percentage',
+        'family_income',
+        'financial_need',
+        'career_goals',
+        'why_apply',
+        'status'
     ];
 
     protected $useTimestamps = true;
@@ -34,7 +43,7 @@ class StudentApplicationModel extends Model
     public function getApplicationsByStatus($status = 'pending')
     {
         return $this->where('status', $status)
-                    ->orderBy('created_at', 'DESC')
-                    ->findAll();
+            ->orderBy('created_at', 'DESC')
+            ->findAll();
     }
 }

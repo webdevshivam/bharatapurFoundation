@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Controllers;
@@ -12,7 +11,7 @@ class JoinUsController extends BaseController
     public function submitStudentForm()
     {
         $studentModel = new StudentApplicationModel();
-        
+
         $data = [
             'name' => $this->request->getPost('name'),
             'email' => $this->request->getPost('email'),
@@ -45,7 +44,7 @@ class JoinUsController extends BaseController
     public function submitVolunteerForm()
     {
         $volunteerModel = new VolunteerApplicationModel();
-        
+
         $data = [
             'name' => $this->request->getPost('name'),
             'email' => $this->request->getPost('email'),
@@ -77,7 +76,7 @@ class JoinUsController extends BaseController
     public function submitDonorForm()
     {
         $donorModel = new DonorApplicationModel();
-        
+
         $data = [
             'name' => $this->request->getPost('name'),
             'email' => $this->request->getPost('email'),
