@@ -1,115 +1,58 @@
 
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-    
-    <!-- Home Page -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://your-domain.com/en</loc>
+        <loc><?= base_url() ?></loc>
         <lastmod><?= date('Y-m-d') ?></lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en"/>
-        <xhtml:link rel="alternate" hreflang="hi" href="https://your-domain.com/hi"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://your-domain.com/en"/>
     </url>
     <url>
-        <loc>https://your-domain.com/hi</loc>
+        <loc><?= base_url('beneficiaries') ?></loc>
+        <lastmod><?= date('Y-m-d') ?></lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc><?= base_url('success-stories') ?></loc>
+        <lastmod><?= date('Y-m-d') ?></lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc><?= base_url('join-us') ?></loc>
+        <lastmod><?= date('Y-m-d') ?></lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc><?= base_url('founders-members') ?></loc>
+        <lastmod><?= date('Y-m-d') ?></lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc><?= base_url('media') ?></loc>
+        <lastmod><?= date('Y-m-d') ?></lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc><?= base_url('hi') ?></loc>
         <lastmod><?= date('Y-m-d') ?></lastmod>
         <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en"/>
-        <xhtml:link rel="alternate" hreflang="hi" href="https://your-domain.com/hi"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://your-domain.com/en"/>
-    </url>
-    
-    <!-- Beneficiaries Page -->
-    <url>
-        <loc>https://your-domain.com/en/beneficiaries</loc>
-        <lastmod><?= date('Y-m-d') ?></lastmod>
-        <changefreq>weekly</changefreq>
         <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/beneficiaries"/>
-        <xhtml:link rel="alternate" hreflang="hi" href="https://your-domain.com/hi/beneficiaries"/>
     </url>
     <url>
-        <loc>https://your-domain.com/hi/beneficiaries</loc>
+        <loc><?= base_url('hi/beneficiaries') ?></loc>
         <lastmod><?= date('Y-m-d') ?></lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/beneficiaries"/>
-        <xhtml:link rel="alternate" hreflang="hi" href="https://your-domain.com/hi/beneficiaries"/>
-    </url>
-    
-    <!-- Success Stories Page -->
-    <url>
-        <loc>https://your-domain.com/en/success-stories</loc>
-        <lastmod><?= date('Y-m-d') ?></lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/success-stories"/>
-        <xhtml:link rel="alternate" hreflang="hi" href="https://your-domain.com/hi/success-stories"/>
-    </url>
-    <url>
-        <loc>https://your-domain.com/hi/success-stories</loc>
-        <lastmod><?= date('Y-m-d') ?></lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/success-stories"/>
-        <xhtml:link rel="alternate" hreflang="hi" href="https://your-domain.com/hi/success-stories"/>
-    </url>
-    
-    <!-- Founders Page -->
-    <url>
-        <loc>https://your-domain.com/en/founders-members</loc>
-        <lastmod><?= date('Y-m-d') ?></lastmod>
-        <changefreq>monthly</changefreq>
         <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/founders-members"/>
-        <xhtml:link rel="alternate" hreflang="hi" href="https://your-domain.com/hi/founders-members"/>
     </url>
     <url>
-        <loc>https://your-domain.com/hi/founders-members</loc>
-        <lastmod><?= date('Y-m-d') ?></lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/founders-members"/>
-        <xhtml:link rel="alternate" hreflang="hi" href="https://your-domain.com/hi/founders-members"/>
-    </url>
-    
-    <!-- Join Us Page -->
-    <url>
-        <loc>https://your-domain.com/en/join-us</loc>
-        <lastmod><?= date('Y-m-d') ?></lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/join-us"/>
-        <xhtml:link rel="alternate" hreflang="hi" href="https://your-domain.com/hi/join-us"/>
-    </url>
-    <url>
-        <loc>https://your-domain.com/hi/join-us</loc>
-        <lastmod><?= date('Y-m-d') ?></lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/join-us"/>
-        <xhtml:link rel="alternate" hreflang="hi" href="https://your-domain.com/hi/join-us"/>
-    </url>
-    
-    <!-- Media Page -->
-    <url>
-        <loc>https://your-domain.com/en/media</loc>
+        <loc><?= base_url('hi/success-stories') ?></loc>
         <lastmod><?= date('Y-m-d') ?></lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/media"/>
-        <xhtml:link rel="alternate" hreflang="hi" href="https://your-domain.com/hi/media"/>
-    </url>
-    <url>
-        <loc>https://your-domain.com/hi/media</loc>
-        <lastmod><?= date('Y-m-d') ?></lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/media"/>
-        <xhtml:link rel="alternate" hreflang="hi" href="https://your-domain.com/hi/media"/>
+        <priority>0.8</priority>
     </url>
 </urlset>
