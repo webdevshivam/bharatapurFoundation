@@ -14,11 +14,6 @@ class Home extends BaseController
         helper('translation');
     }
 
-    // This will now use the smart_translate helper function
-        // which combines manual translations with Google Translate fallback
-        return [];
-    }
-
     private function setLanguage($lang)
     {
         $this->language = in_array($lang, ['en', 'hi']) ? $lang : 'en';
