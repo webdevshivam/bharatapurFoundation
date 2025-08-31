@@ -28,6 +28,11 @@ $routes->get('ngo-works', 'Home::ngo_works');
 $routes->get('founders-members', 'Home::founders_members');
 $routes->get('join-us', 'Home::join_us');
 
+// Join Us form submission routes
+$routes->post('join-us/submit-student', 'JoinUsController::submitStudentForm');
+$routes->post('join-us/submit-volunteer', 'JoinUsController::submitVolunteerForm');
+$routes->post('join-us/submit-donor', 'JoinUsController::submitDonorForm');
+
 // Admin routes
 $routes->group('admin', function($routes) {
     $routes->get('/', 'Admin::index', ['filter' => 'auth']);
