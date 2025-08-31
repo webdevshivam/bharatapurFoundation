@@ -2,6 +2,9 @@
 
 <?= $this->section('content') ?>
 
+<!-- Include Schema Markup -->
+<?= view('frontend/home_schema', compact('translate', 'language', 'title', 'meta_description')) ?>
+
 <!-- Additional Structured Data for Homepage -->
 <script type="application/ld+json">
 {
@@ -53,16 +56,12 @@
 </script>
 
 <!-- Hero Section -->
-<section class="relative min-h-screen bg-white flex items-center overflow-hidden">
-    <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-5">
-        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 25%, #0ea5e9 2px, transparent 2px), radial-gradient(circle at 75% 75%, #f59e0b 1px, transparent 1px); background-size: 50px 50px, 30px 30px;"></div>
+<section class="relative min-h-screen bg-primary-800 flex items-center overflow-hidden">
+    <!-- Background Image or Gradient -->
+    <div class="absolute inset-0 z-0">
+        <img src="<?= base_url('assets/images/hero-bg.jpg') ?>" alt="Background Image" class="w-full h-full object-cover opacity-30">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary-800 to-primary-900 opacity-70"></div>
     </div>
-
-    <!-- Floating Elements with Enhanced Shadows -->
-    <div class="absolute top-20 left-10 w-20 h-20 bg-primary-100 rounded-full animate-bounce-subtle opacity-60 shadow-xl"></div>
-    <div class="absolute top-40 right-20 w-16 h-16 bg-accent-100 rounded-full animate-bounce-subtle opacity-60 shadow-lg" style="animation-delay: 1s;"></div>
-    <div class="absolute bottom-40 left-20 w-12 h-12 bg-primary-200 rounded-full animate-bounce-subtle opacity-60 shadow-md" style="animation-delay: 2s;"></div>
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-6xl mx-auto text-center">
@@ -72,73 +71,49 @@
                 Registered NGO • Audited Impact
             </div>
 
-            <!-- Main Headline -->
-            <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-8">
-                We Transform Underprivileged Students Into 
-                <span class="bg-gradient-to-r from-primary-600 to-accent-500 bg-clip-text text-transparent">
-                    Job-Ready Professionals
-                </span>
-            </h1>
-
-            <!-- Supporting Text -->
-            <p class="font-accent text-xl md:text-2xl text-gray-600 leading-relaxed mb-12 max-w-4xl mx-auto">
-                Our objective is clear: We transform underprivileged students into job-ready professionals through comprehensive education, mentoring, and career placement support.
-            </p>
-
-            <!-- Official Website Notice -->
-            <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-8 shadow-sm">
-                <p class="font-accent text-amber-700 text-center text-sm">
-                    This is an unofficial version. Visit our <a href="https://nayantaratrust.com/" target="_blank" class="text-amber-800 font-semibold hover:underline">official website</a> for complete information.
+            <!-- Content with Translations -->
+            <div class="text-center lg:text-left lg:max-w-2xl animate-fade-in-up">
+                <h1 class="font-display text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+                    <?= $translate('hero_title', 'Bharatpur Foundation') ?>
+                </h1>
+                <h2 class="font-heading text-xl lg:text-2xl text-indigo-100 mb-6 font-semibold">
+                    <?= $translate('hero_tagline', 'Transforming Students into Professionals') ?>
+                </h2>
+                <p class="font-accent text-lg text-gray-200 mb-8 leading-relaxed">
+                    <?= $translate('hero_description', 'Beyond financial aid - we create careers through education, mentoring, and professional development.') ?>
                 </p>
             </div>
 
             <!-- CTA Buttons -->
-            <div class="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-                <a href="<?= base_url($language . '/beneficiaries') ?>" class="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-10 py-5 rounded-xl font-heading font-semibold hover:from-primary-700 hover:to-primary-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center text-lg">
-                    <i class="fas fa-users mr-3"></i>
-                    Meet Students
+            <div class="flex flex-col sm:flex-row items-center gap-4 mt-8 justify-center lg:justify-start">
+                <a href="<?= base_url(($language ?? 'en') . '/join-us') ?>" 
+                   class="bg-white text-indigo-600 px-8 py-4 rounded-2xl font-heading font-bold text-lg hover:bg-gray-50 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center">
+                    <i class="fas fa-users mr-2"></i>
+                    <?= $translate('support_students', 'Support Students') ?>
                 </a>
-                <a href="<?= base_url($language . '/success-stories') ?>" class="bg-white border-2 border-gray-200 text-gray-700 px-10 py-5 rounded-xl font-heading font-semibold hover:border-primary-300 hover:text-primary-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-1 flex items-center justify-center text-lg">
-                    <i class="fas fa-star mr-3"></i>
-                    Success Stories
+                <a href="<?= base_url(($language ?? 'en') . '/beneficiaries') ?>" 
+                   class="border-2 border-white text-white px-8 py-4 rounded-2xl font-heading font-bold text-lg hover:bg-white hover:text-indigo-600 transition-all duration-200 flex items-center">
+                    <i class="fas fa-graduation-cap mr-2"></i>
+                    <?= $translate('meet_beneficiaries', 'Meet Beneficiaries') ?>
                 </a>
-            </div>
-
-            <!-- Trust Indicators -->
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-                <div class="text-center bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-primary-100 hover:shadow-xl transition-all duration-300">
-                    <div class="font-display text-3xl md:text-4xl font-bold text-primary-600 mb-2">500+</div>
-                    <div class="font-accent text-gray-600">Students Supported</div>
-                </div>
-                <div class="text-center bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-accent-100 hover:shadow-xl transition-all duration-300">
-                    <div class="font-display text-3xl md:text-4xl font-bold text-accent-500 mb-2">95%</div>
-                    <div class="font-accent text-gray-600">Employment Rate</div>
-                </div>
-                <div class="text-center bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-emerald-100 hover:shadow-xl transition-all duration-300">
-                    <div class="font-display text-3xl md:text-4xl font-bold text-emerald-500 mb-2">100+</div>
-                    <div class="font-accent text-gray-600">Industry Mentors</div>
-                </div>
-                <div class="text-center bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-purple-100 hover:shadow-xl transition-all duration-300">
-                    <div class="font-display text-3xl md:text-4xl font-bold text-purple-500 mb-2">₹50L+</div>
-                    <div class="font-accent text-gray-600">Scholarships Given</div>
-                </div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Three Pillars Section -->
-<section class="py-20 bg-white border-t-4 border-gray-100">
+<section class="py-20 bg-gradient-to-br from-gray-50 to-white border-t-4 border-gray-100">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 animate-fade-in-up">
-            <div class="inline-block bg-gradient-to-r from-primary-50 to-accent-50 rounded-2xl p-8 shadow-lg border border-primary-100 mb-8">
-                <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                    Complete Student Development
-                </h2>
-                <p class="font-accent text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                    Three comprehensive pillars that ensure every student receives world-class support for their academic and professional journey
-                </p>
-            </div>
+            <h2 class="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                <?= $translate('our_difference', 'Our Difference') ?>
+            </h2>
+            <h3 class="font-heading text-2xl text-indigo-600 mb-6 font-semibold">
+                <?= $translate('creating_professionals', 'Creating Professionals, Not Just Providing Aid') ?>
+            </h3>
+            <p class="text-gray-600 text-lg leading-relaxed font-accent">
+                <?= $translate('professionals_description', 'Most NGOs only offer monetary help. We create complete professionals through Education + Mentoring + Career Placement.') ?>
+            </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -147,22 +122,24 @@
                 <div class="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <i class="fas fa-graduation-cap text-white text-2xl"></i>
                 </div>
-                <h3 class="font-heading text-xl font-bold text-gray-900 mb-4">Quality Education</h3>
+                <h3 class="font-heading text-xl font-bold text-gray-900 mb-4">
+                    <?= $translate('pillar_education_title', 'Quality Education') ?>
+                </h3>
                 <p class="font-accent text-gray-600 mb-6 leading-relaxed">
-                    Complete academic fee coverage with modern learning tools and industry-relevant curriculum designed for success.
+                    <?= $translate('pillar_education_description', 'Complete academic fee coverage with modern learning tools and industry-relevant curriculum designed for success.') ?>
                 </p>
                 <ul class="space-y-3">
                     <li class="flex items-center font-accent text-sm text-gray-700">
                         <i class="fas fa-check text-primary-500 mr-3"></i>
-                        Full academic coverage
+                        <?= $translate('pillar_education_feature1', 'Full academic coverage') ?>
                     </li>
                     <li class="flex items-center font-accent text-sm text-gray-700">
                         <i class="fas fa-check text-primary-500 mr-3"></i>
-                        Modern learning tools
+                        <?= $translate('pillar_education_feature2', 'Modern learning tools') ?>
                     </li>
                     <li class="flex items-center font-accent text-sm text-gray-700">
                         <i class="fas fa-check text-primary-500 mr-3"></i>
-                        Industry-relevant skills
+                        <?= $translate('pillar_education_feature3', 'Industry-relevant skills') ?>
                     </li>
                 </ul>
             </div>
@@ -172,22 +149,24 @@
                 <div class="w-16 h-16 bg-gradient-to-br from-accent-500 to-accent-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <i class="fas fa-users text-white text-2xl"></i>
                 </div>
-                <h3 class="font-heading text-xl font-bold text-gray-900 mb-4">Personal Mentoring</h3>
+                <h3 class="font-heading text-xl font-bold text-gray-900 mb-4">
+                    <?= $translate('pillar_mentoring_title', 'Personal Mentoring') ?>
+                </h3>
                 <p class="font-accent text-gray-600 mb-6 leading-relaxed">
-                    One-on-one guidance from industry professionals for comprehensive career and personal development.
+                    <?= $translate('pillar_mentoring_description', 'One-on-one guidance from industry professionals for comprehensive career and personal development.') ?>
                 </p>
                 <ul class="space-y-3">
                     <li class="flex items-center font-accent text-sm text-gray-700">
                         <i class="fas fa-check text-accent-500 mr-3"></i>
-                        Industry mentors
+                        <?= $translate('pillar_mentoring_feature1', 'Industry mentors') ?>
                     </li>
                     <li class="flex items-center font-accent text-sm text-gray-700">
                         <i class="fas fa-check text-accent-500 mr-3"></i>
-                        Regular guidance sessions
+                        <?= $translate('pillar_mentoring_feature2', 'Regular guidance sessions') ?>
                     </li>
                     <li class="flex items-center font-accent text-sm text-gray-700">
                         <i class="fas fa-check text-accent-500 mr-3"></i>
-                        Personality development
+                        <?= $translate('pillar_mentoring_feature3', 'Personality development') ?>
                     </li>
                 </ul>
             </div>
@@ -197,22 +176,24 @@
                 <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <i class="fas fa-briefcase text-white text-2xl"></i>
                 </div>
-                <h3 class="font-heading text-xl font-bold text-gray-900 mb-4">Career Placement</h3>
+                <h3 class="font-heading text-xl font-bold text-gray-900 mb-4">
+                    <?= $translate('pillar_career_title', 'Career Placement') ?>
+                </h3>
                 <p class="font-accent text-gray-600 mb-6 leading-relaxed">
-                    Job placement assistance and professional training for sustainable, well-paying careers in top companies.
+                    <?= $translate('pillar_career_description', 'Job placement assistance and professional training for sustainable, well-paying careers in top companies.') ?>
                 </p>
                 <ul class="space-y-3">
                     <li class="flex items-center font-accent text-sm text-gray-700">
                         <i class="fas fa-check text-emerald-500 mr-3"></i>
-                        Job placement support
+                        <?= $translate('pillar_career_feature1', 'Job placement support') ?>
                     </li>
                     <li class="flex items-center font-accent text-sm text-gray-700">
                         <i class="fas fa-check text-emerald-500 mr-3"></i>
-                        Interview training
+                        <?= $translate('pillar_career_feature2', 'Interview training') ?>
                     </li>
                     <li class="flex items-center font-accent text-sm text-gray-700">
                         <i class="fas fa-check text-emerald-500 mr-3"></i>
-                        Career advancement
+                        <?= $translate('pillar_career_feature3', 'Career advancement') ?>
                     </li>
                 </ul>
             </div>
@@ -230,10 +211,10 @@
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-16 animate-fade-in-up">
             <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-                Lives Transformed, Futures Built
+                <?= $translate('impact_title', 'Lives Transformed, Futures Built') ?>
             </h2>
             <p class="font-accent text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                Every number represents a family with new hope, a student achieving dreams, and communities growing stronger together
+                <?= $translate('impact_description', 'Every number represents a family with new hope, a student achieving dreams, and communities growing stronger together') ?>
             </p>
         </div>
 
@@ -243,9 +224,15 @@
                     <div class="w-12 h-12 bg-gradient-to-br from-primary-400 to-primary-600 rounded-xl flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-users text-white text-xl"></i>
                     </div>
-                    <div class="font-display text-3xl md:text-4xl font-bold mb-2"><?= $total_beneficiaries ?? '500' ?>+</div>
-                    <div class="font-accent text-gray-300 font-medium">Lives Transformed</div>
-                    <div class="font-accent text-xs text-gray-400 mt-1">From struggle to success</div>
+                    <div class="font-display text-3xl md:text-4xl font-bold mb-2">
+                        <?= $translate('impact_students_supported_count', '500') ?>+
+                    </div>
+                    <div class="font-accent text-gray-300 font-medium">
+                        <?= $translate('impact_students_supported_label', 'Lives Transformed') ?>
+                    </div>
+                    <div class="font-accent text-xs text-gray-400 mt-1">
+                        <?= $translate('impact_students_supported_sublabel', 'From struggle to success') ?>
+                    </div>
                 </div>
             </div>
 
@@ -254,9 +241,15 @@
                     <div class="w-12 h-12 bg-gradient-to-br from-accent-400 to-accent-600 rounded-xl flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-briefcase text-white text-xl"></i>
                     </div>
-                    <div class="font-display text-3xl md:text-4xl font-bold mb-2">95%</div>
-                    <div class="font-accent text-gray-300 font-medium">Employment Rate</div>
-                    <div class="font-accent text-xs text-gray-400 mt-1">In chosen fields</div>
+                    <div class="font-display text-3xl md:text-4xl font-bold mb-2">
+                        <?= $translate('impact_employment_rate_count', '95') ?>%
+                    </div>
+                    <div class="font-accent text-gray-300 font-medium">
+                        <?= $translate('impact_employment_rate_label', 'Employment Rate') ?>
+                    </div>
+                    <div class="font-accent text-xs text-gray-400 mt-1">
+                        <?= $translate('impact_employment_rate_sublabel', 'In chosen fields') ?>
+                    </div>
                 </div>
             </div>
 
@@ -265,20 +258,24 @@
                     <div class="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-xl flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-user-tie text-white text-xl"></i>
                     </div>
-                    <div class="font-display text-3xl md:text-4xl font-bold mb-2">50+</div>
-                    <div class="font-accent text-gray-300 font-medium">Industry Mentors</div>
-                    <div class="font-accent text-xs text-gray-400 mt-1">Professional guidance</div>
+                    <div class="font-display text-3xl md:text-4xl font-bold mb-2">
+                        <?= $translate('impact_mentors_count', '50') ?>+
+                    </div>
+                    <div class="font-accent text-gray-300 font-medium">
+                        <?= $translate('impact_mentors_label', 'Industry Mentors') ?>
+                    </div>
+                    <div class="font-accent text-xs text-gray-400 mt-1">
+                        <?= $translate('impact_mentors_sublabel', 'Professional guidance') ?>
+                    </div>
                 </div>
             </div>
-
-            
         </div>
 
         <!-- Transparency Link -->
         <div class="text-center mt-12 animate-fade-in-up" style="animation-delay: 0.4s;">
             <a href="#impact-report" class="inline-flex items-center bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-heading font-semibold hover:bg-white/20 transition-all duration-200 border border-white/20 hover:border-white/30">
                 <i class="fas fa-file-alt mr-2"></i>
-                View Full Impact Report
+                <?= $translate('impact_report_button', 'View Full Impact Report') ?>
             </a>
         </div>
     </div>
@@ -289,10 +286,10 @@
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 animate-fade-in-up">
             <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                Meet Our Amazing Students
+                <?= $translate('students_showcase_title', 'Meet Our Amazing Students') ?>
             </h2>
             <p class="font-accent text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Dedicated individuals transforming their lives through education, determination, and the support of our community
+                <?= $translate('students_showcase_description', 'Dedicated individuals transforming their lives through education, determination, and the support of our community') ?>
             </p>
         </div>
 
@@ -347,7 +344,7 @@
                 <a href="<?= base_url(($language ?? 'en') . '/beneficiaries') ?>" 
                    class="inline-flex items-center bg-gradient-to-r from-primary-600 to-primary-700 text-white px-8 py-4 rounded-xl font-heading font-semibold hover:from-primary-700 hover:to-primary-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                     <i class="fas fa-users mr-2"></i>
-                    Meet All Our Students
+                    <?= $translate('students_showcase_all_button', 'Meet All Our Students') ?>
                 </a>
             </div>
         <?php endif; ?>
@@ -360,10 +357,10 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 animate-fade-in-up">
                 <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                    Success Stories That Inspire
+                    <?= $translate('success_stories_title', 'Success Stories That Inspire') ?>
                 </h2>
                 <p class="font-accent text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                    Discover the journeys of brave individuals who transformed challenges into triumphs through determination and education
+                    <?= $translate('success_stories_description', 'Discover the journeys of brave individuals who transformed challenges into triumphs through determination and education') ?>
                 </p>
             </div>
 
@@ -387,7 +384,7 @@
                                 <p class="font-accent text-gray-600"><?= esc($story['current_position']) ?></p>
                                 <span class="inline-flex items-center bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-accent font-medium mt-2">
                                     <i class="fas fa-check-circle mr-1"></i>
-                                    Employed
+                                    <?= $translate('success_story_status_employed', 'Employed') ?>
                                 </span>
                             </div>
                         </div>
@@ -399,7 +396,7 @@
                         <div class="flex justify-between items-center mb-4">
                             <div class="text-xs text-gray-500 font-accent">
                                 <i class="fas fa-calendar mr-1"></i>
-                                Graduate <?= date('Y', strtotime($story['created_at'] ?? 'now')) ?>
+                                <?= $translate('success_story_graduate_label', 'Graduate') ?> <?= date('Y', strtotime($story['created_at'] ?? 'now')) ?>
                             </div>
                             <div class="flex space-x-2">
                                 <?php if (!empty($story['linkedin_url'])): ?>
@@ -426,13 +423,12 @@
                 <a href="<?= base_url($language . '/success-stories') ?>" 
                    class="inline-flex items-center bg-white border-2 border-gray-200 text-gray-700 px-8 py-4 rounded-xl font-heading font-semibold hover:border-emerald-300 hover:text-emerald-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-1">
                     <i class="fas fa-arrow-right mr-2"></i>
-                    View All Success Stories
+                    <?= $translate('success_stories_all_button', 'View All Success Stories') ?>
                 </a>
             </div>
         </div>
     </section>
 <?php endif; ?>
-
 
 
 <?= $this->endSection() ?>

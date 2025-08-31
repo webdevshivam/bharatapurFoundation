@@ -4,7 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= isset($title) ? $title . ' - ' : '' ?>Bharatpur Foundation</title>
+    <title><?= isset($title) ? $title . ' - ' : '' ?><?= isset($translate) ? $translate('site_title', 'Bharatpur Foundation') : 'Bharatpur Foundation' ?></title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="<?= isset($meta_description) ? $meta_description : ($language === 'hi' ? google_translate('Bharatpur Foundation - Transforming underprivileged students into job-ready professionals through comprehensive education, mentoring, and career placement programs.', 'hi', 'en') : 'Bharatpur Foundation - Transforming underprivileged students into job-ready professionals through comprehensive education, mentoring, and career placement programs.') ?>">
+    <meta name="keywords" content="<?= isset($meta_keywords) ? $meta_keywords : ($language === 'hi' ? google_translate('bharatpur foundation, nayantar memorial charitable trust, educational NGO, student scholarship, career placement, professional development, mentorship program, underprivileged students, job training, skill development', 'hi', 'en') : 'bharatpur foundation, nayantar memorial charitable trust, educational NGO, student scholarship, career placement, professional development, mentorship program, underprivileged students, job training, skill development') ?>">
+    <meta name="author" content="Bharatpur Foundation">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="<?= $language ?? 'en' ?>">
+    <meta name="revisit-after" content="1 days">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?= current_url() ?>">
+    <meta property="og:title" content="<?= isset($title) ? $title . ' - ' : '' ?><?= isset($translate) ? $translate('site_title', 'Bharatpur Foundation') : 'Bharatpur Foundation' ?>">
+    <meta property="og:description" content="<?= isset($meta_description) ? $meta_description : ($language === 'hi' ? google_translate('Transforming underprivileged students into job-ready professionals through education, mentoring, and career placement.', 'hi', 'en') : 'Transforming underprivileged students into job-ready professionals through education, mentoring, and career placement.') ?>">
+    <meta property="og:image" content="<?= base_url('assets/images/bharatpur-foundation-og.jpg') ?>">
+    <meta property="og:locale" content="<?= $language === 'hi' ? 'hi_IN' : 'en_US' ?>">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="<?= current_url() ?>">
+    <meta property="twitter:title" content="<?= isset($title) ? $title . ' - ' : '' ?><?= isset($translate) ? $translate('site_title', 'Bharatpur Foundation') : 'Bharatpur Foundation' ?>">
+    <meta property="twitter:description" content="<?= isset($meta_description) ? $meta_description : ($language === 'hi' ? google_translate('Transforming underprivileged students into job-ready professionals through education, mentoring, and career placement.', 'hi', 'en') : 'Transforming underprivileged students into job-ready professionals through education, mentoring, and career placement.') ?>">
+    <meta property="twitter:image" content="<?= base_url('assets/images/bharatpur-foundation-og.jpg') ?>">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "NGO",
+        "name": "<?= isset($translate) ? $translate('site_title', 'Bharatpur Foundation') : 'Bharatpur Foundation' ?>",
+        "url": "<?= base_url() ?>",
+        "logo": "<?= base_url('assets/images/bharatpur-logo.png') ?>",
+        "description": "<?= isset($meta_description) ? strip_tags($meta_description) : 'Educational NGO transforming underprivileged students into professionals' ?>",
+        "sameAs": [
+            "https://www.facebook.com/bharatpurfoundation",
+            "https://www.twitter.com/bharatpurfound",
+            "https://www.linkedin.com/company/bharatpur-foundation"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Mumbai",
+            "addressRegion": "Maharashtra",
+            "addressCountry": "IN"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+91-98765-43210",
+            "contactType": "customer service",
+            "email": "info@nayantar.org"
+        }
+    }
+    </script>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -118,6 +170,14 @@
     <link rel="alternate" hreflang="en" href="<?= base_url('en' . $page_path) ?>">
     <link rel="alternate" hreflang="hi" href="<?= base_url('hi' . $page_path) ?>">
     <link rel="alternate" hreflang="x-default" href="<?= base_url('en' . $page_path) ?>">
+    
+    <!-- Translation JavaScript -->
+    <script src="<?= base_url('assets/js/translation.js') ?>"></script>
+    
+    <!-- Set page language -->
+    <script>
+        document.documentElement.lang = '<?= $language ?? 'en' ?>';
+    </script>
 </head>
 
 <body class="font-body text-gray-900 bg-white">
@@ -148,26 +208,26 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="<?= base_url($language ?? 'en') ?>" 
                        class="font-heading font-semibold text-gray-700 hover:text-indigo-600 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-indigo-50">
-                        Home
+                        <?= isset($translate) ? $translate('nav_home', 'Home') : (smart_translate('nav_home', $language ?? 'en', 'Home')) ?>
                     </a>
                     <a href="<?= base_url(($language ?? 'en') . '/beneficiaries') ?>" 
                        class="font-heading font-semibold text-gray-700 hover:text-indigo-600 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-indigo-50">
-                        Beneficiaries
+                        <?= isset($translate) ? $translate('nav_beneficiaries', 'Beneficiaries') : (smart_translate('nav_beneficiaries', $language ?? 'en', 'Beneficiaries')) ?>
                     </a>
                     <a href="<?= base_url(($language ?? 'en') . '/success-stories') ?>" 
                        class="font-heading font-semibold text-gray-700 hover:text-indigo-600 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-indigo-50">
-                        Success Stories
+                        <?= isset($translate) ? $translate('nav_success_stories', 'Success Stories') : (smart_translate('nav_success_stories', $language ?? 'en', 'Success Stories')) ?>
                     </a>
 
                     <a href="<?= base_url(($language ?? 'en') . '/founders-members') ?>" 
                        class="font-heading font-semibold text-gray-700 hover:text-indigo-600 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-indigo-50">
-                        Founders
+                        <?= isset($translate) ? $translate('founders_title', 'Founders') : (smart_translate('founders_title', $language ?? 'en', 'Founders')) ?>
                     </a>
 
                     <!-- About Dropdown -->
                     <div class="relative group">
                         <button class="font-heading font-semibold text-gray-700 hover:text-indigo-600 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-indigo-50 flex items-center">
-                            About
+                            <?= isset($translate) ? $translate('nav_about', 'About') : (smart_translate('nav_about', $language ?? 'en', 'About')) ?>
                             <i class="fas fa-chevron-down ml-1 text-xs group-hover:rotate-180 transition-transform duration-200"></i>
                         </button>
                         <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
@@ -175,7 +235,7 @@
                                 <a href="<?= base_url(($language ?? 'en') . '/media') ?>" 
                                    class="block px-4 py-3 text-sm font-heading font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 transition-colors duration-200">
                                     <i class="fas fa-newspaper mr-2"></i>
-                                    Media
+                                    <?= isset($translate) ? $translate('nav_media', 'Media') : (smart_translate('nav_media', $language ?? 'en', 'Media')) ?>
                                 </a>
                             </div>
                         </div>
@@ -183,7 +243,7 @@
 
                     <a href="<?= base_url(($language ?? 'en') . '/join-us') ?>" 
                        class="font-heading font-semibold text-gray-700 hover:text-indigo-600 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-indigo-50">
-                        Join Us
+                        <?= isset($translate) ? $translate('join_title', 'Join Us') : (smart_translate('join_title', $language ?? 'en', 'Join Us')) ?>
                     </a>
 
                     <!-- Language Switcher -->
@@ -212,31 +272,31 @@
                 <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200 rounded-b-2xl shadow-lg">
                     <a href="<?= base_url($language ?? 'en') ?>" 
                        class="block font-heading font-semibold text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-xl hover:bg-indigo-50">
-                        Home
+                        <?= isset($translate) ? $translate('nav_home', 'Home') : (smart_translate('nav_home', $language ?? 'en', 'Home')) ?>
                     </a>
                     <a href="<?= base_url(($language ?? 'en') . '/beneficiaries') ?>" 
                        class="block font-heading font-semibold text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-xl hover:bg-indigo-50">
-                        Beneficiaries
+                        <?= isset($translate) ? $translate('nav_beneficiaries', 'Beneficiaries') : (smart_translate('nav_beneficiaries', $language ?? 'en', 'Beneficiaries')) ?>
                     </a>
                     <a href="<?= base_url(($language ?? 'en') . '/success-stories') ?>" 
                        class="block font-heading font-semibold text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-xl hover:bg-indigo-50">
-                        Success Stories
+                        <?= isset($translate) ? $translate('nav_success_stories', 'Success Stories') : (smart_translate('nav_success_stories', $language ?? 'en', 'Success Stories')) ?>
                     </a>
                     <a href="<?= base_url(($language ?? 'en') . '/founders-members') ?>" 
                        class="block font-heading font-semibold text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-xl hover:bg-indigo-50">
-                        Founders
+                        <?= isset($translate) ? $translate('founders_title', 'Founders') : (smart_translate('founders_title', $language ?? 'en', 'Founders')) ?>
                     </a>
                     <div class="px-4 py-2">
-                        <p class="text-xs text-gray-500 font-medium mb-2">About</p>
+                        <p class="text-xs text-gray-500 font-medium mb-2"><?= isset($translate) ? $translate('nav_about', 'About') : (smart_translate('nav_about', $language ?? 'en', 'About')) ?></p>
                         <a href="<?= base_url(($language ?? 'en') . '/media') ?>" 
                            class="block font-heading font-medium text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-lg hover:bg-indigo-50 text-sm">
                             <i class="fas fa-newspaper mr-2"></i>
-                            Media
+                            <?= isset($translate) ? $translate('nav_media', 'Media') : (smart_translate('nav_media', $language ?? 'en', 'Media')) ?>
                         </a>
                     </div>
                     <a href="<?= base_url(($language ?? 'en') . '/join-us') ?>" 
                        class="block font-heading font-semibold text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-xl hover:bg-indigo-50">
-                        Join Us
+                        <?= isset($translate) ? $translate('join_title', 'Join Us') : (smart_translate('join_title', $language ?? 'en', 'Join Us')) ?>
                     </a>
 
                     <!-- Mobile Language Switcher -->
