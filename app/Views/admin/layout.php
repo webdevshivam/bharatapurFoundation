@@ -278,18 +278,29 @@
                 </a>
             </li>
             <li>
-                <a href="<?= base_url('admin/volunteering') ?>" <?= (current_url() == base_url('admin/volunteering')) ? 'class="active"' : '' ?>><i class="fas fa-hands-helping"></i> Volunteering</a>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle <?= in_array($current_page, ['join-students', 'join-volunteers', 'join-donors']) ? 'active' : '' ?>">
-                        <i class="fas fa-user-plus"></i> Join Us Applications
-                        <i class="fas fa-chevron-down"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="<?= base_url('admin/join-us/students') ?>" class="<?= $current_page == 'join-students' ? 'active' : '' ?>">Student Applications</a></li>
-                        <li><a href="<?= base_url('admin/join-us/volunteers') ?>" class="<?= $current_page == 'join-volunteers' ? 'active' : '' ?>">Volunteer Applications</a></li>
-                        <li><a href="<?= base_url('admin/join-us/donors') ?>" class="<?= $current_page == 'join-donors' ? 'active' : '' ?>">Donor Applications</a></li>
-                    </ul>
-                </li>
+                <a href="<?= base_url('admin/volunteering') ?>" <?= (current_url() == base_url('admin/volunteering')) ? 'class="active"' : '' ?>>
+                    <i class="fas fa-hands-helping"></i> Volunteering
+                </a>
+            </li>
+            <li class="dropdown">
+                <?php 
+                $current_url = current_url();
+                $is_join_us_active = (strpos($current_url, 'admin/join-us') !== false);
+                $current_page_segment = '';
+                if (strpos($current_url, 'join-us/students') !== false) $current_page_segment = 'join-students';
+                elseif (strpos($current_url, 'join-us/volunteers') !== false) $current_page_segment = 'join-volunteers';
+                elseif (strpos($current_url, 'join-us/donors') !== false) $current_page_segment = 'join-donors';
+                ?>
+                <a href="#" class="dropdown-toggle <?= $is_join_us_active ? 'active' : '' ?>">
+                    <i class="fas fa-user-plus"></i> Join Us Applications
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="<?= base_url('admin/join-us/students') ?>" class="<?= $current_page_segment == 'join-students' ? 'active' : '' ?>">Student Applications</a></li>
+                    <li><a href="<?= base_url('admin/join-us/volunteers') ?>" class="<?= $current_page_segment == 'join-volunteers' ? 'active' : '' ?>">Volunteer Applications</a></li>
+                    <li><a href="<?= base_url('admin/join-us/donors') ?>" class="<?= $current_page_segment == 'join-donors' ? 'active' : '' ?>">Donor Applications</a></li>
+                </ul>
+            </li>
                 <li><a href="<?= base_url('admin/logout') ?>"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
     </nav>

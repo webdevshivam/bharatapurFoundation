@@ -25,6 +25,8 @@ class Admin extends BaseController
         $successStoryModel = new SuccessStoryModel();
         
         $data = [
+            'title' => 'Dashboard',
+            'page_title' => 'Dashboard',
             'total_beneficiaries' => $beneficiaryModel->countAll(),
             'active_beneficiaries' => $beneficiaryModel->where('status', 'active')->countAllResults(),
             'total_stories' => $successStoryModel->countAll(),
