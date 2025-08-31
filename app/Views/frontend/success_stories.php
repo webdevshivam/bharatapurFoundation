@@ -251,11 +251,11 @@
 function viewStory(title, content, studentName, date, image, position, company, linkedinUrl, companyLink, education, city, state) {
     document.getElementById('storyModalTitle').textContent = title || 'Success Story';
     document.getElementById('storyModalStudent').textContent = studentName ? `by ${studentName}` : '';
-    
+
     // Display full story content
     const fullContent = content || 'An inspiring story of transformation and success.';
     document.getElementById('storyModalContent').innerHTML = fullContent.replace(/\n/g, '<br><br>');
-    
+
     document.getElementById('storyModalDate').textContent = `Published on ${date}`;
 
     // Handle image

@@ -22,6 +22,34 @@
             background-color: #f8f9fa;
         }
 
+        /* Preloader Styles */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .preloader .spinner {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid var(--admin-primary);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         .sidebar {
             min-height: 100vh;
             background: linear-gradient(180deg, var(--admin-sidebar), #34495e);
@@ -76,10 +104,42 @@
             margin-right: 10px;
         }
 
+        /* Dropdown styles for sidebar menu */
+        .sidebar-menu .dropdown-toggle::after {
+            display: none; /* Hide default caret */
+        }
+        .sidebar-menu .dropdown-toggle i.fa-chevron-down {
+            float: right;
+            transition: transform 0.3s ease;
+        }
+        .sidebar-menu li a.active i.fa-chevron-down {
+            transform: rotate(180deg);
+        }
+        .sidebar-menu .dropdown-menu {
+            background-color: var(--admin-sidebar-hover);
+            padding-left: 1.5rem;
+            border: none;
+            display: none; /* Hidden by default */
+        }
+        .sidebar-menu li.show .dropdown-menu {
+            display: block; /* Show when parent li has 'show' class */
+        }
+        .sidebar-menu .dropdown-menu li a {
+            padding: 0.75rem 1.5rem;
+            color: white !important; /* Ensure dropdown links are white */
+        }
+        .sidebar-menu .dropdown-menu li a:hover,
+        .sidebar-menu .dropdown-menu li a.active {
+            background-color: #34495e; /* Slightly darker for sub-items */
+            border-left: 4px solid var(--admin-primary);
+        }
+
+
         .main-content {
             margin-left: 250px;
             min-height: 100vh;
             background-color: #f8f9fa;
+            transition: margin-left 0.3s ease;
         }
 
         .top-navbar {
@@ -169,6 +229,7 @@
         @media (max-width: 768px) {
             .sidebar {
                 transform: translateX(-100%);
+                margin-left: -250px; /* Ensure it's out of view */
             }
 
             .main-content {
@@ -177,15 +238,22 @@
 
             .sidebar.show {
                 transform: translateX(0);
+                margin-left: 0; /* Bring it back into view */
             }
         }
     </style>
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="spinner"></div>
+    </div>
+
     <!-- Sidebar -->
     <nav class="sidebar">
         <div class="sidebar-header">
-            <h4><i class="fas fa-tachometer-alt"></i> Admin Panel</h4>
+            <!-- Changed "Our Team" to "Founders" -->
+            <h4><i class="fas fa-user-cog"></i> Admin Panel</h4>
             <small>Nayantar Memorial Trust</small>
         </div>
         <ul class="sidebar-menu">
@@ -210,20 +278,19 @@
                 </a>
             </li>
             <li>
-                <a href="<?= base_url('admin/volunteering') ?>">
-                    <i class="fas fa-heart"></i> Volunteering
-                </a>
-            </li>
-            <li>
-                <a href="<?= base_url() ?>" target="_blank">
-                    <i class="fas fa-external-link-alt"></i> View Website
-                </a>
-            </li>
-            <li>
-                <a href="<?= base_url('admin/logout') ?>">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                </a>
-            </li>
+                <a href="<?= base_url('admin/volunteering') ?>" <?= (current_url() == base_url('admin/volunteering')) ? 'class="active"' : '' ?>><i class="fas fa-hands-helping"></i> Volunteering</a>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle <?= in_array($current_page, ['join-students', 'join-volunteers', 'join-donors']) ? 'active' : '' ?>">
+                        <i class="fas fa-user-plus"></i> Join Us Applications
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<?= base_url('admin/join-us/students') ?>" class="<?= $current_page == 'join-students' ? 'active' : '' ?>">Student Applications</a></li>
+                        <li><a href="<?= base_url('admin/join-us/volunteers') ?>" class="<?= $current_page == 'join-volunteers' ? 'active' : '' ?>">Volunteer Applications</a></li>
+                        <li><a href="<?= base_url('admin/join-us/donors') ?>" class="<?= $current_page == 'join-donors' ? 'active' : '' ?>">Donor Applications</a></li>
+                    </ul>
+                </li>
+                <li><a href="<?= base_url('admin/logout') ?>"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
     </nav>
 
@@ -282,10 +349,39 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.querySelector('.preloader');
+            if (preloader) {
+                preloader.style.display = 'none';
+            }
+        });
+
         // Sidebar toggle for mobile
         document.getElementById('sidebarToggle')?.addEventListener('click', function() {
             document.querySelector('.sidebar').classList.toggle('show');
+            // Adjust main content margin based on sidebar visibility
+            const mainContent = document.querySelector('.main-content');
+            if (window.innerWidth <= 768) { // Only adjust for mobile view
+                if (document.querySelector('.sidebar').classList.contains('show')) {
+                    mainContent.style.marginLeft = '250px'; // Or adjust as needed
+                } else {
+                    mainContent.style.marginLeft = '0';
+                }
+            } else {
+                 mainContent.style.marginLeft = '250px'; // Default for larger screens
+            }
         });
+
+        // Toggle dropdown menus in sidebar
+        document.querySelectorAll('.sidebar-menu .dropdown-toggle').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const parent = this.parentElement;
+                parent.classList.toggle('show');
+            });
+        });
+
 
         // Auto-hide alerts after 5 seconds
         setTimeout(function() {

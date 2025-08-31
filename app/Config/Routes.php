@@ -78,10 +78,16 @@ $routes->group('admin', function($routes) {
         $routes->get('settings', 'AdminVolunteering::settings');
         $routes->post('settings', 'AdminVolunteering::settings');
         $routes->post('send-reminders', 'AdminVolunteering::sendReminders');
-        $routes->get('view/(:num)', 'AdminVolunteering::viewSubmission/$1');
+        $routes->get('view/(:num)', 'AdminVolunteering::view/$1');
         $routes->post('update-status/(:num)', 'AdminVolunteering::updateStatus/$1');
         $routes->get('email-logs', 'AdminVolunteering::emailLogs');
-    });
+
+    // Join Us Applications
+    $routes->get('join-us/students', 'AdminJoinUs::students');
+    $routes->get('join-us/volunteers', 'AdminJoinUs::volunteers');
+    $routes->get('join-us/donors', 'AdminJoinUs::donors');
+    $routes->post('join-us/update-status/(:segment)/(:num)', 'AdminJoinUs::updateStatus/$1/$2');
+});
 });
 
 // Public form routes

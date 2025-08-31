@@ -155,8 +155,9 @@ class Home extends BaseController
         $successStoryModel = new SuccessStoryModel();
         $beneficiaryModel = new BeneficiaryModel();
 
+        // Optimize queries for home page - limit success stories and cache counts
         $data = [
-            'success_stories' => $successStoryModel->getPublishedStories(),
+            'success_stories' => $successStoryModel->getPublishedStories(3), // Limit to 3 for home page
             'total_beneficiaries' => $beneficiaryModel->countAll(),
             'active_beneficiaries' => $beneficiaryModel->where('status', 'active')->countAllResults(),
             'language' => $this->language,

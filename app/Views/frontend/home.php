@@ -346,9 +346,27 @@
                             <?= esc(substr($story['story'], 0, 120)) ?>...
                         </p>
 
-                        <div class="text-xs text-gray-500 font-accent">
-                            <i class="fas fa-calendar mr-1"></i>
-                            Program Graduate <?= date('Y', strtotime($story['created_at'] ?? 'now')) ?>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="text-xs text-gray-500 font-accent">
+                                <i class="fas fa-calendar mr-1"></i>
+                                Graduate <?= date('Y', strtotime($story['created_at'] ?? 'now')) ?>
+                            </div>
+                            <div class="flex space-x-2">
+                                <?php if (!empty($story['linkedin_url'])): ?>
+                                    <a href="<?= esc($story['linkedin_url']) ?>" target="_blank" 
+                                       class="inline-flex items-center text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full hover:bg-blue-200 transition-colors duration-200">
+                                        <i class="fab fa-linkedin mr-1"></i>
+                                        LinkedIn
+                                    </a>
+                                <?php endif; ?>
+                                <?php if (!empty($story['company_url'])): ?>
+                                    <a href="<?= esc($story['company_url']) ?>" target="_blank" 
+                                       class="inline-flex items-center text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full hover:bg-gray-200 transition-colors duration-200">
+                                        <i class="fas fa-building mr-1"></i>
+                                        Company
+                                    </a>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
                 <?php endforeach; ?>

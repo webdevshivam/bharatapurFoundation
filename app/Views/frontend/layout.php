@@ -102,6 +102,18 @@
 </head>
 
 <body class="font-body text-gray-900 bg-white">
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 bg-white z-50 flex items-center justify-center">
+        <div class="text-center">
+            <div class="relative">
+                <div class="w-20 h-20 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin mx-auto mb-4"></div>
+                <div class="absolute inset-0 w-20 h-20 border-4 border-transparent border-r-purple-400 rounded-full animate-spin mx-auto" style="animation-duration: 1.5s; animation-direction: reverse;"></div>
+            </div>
+            <h3 class="font-display text-xl font-bold text-gray-800 mb-2">Bharatpur Foundation</h3>
+            <p class="font-accent text-gray-600">Loading...</p>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="bg-white/95 backdrop-blur-md shadow-xl sticky top-0 z-40 border-b border-indigo-100">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -109,10 +121,7 @@
                 <!-- Logo -->
                 <div class="flex items-center">
                     <a href="<?= base_url($language ?? 'en') ?>" class="flex items-center space-x-3">
-                        <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-xl flex items-center justify-center shadow-lg">
-                            <i class="fas fa-graduation-cap text-white text-xl"></i>
-                        </div>
-                        <span class="font-display text-2xl font-bold text-gray-900">Bharatpur Foundation</span>
+                        <span class="font-display text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Bharatpur Foundation</span>
                     </a>
                 </div>
 
@@ -133,7 +142,7 @@
                     
                     <a href="<?= base_url(($language ?? 'en') . '/founders-members') ?>" 
                        class="font-heading font-semibold text-gray-700 hover:text-indigo-600 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-indigo-50">
-                        Our Team
+                        Founders
                     </a>
                     
                     <!-- About Dropdown -->
@@ -196,7 +205,7 @@
                     </a>
                     <a href="<?= base_url(($language ?? 'en') . '/founders-members') ?>" 
                        class="block font-heading font-semibold text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-xl hover:bg-indigo-50">
-                        Our Team
+                        Founders
                     </a>
                     <div class="px-4 py-2">
                         <p class="text-xs text-gray-500 font-medium mb-2">About</p>
@@ -306,6 +315,28 @@
 
     <!-- Mobile Menu Script -->
     <script>
+        // Hide preloader when page is fully loaded
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            preloader.style.opacity = '0';
+            preloader.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        });
+
+        // Hide preloader after 3 seconds as fallback
+        setTimeout(function() {
+            const preloader = document.getElementById('preloader');
+            if (preloader.style.display !== 'none') {
+                preloader.style.opacity = '0';
+                preloader.style.transition = 'opacity 0.5s ease';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500);
+            }
+        }, 3000);
+
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.toggle('hidden');

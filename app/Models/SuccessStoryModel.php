@@ -48,15 +48,16 @@ class SuccessStoryModel extends Model
         'status' => 'required|in_list[active,inactive]'
     ];
 
-    public function getPublishedStories($limit = null, $offset = null)
+    public function getPublishedStories($limit = null)
     {
-        $builder = $this->where('status', 'active');
+        $builder = $this->where('status', 'active')
+                        ->orderBy('created_at', 'DESC');
 
-        if ($limit) {
-            $builder->limit($limit, $offset);
+        if ($limit !== null) {
+            $builder->limit($limit);
         }
 
-        return $builder->orderBy('created_at', 'DESC')->findAll();
+        return $builder->findAll();
     }
 
     public function countPublishedStories()
