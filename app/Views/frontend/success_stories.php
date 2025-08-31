@@ -2,6 +2,33 @@
 
 <?= $this->section('content') ?>
 
+<!-- Structured Data for Success Stories -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Bharatpur Foundation Success Stories",
+  "description": "Inspiring success stories from our alumni who transformed their lives through education",
+  "numberOfItems": <?= count($success_stories ?? []) ?>,
+  "itemListElement": [
+    <?php if (!empty($success_stories)): ?>
+      <?php foreach ($success_stories as $index => $story): ?>
+        {
+          "@type": "Person",
+          "name": "<?= esc($story['name']) ?>",
+          "jobTitle": "<?= esc($story['current_position']) ?>",
+          "description": "<?= esc(substr($story['story'], 0, 200)) ?>...",
+          "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "Bharatpur Foundation"
+          }
+        }<?= $index < count($success_stories) - 1 ? ',' : '' ?>
+      <?php endforeach; ?>
+    <?php endif; ?>
+  ]
+}
+</script></old_str>
+
 <!-- Hero Section -->
 <section class="relative min-h-[70vh] bg-gradient-to-br from-emerald-50 via-white to-teal-50 flex items-center overflow-hidden -mt-16 pt-16">
     <!-- Background Pattern -->

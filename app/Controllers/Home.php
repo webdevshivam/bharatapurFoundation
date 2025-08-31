@@ -150,7 +150,7 @@ class Home extends BaseController
 
     public function index($lang = 'en')
     {
-        $this->setLanguage($lang);
+        $language = $this->setLanguage($lang);
 
         $successStoryModel = new SuccessStoryModel();
         $beneficiaryModel = new BeneficiaryModel();
@@ -160,9 +160,12 @@ class Home extends BaseController
             'success_stories' => $successStoryModel->getPublishedStories(3), // Limit to 3 for home page
             'total_beneficiaries' => $beneficiaryModel->countAll(),
             'active_beneficiaries' => $beneficiaryModel->where('status', 'active')->countAllResults(),
-            'language' => $this->language,
-            'translations' => $this->translations[$this->language],
-            'title' => $this->translate('site_title')
+            'language' => $language,
+            'translations' => $this->translations[$language],
+            'title' => $this->translate('site_title'),
+            'page_title' => 'Home',
+            'meta_description' => 'Bharatpur Foundation - Transforming underprivileged students into job-ready professionals. 95% employment rate, 500+ students supported. Quality education, personal mentoring & career placement.',
+            'meta_keywords' => 'bharatpur foundation, nayantar memorial charitable trust, student education, career placement, professional development, scholarship program, educational NGO, underprivileged students, job training, mentorship program'
         ];
 
         return view('frontend/home', $data);
@@ -173,23 +176,23 @@ class Home extends BaseController
         $language = $this->setLanguage($lang);
 
         $beneficiaryModel = new \App\Models\BeneficiaryModel();
-        
+
         // Get search parameter
         $search = $this->request->getGet('search') ?? '';
-        
+
         // Get all beneficiaries and combine them
         $pursuing_beneficiaries = $beneficiaryModel->getBeneficiariesByStatus(false, null, null, $search);
         $passout_beneficiaries = $beneficiaryModel->getBeneficiariesByStatus(true, null, null, $search);
-        
+
         // Combine all beneficiaries for the main display
         $beneficiaries = array_merge($pursuing_beneficiaries ?? [], $passout_beneficiaries ?? []);
-        
+
         // Calculate stats
         $total_beneficiaries = $beneficiaryModel->countAll();
         $active_students = $beneficiaryModel->where('is_passout', 0)->where('status', 'active')->countAllResults();
         $graduates = $beneficiaryModel->where('is_passout', 1)->where('status', 'active')->countAllResults();
         $total_results = count($beneficiaries);
-        
+
         $pageTranslations = [
             'en' => [
                 'page_title' => 'Beneficiaries',
@@ -299,7 +302,10 @@ class Home extends BaseController
             'search' => $search ?? '',
             'total_results' => $total_results,
             'language' => $language,
-            'translations' => $allTranslations
+            'translations' => $allTranslations,
+            'page_title' => 'Our Students & Beneficiaries',
+            'meta_description' => 'Meet our amazing students and beneficiaries at Bharatpur Foundation. Discover inspiring stories of transformation from underprivileged backgrounds to successful careers through education.',
+            'meta_keywords' => 'bharatpur foundation students, beneficiaries, student profiles, educational transformation, success stories, scholarship recipients, career development, professional growth'
         ];
 
         return view('frontend/beneficiaries', $data);
@@ -311,24 +317,24 @@ class Home extends BaseController
         $language = $this->setLanguage($lang);
 
         $successStoryModel = new \App\Models\SuccessStoryModel();
-        
+
         // First check if table exists and has data
         $total_count = $successStoryModel->countAll();
         log_message('debug', 'Total success stories in database: ' . $total_count);
-        
+
         // Try different approaches to get stories
         if ($total_count == 0) {
             $stories = [];
         } else {
             // Try to get all stories first
             $stories = $successStoryModel->findAll();
-            
+
             // If no stories, check if status filtering is the issue
             if (empty($stories)) {
                 $stories = $successStoryModel->where('status', 'active')->findAll();
             }
         }
-        
+
         // Debug: log the count of stories found
         log_message('debug', 'Success stories found: ' . count($stories));
 
@@ -359,7 +365,10 @@ class Home extends BaseController
             'title' => $pageTranslations[$language]['page_title'],
             'stories' => $stories,
             'language' => $language,
-            'translations' => $allTranslations
+            'translations' => $allTranslations,
+            'page_title' => 'Success Stories - Alumni Achievements',
+            'meta_description' => 'Inspiring success stories from Bharatpur Foundation alumni. Read how our students transformed their lives through education and secured well-paying jobs in top companies.',
+            'meta_keywords' => 'bharatpur foundation success stories, alumni achievements, student transformation, career success, educational impact, job placement, professional development, inspiring stories'
         ];
 
         return view('frontend/success_stories', $data);
@@ -405,7 +414,10 @@ class Home extends BaseController
         $data = [
             'title' => $pageTranslations[$language]['page_title'],
             'language' => $language,
-            'translations' => $allTranslations
+            'translations' => $allTranslations,
+            'page_title' => 'Founders & Team Members',
+            'meta_description' => 'Meet the dedicated founders and team members of Bharatpur Foundation. Learn about our leadership, vision, and the passionate individuals driving educational transformation.',
+            'meta_keywords' => 'bharatpur foundation founders, team members, leadership, foundation management, educational leaders, charity founders, NGO team, nayantar trust leadership'
         ];
 
         return view('frontend/founders_members', $data);
@@ -435,10 +447,27 @@ class Home extends BaseController
         $data = [
             'title' => $pageTranslations[$language]['page_title'],
             'language' => $language,
-            'translations' => $allTranslations
+            'translations' => $allTranslations,
+            'page_title' => 'Join Us - Student, Volunteer & Donor Applications',
+            'meta_description' => 'Join Bharatpur Foundation as a student, volunteer, or donor. Apply for educational scholarships, become a mentor, or support our mission to transform underprivileged students into professionals.',
+            'meta_keywords' => 'join bharatpur foundation, student application, volunteer registration, donor support, educational scholarship, mentorship program, charity donation, NGO volunteer'
         ];
 
         return view('frontend/join_us', $data);
+    }
+
+    public function media()
+    {
+        $language = $this->request->getVar('language') ?? 'en';
+
+        $data = [
+            'language' => $language,
+            'page_title' => 'Media Coverage & News',
+            'meta_description' => 'Latest media coverage and news about Bharatpur Foundation. Read press releases, news articles, and media mentions about our educational initiatives and student achievements.',
+            'meta_keywords' => 'bharatpur foundation media, news coverage, press releases, educational news, charity news, NGO media, foundation updates, student achievements news'
+        ];
+
+        return view('frontend/media', $data);
     }
 
     public function loadMoreBeneficiaries()

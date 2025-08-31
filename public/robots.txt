@@ -1,2 +1,27 @@
+
 User-agent: *
-Disallow: 
+Allow: /
+
+# Sitemap
+Sitemap: <?= base_url('sitemap.xml') ?>
+
+# Allow search engines to crawl all pages
+Crawl-delay: 1
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /writable/
+Disallow: /app/
+Disallow: /tests/
+
+# Allow access to CSS, JS, and images
+Allow: /assets/
+Allow: /public/assets/
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.ico

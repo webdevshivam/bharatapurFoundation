@@ -99,6 +99,25 @@
             }
         }
     </script>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="<?= base_url('favicon.ico') ?>">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('favicon.ico') ?>">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('apple-touch-icon.png') ?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('favicon-32x32.png') ?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('favicon-16x16.png') ?>">
+
+    <!-- Hreflang for multilingual SEO -->
+    <?php 
+    $page_path = str_replace(base_url(), '', current_url());
+    $page_path = str_replace('/en', '', $page_path);
+    $page_path = str_replace('/hi', '', $page_path);
+    if (empty($page_path) || $page_path === '/') {
+        $page_path = '';
+    }
+    ?>
+    <link rel="alternate" hreflang="en" href="<?= base_url('en' . $page_path) ?>">
+    <link rel="alternate" hreflang="hi" href="<?= base_url('hi' . $page_path) ?>">
+    <link rel="alternate" hreflang="x-default" href="<?= base_url('en' . $page_path) ?>">
 </head>
 
 <body class="font-body text-gray-900 bg-white">
@@ -139,12 +158,12 @@
                        class="font-heading font-semibold text-gray-700 hover:text-indigo-600 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-indigo-50">
                         Success Stories
                     </a>
-                    
+
                     <a href="<?= base_url(($language ?? 'en') . '/founders-members') ?>" 
                        class="font-heading font-semibold text-gray-700 hover:text-indigo-600 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-indigo-50">
                         Founders
                     </a>
-                    
+
                     <!-- About Dropdown -->
                     <div class="relative group">
                         <button class="font-heading font-semibold text-gray-700 hover:text-indigo-600 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-indigo-50 flex items-center">
@@ -161,7 +180,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <a href="<?= base_url(($language ?? 'en') . '/join-us') ?>" 
                        class="font-heading font-semibold text-gray-700 hover:text-indigo-600 transition-colors duration-200 px-4 py-2 rounded-xl hover:bg-indigo-50">
                         Join Us

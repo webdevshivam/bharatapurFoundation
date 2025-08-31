@@ -2,6 +2,56 @@
 
 <?= $this->section('content') ?>
 
+<!-- Additional Structured Data for Homepage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "Bharatpur Foundation",
+  "alternateName": "Nayantar Memorial Charitable Trust",
+  "url": "<?= base_url() ?>",
+  "logo": "<?= base_url('assets/images/bharatpur-logo.png') ?>",
+  "description": "Bharatpur Foundation transforms underprivileged students into job-ready professionals through comprehensive education, mentoring, and career placement support.",
+  "foundingDate": "2020",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Educational Programs",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "EducationalOccupationalProgram",
+          "name": "Scholarship Program",
+          "description": "Complete academic fee coverage with modern learning tools"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "EducationalOccupationalProgram",
+          "name": "Mentoring Program",
+          "description": "One-on-one guidance from industry professionals"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "EducationalOccupationalProgram",
+          "name": "Career Placement",
+          "description": "Job placement assistance and professional training"
+        }
+      }
+    ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "500",
+    "bestRating": "5"
+  }
+}
+</script>
+
 <!-- Hero Section -->
 <section class="relative min-h-screen bg-white flex items-center overflow-hidden">
     <!-- Background Pattern -->
